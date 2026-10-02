@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repaso e Interactivo - AVSEC & OACI</title>
+    <title>Repaso Examen - AVSEC & OACI</title>
     <style>
         :root {
             --capri-primary: #00BFFF;
@@ -27,7 +27,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,8 +42,8 @@
 
         header h1 {
             color: var(--capri-dark);
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
         }
 
         .tab-buttons {
@@ -107,7 +107,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--capri-deep);
             user-select: none;
         }
@@ -117,7 +117,7 @@
         }
 
         .icon {
-            font-size: 1.2rem;
+            font-size: 1rem;
             transition: transform 0.3s ease;
             color: var(--capri-dark);
         }
@@ -132,7 +132,7 @@
         }
 
         .card.active .card-content {
-            max-height: 500px;
+            max-height: 1000px;
             padding: 16px 20px;
         }
 
@@ -149,7 +149,7 @@
             padding-left: 20px;
             margin-bottom: 10px;
             line-height: 1.5;
-            font-size: 0.98rem;
+            font-size: 0.95rem;
         }
 
         li::before {
@@ -173,7 +173,7 @@
         .quiz-card h3 {
             color: var(--capri-deep);
             margin-bottom: 15px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .options-group {
@@ -223,95 +223,114 @@
 
     <header>
         <h1>Módulo AVSEC & OACI</h1>
-        <p>Preparación rápida para tu examen</p>
+        <p>Guía Completa para Examen</p>
     </header>
 
     <div class="tab-buttons">
-        <button class="tab-btn active" onclick="switchTab('repaso')">📚 Tarjetas de Repaso</button>
-        <button class="tab-btn" onclick="switchTab('quiz')">📝 Cuestionario de Prueba</button>
+        <button class="tab-btn active" onclick="switchTab('repaso')">📚 Tarjetas de Contenido</button>
+        <button class="tab-btn" onclick="switchTab('quiz')">📝 Cuestionario de Examen</button>
     </div>
 
     <div class="container">
 
-        <!-- SECCIÓN DE REPASO -->
+        <!-- SECCIÓN DE REPASO ORGANIZADA POR PUNTOS DE EXAMEN -->
         <div id="repaso" class="tab-content active">
 
+            <!-- 1. OBJETIVOS -->
             <div class="card">
                 <div class="card-header">
-                    <span>1. Objetivos del módulo</span>
+                    <span>1. OBJETIVOS (Módulo, AVSEC y OACI)</span>
                     <span class="icon">▼</span>
                 </div>
                 <div class="card-content">
                     <ul>
-                        <li>Enumerar las organizaciones de seguridad de la aviación internacionales, regionales y nacionales[span_0](start_span)[span_0](end_span).</li>
-                        <li>Comprender las responsabilidades fundamentales de la autoridad competente del Estado[span_1](start_span)[span_1](end_span).</li>
-                        <li>Comprender los conceptos de las contramedidas de la industria[span_2](start_span)[span_2](end_span).</li>
+                        <li><strong>Objetivos del Módulo:</strong>
+                            <ul>
+                                <li>Enumerar las organizaciones de seguridad de la aviación internacionales, regionales y nacionales[span_0](start_span)[span_0](end_span).</li>
+                                <li>Comprender las responsabilidades fundamentales de la autoridad competente del Estado[span_1](start_span)[span_1](end_span).</li>
+                                <li>Comprender los conceptos de las contramedidas de la industria[span_2](start_span)[span_2](end_span).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Objetivo Fundamental AVSEC:</strong> Seguridad de los pasajeros, las tripulaciones, el personal en tierra y el público en general en todos los asuntos relacionados con la salvaguardia contra los actos de interferencia ilícita en la aviación civil[span_3](start_span)[span_3](end_span).</li>
+                        <li><strong>Finalidades y Objetivos de la OACI:</strong>
+                            <ul>
+                                <li>Elaborar los principios y las técnicas de la navegación aérea internacionales[span_4](start_span)[span_4](end_span).</li>
+                                <li>Fomentar la planificación y el desarrollo del transporte aéreo internacional[span_5](start_span)[span_5](end_span).</li>
+                                <li>Asegurar el desarrollo seguro y ordenado de la aviación civil internacional alrededor del mundo[span_6](start_span)[span_6](end_span).</li>
+                                <li>Promover el diseño y el funcionamiento de aeronaves con fines pacíficos[span_7](start_span)[span_7](end_span).</li>
+                                <li>Evitar toda discriminación entre los Estados contratantes[span_8](start_span)[span_8](end_span).</li>
+                                <li>Promover la seguridad de los vuelos en el marco de la navegación aérea internacional[span_9](start_span)[span_9](end_span).</li>
+                                <li>Promover el desarrollo general de todos los aspectos de la aeronáutica civil internacional[span_10](start_span)[span_10](end_span).</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
 
+            <!-- 2. PRINCIPIOS -->
             <div class="card">
                 <div class="card-header">
-                    <span>2. Objetivo fundamental AVSEC</span>
+                    <span>2. PRINCIPIOS AVSEC</span>
                     <span class="icon">▼</span>
                 </div>
                 <div class="card-content">
                     <ul>
-                        <li>Seguridad de los pasajeros, las tripulaciones, el personal en tierra y el público en general en todos los asuntos relacionados con la salvaguardia contra los actos de interferencia ilícita en la aviación civil[span_3](start_span)[span_3](end_span).</li>
+                        <li>La aviación civil debe operar en un ambiente seguro[span_11](start_span)[span_11](end_span).</li>
+                        <li>Se debe elaborar e implementar la legislación y los procedimientos necesarios para mantener la seguridad de dicho ambiente[span_12](start_span)[span_12](end_span).</li>
+                        <li>Las medidas de seguridad deben efectuarse de conformidad con las Normas de la OACI[span_13](start_span)[span_13](end_span).</li>
+                        <li>Procesar o extraditar a las personas que cometan cualquier acto de interferencia ilícita[span_14](start_span)[span_14](end_span).</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- 3. CARACTERÍSTICAS Y CONCEPTOS -->
             <div class="card">
                 <div class="card-header">
-                    <span>3. Principios AVSEC</span>
+                    <span>3. CARACTERÍSTICAS Y CONCEPTOS CLAVE</span>
                     <span class="icon">▼</span>
                 </div>
                 <div class="card-content">
                     <ul>
-                        <li>La aviación civil debe operar en un ambiente seguro[span_4](start_span)[span_4](end_span).</li>
-                        <li>Se debe elaborar e implementar la legislación y los procedimientos necesarios para mantener la seguridad de dicho ambiente[span_5](start_span)[span_5](end_span).</li>
-                        <li>Las medidas de seguridad deben efectuarse de conformidad con las Normas de la OACI[span_6](start_span)[span_6](end_span).</li>
-                        <li>Procesar o extraditar a las personas que cometan cualquier acto de interferencia ilícita[span_7](start_span)[span_7](end_span).</li>
+                        <li><strong>Seguridad de la Aviación (AVSEC):</strong> Combinación de medidas y recursos humanos y materiales disponibles para proteger a la aviación civil contra cualquier interferencia ilícita[span_15](start_span)[span_15](end_span).</li>
+                        <li><strong>Actos de Interferencia Ilícita:</strong> Actos o tentativas destinados a comprometer la seguridad de la aviación civil y el transporte aéreo[span_16](start_span)[span_16](end_span).</li>
+                        <li><strong>Terroristas y Amenazas:</strong> Los transportistas aéreos a menudo simbolizan a su Estado; el ataque es realmente contra el Estado o el gobierno con el fin de llamar la atención mundial y atraer publicidad para su causa[span_17](start_span)[span_17](end_span).</li>
+                        <li><strong>OACI (Organización de Aviación Civil Internacional):</strong> Agencia especializada de las Naciones Unidas creada mediante el Convenio sobre la Aviación Civil Internacional firmado el 7 de diciembre de 1944 en Chicago[span_18](start_span)[span_18](end_span).</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- 4. CONVENIOS -->
             <div class="card">
                 <div class="card-header">
-                    <span>4. Contramedidas de la industria (OACI)</span>
+                    <span>4. CONVENIOS SOBRE SEGURIDAD DE LA AVIACIÓN</span>
                     <span class="icon">▼</span>
                 </div>
                 <div class="card-content">
                     <ul>
-                        <li><strong>OACI:</strong> Organización de Aviación Civil Internacional[span_8](start_span)[span_8](end_span).</li>
-                        <li>Agencia especializada de Naciones Unidas[span_9](start_span)[span_9](end_span).</li>
-                        <li>Convenio sobre la aviación civil internacional firmado el 7 de diciembre de 1944 en Chicago[span_10](start_span)[span_10](end_span).</li>
+                        <li><strong>Definición:</strong> Instrumentos jurídicos internacionales por medio de los cuales los Estados contratantes confirman su intención de hacer cumplir los términos y las disposiciones que se incluyen en los mismos[span_19](start_span)[span_19](end_span).</li>
+                        <li><strong>Marco Legal:</strong> Requieren la incorporación de sus disposiciones al código penal del Estado y la elaboración de un marco jurídico sólido que respalde las actividades de aviación civil nacional[span_20](start_span)[span_20](end_span).</li>
+                        <li><strong>Lista Cronológica de Convenios:</strong>
+                            <ul>
+                                <li>Tokio – 1963[span_21](start_span)[span_21](end_span).</li>
+                                <li>La Haya – 1970 (Convenio para la represión del apoderamiento ilícito de aeronaves)[span_22](start_span)[span_22](end_span)[span_23](start_span)[span_23](end_span).</li>
+                                <li>Montreal – 1971[span_24](start_span)[span_24](end_span).</li>
+                                <li>Convenio MEX – 1991 (Convenio sobre la marcación de explosivos plásticos para los fines de detección)[span_25](start_span)[span_25](end_span)[span_26](start_span)[span_26](end_span).</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
 
+            <!-- 5. PROTOCOLOS -->
             <div class="card">
                 <div class="card-header">
-                    <span>5. Finalidades y objetivos de la OACI</span>
+                    <span>5. PROTOCOLOS</span>
                     <span class="icon">▼</span>
                 </div>
                 <div class="card-content">
                     <ul>
-                        <li>Elaborar los principios y las técnicas de la navegación aérea internacionales[span_11](start_span)[span_11](end_span).</li>
-                        <li>Fomentar la planificación y el desarrollo del transporte aéreo internacional[span_12](start_span)[span_12](end_span).</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <span>6. Convenios sobre seguridad de la aviación</span>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="card-content">
-                    <ul>
-                        <li>Instrumentos jurídicos internacionales por medio de los cuales los Estados contratantes confirman su intención de hacer cumplir los términos y las disposiciones que se incluyen en los mismos[span_13](start_span)[span_13](end_span).</li>
+                        <li><strong>Protocolo Complementario de Montreal (1988):</strong> Protocolo para la represión de actos ilícitos de violencia en los aeropuertos que presten servicio a la aviación civil internacional[span_27](start_span)[span_27](end_span).</li>
+                        <li><strong>Protocolo de Montreal (2014):</strong> Protocolo que modifica el Convenio sobre las infracciones y ciertos otros actos cometidos a bordo de las aeronaves hecho en Montreal el 4 de abril de 2014 (modifica el Convenio de Tokio)[span_28](start_span)[span_28](end_span).</li>
                     </ul>
                 </div>
             </div>
@@ -325,35 +344,35 @@
                 <h3>1. ¿Cuál es el objetivo fundamental del AVSEC?</h3>
                 <div class="options-group">
                     <button class="option-btn" onclick="checkAnswer(this, false)">Promover el turismo internacional mediante vuelos comerciales.</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true)">Garantizar la seguridad de pasajeros, tripulaciones y personal salvaguardando la aviación contra actos de interferencia ilícita[span_14](start_span)[span_14](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Garantizar la seguridad de pasajeros, tripulaciones y personal salvaguardando la aviación contra actos de interferencia ilícita[span_29](start_span)[span_29](end_span).</button>
                     <button class="option-btn" onclick="checkAnswer(this, false)">Garantizar únicamente el mantenimiento mecánico de las aeronaves.</button>
                 </div>
             </div>
 
             <div class="quiz-card">
-                <h3>2. ¿Dónde y cuándo se firmó el Convenio sobre la Aviación Civil Internacional que dio origen a la OACI?</h3>
+                <h3>2. De acuerdo con los principios AVSEC, ¿qué debe hacerse con las personas que cometan un acto de interferencia ilícita?</h3>
                 <div class="options-group">
-                    <button class="option-btn" onclick="checkAnswer(this, false)">El 14 de julio de 1950 en Tokio.</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true)">El 7 de diciembre de 1944 en Chicago[span_15](start_span)[span_15](end_span).</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">El 1 de marzo de 1991 en Montreal.</button>
-                </div>
-            </div>
-
-            <div class="quiz-card">
-                <h3>3. De acuerdo con los principios AVSEC, respecto a las personas que cometan un acto de interferencia ilícita se debe:</h3>
-                <div class="options-group">
-                    <button class="option-btn" onclick="checkAnswer(this, true)">Procesar o extraditar a las personas involucradas[span_16](start_span)[span_16](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Procesar o extraditar a las personas involucradas[span_30](start_span)[span_30](end_span).</button>
                     <button class="option-btn" onclick="checkAnswer(this, false)">Darles amnistía si el delito ocurrió en espacio aéreo internacional.</button>
                     <button class="option-btn" onclick="checkAnswer(this, false)">Delegar la responsabilidad únicamente al explotador del vuelo.</button>
                 </div>
             </div>
 
             <div class="quiz-card">
-                <h3>4. Las medidas de seguridad en aviación civil siempre deben efectuarse de conformidad con:</h3>
+                <h3>3. ¿Qué establece el Convenio de La Haya de 1970?</h3>
                 <div class="options-group">
-                    <button class="option-btn" onclick="checkAnswer(this, false)">Los reglamentos privados de cada aerolínea exclusivamente.</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true)">Las Normas de la OACI[span_17](start_span)[span_17](end_span).</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false)">Cualquier ley municipal del aeropuerto de origen.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">La marcación de explosivos plásticos para su detección.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">La represión del apoderamiento ilícito de aeronaves[span_31](start_span)[span_31](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">La creación del Convenio de Chicago.</button>
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <h3>4. ¿Cuál es la función del Convenio MEX de 1991?</h3>
+                <div class="options-group">
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Marcación de explosivos plásticos para los fines de detección[span_32](start_span)[span_32](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Regular la discriminación entre Estados contratantes.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Establecer los horarios de navegación aérea.</button>
                 </div>
             </div>
 
@@ -362,11 +381,10 @@
     </div>
 
     <footer>
-        <p>¡Mucho éxito en tu examen!</p>
+        <p>¡Mucho éxito en tu examen de mañana!</p>
     </footer>
 
     <script>
-        // Control de tarjetas desplegables
         document.querySelectorAll('.card-header').forEach(header => {
             header.addEventListener('click', () => {
                 const card = header.parentElement;
@@ -377,7 +395,6 @@
             });
         });
 
-        // Cambio de pestañas (Repaso / Quiz)
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -386,7 +403,6 @@
             event.target.classList.add('active');
         }
 
-        // Evaluación de preguntas interactiva
         function checkAnswer(button, isCorrect) {
             const parentGroup = button.parentElement;
             const buttons = parentGroup.querySelectorAll('.option-btn');
