@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repaso e Interactivo - AVSEC & OACI</title>
+    <style>
+        :root {
+            --capri-primary: #00BFFF;
+            --capri-dark: #0080FF;
+            --capri-deep: #0056b3;
+            --capri-light: #E6F7FF;
+            --bg-color: #F0F8FF;
+            --text-color: #1A252C;
+            --card-bg: #FFFFFF;
+            --correct: #28a745;
+            --incorrect: #dc3545;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            color: var(--capri-dark);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background-color: #d0eefc;
+            color: var(--capri-deep);
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--capri-dark);
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+        }
+
+        .tab-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-left: 6px solid var(--capri-primary);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card-header {
+            padding: 16px 20px;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--capri-deep);
+            user-select: none;
+        }
+
+        .card-header:hover {
+            background-color: var(--capri-light);
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--capri-dark);
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 20px;
+            background-color: #FAFDFF;
+            border-top: 1px solid #EAF5FF;
+        }
+
+        .card.active .card-content {
+            max-height: 500px;
+            padding: 16px 20px;
+        }
+
+        .card.active .icon {
+            transform: rotate(180deg);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            font-size: 0.98rem;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--capri-primary);
+            font-weight: bold;
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .quiz-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 191, 255, 0.15);
+            margin-bottom: 15px;
+        }
+
+        .quiz-card h3 {
+            color: var(--capri-deep);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #fff;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .option-btn:hover {
+            border-color: var(--capri-primary);
+            background-color: var(--capri-light);
+        }
+
+        .option-btn.correct {
+            background-color: #d4edda;
+            border-color: var(--correct);
+            color: #155724;
+            font-weight: bold;
+        }
+
+        .option-btn.incorrect {
+            background-color: #f8d7da;
+            border-color: var(--incorrect);
+            color: #721c24;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Módulo AVSEC & OACI</h1>
+        <p>Preparación rápida para tu examen</p>
+    </header>
+
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchTab('repaso')">📚 Tarjetas de Repaso</button>
+        <button class="tab-btn" onclick="switchTab('quiz')">📝 Cuestionario de Prueba</button>
+    </div>
+
+    <div class="container">
+
+        <!-- SECCIÓN DE REPASO -->
+        <div id="repaso" class="tab-content active">
+
+            <div class="card">
+                <div class="card-header">
+                    <span>1. Objetivos del módulo</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Enumerar las organizaciones de seguridad de la aviación internacionales, regionales y nacionales[span_0](start_span)[span_0](end_span).</li>
+                        <li>Comprender las responsabilidades fundamentales de la autoridad competente del Estado[span_1](start_span)[span_1](end_span).</li>
+                        <li>Comprender los conceptos de las contramedidas de la industria[span_2](start_span)[span_2](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>2. Objetivo fundamental AVSEC</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Seguridad de los pasajeros, las tripulaciones, el personal en tierra y el público en general en todos los asuntos relacionados con la salvaguardia contra los actos de interferencia ilícita en la aviación civil[span_3](start_span)[span_3](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>3. Principios AVSEC</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>La aviación civil debe operar en un ambiente seguro[span_4](start_span)[span_4](end_span).</li>
+                        <li>Se debe elaborar e implementar la legislación y los procedimientos necesarios para mantener la seguridad de dicho ambiente[span_5](start_span)[span_5](end_span).</li>
+                        <li>Las medidas de seguridad deben efectuarse de conformidad con las Normas de la OACI[span_6](start_span)[span_6](end_span).</li>
+                        <li>Procesar o extraditar a las personas que cometan cualquier acto de interferencia ilícita[span_7](start_span)[span_7](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>4. Contramedidas de la industria (OACI)</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>OACI:</strong> Organización de Aviación Civil Internacional[span_8](start_span)[span_8](end_span).</li>
+                        <li>Agencia especializada de Naciones Unidas[span_9](start_span)[span_9](end_span).</li>
+                        <li>Convenio sobre la aviación civil internacional firmado el 7 de diciembre de 1944 en Chicago[span_10](start_span)[span_10](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>5. Finalidades y objetivos de la OACI</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Elaborar los principios y las técnicas de la navegación aérea internacionales[span_11](start_span)[span_11](end_span).</li>
+                        <li>Fomentar la planificación y el desarrollo del transporte aéreo internacional[span_12](start_span)[span_12](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>6. Convenios sobre seguridad de la aviación</span>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Instrumentos jurídicos internacionales por medio de los cuales los Estados contratantes confirman su intención de hacer cumplir los términos y las disposiciones que se incluyen en los mismos[span_13](start_span)[span_13](end_span).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECCIÓN DE CUESTIONARIO -->
+        <div id="quiz" class="tab-content">
+
+            <div class="quiz-card">
+                <h3>1. ¿Cuál es el objetivo fundamental del AVSEC?</h3>
+                <div class="options-group">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Promover el turismo internacional mediante vuelos comerciales.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Garantizar la seguridad de pasajeros, tripulaciones y personal salvaguardando la aviación contra actos de interferencia ilícita[span_14](start_span)[span_14](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Garantizar únicamente el mantenimiento mecánico de las aeronaves.</button>
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <h3>2. ¿Dónde y cuándo se firmó el Convenio sobre la Aviación Civil Internacional que dio origen a la OACI?</h3>
+                <div class="options-group">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">El 14 de julio de 1950 en Tokio.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">El 7 de diciembre de 1944 en Chicago[span_15](start_span)[span_15](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">El 1 de marzo de 1991 en Montreal.</button>
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <h3>3. De acuerdo con los principios AVSEC, respecto a las personas que cometan un acto de interferencia ilícita se debe:</h3>
+                <div class="options-group">
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Procesar o extraditar a las personas involucradas[span_16](start_span)[span_16](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Darles amnistía si el delito ocurrió en espacio aéreo internacional.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Delegar la responsabilidad únicamente al explotador del vuelo.</button>
+                </div>
+            </div>
+
+            <div class="quiz-card">
+                <h3>4. Las medidas de seguridad en aviación civil siempre deben efectuarse de conformidad con:</h3>
+                <div class="options-group">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Los reglamentos privados de cada aerolínea exclusivamente.</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">Las Normas de la OACI[span_17](start_span)[span_17](end_span).</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">Cualquier ley municipal del aeropuerto de origen.</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>¡Mucho éxito en tu examen!</p>
+    </footer>
+
+    <script>
+        // Control de tarjetas desplegables
+        document.querySelectorAll('.card-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const card = header.parentElement;
+                document.querySelectorAll('.card').forEach(item => {
+                    if (item !== card) item.classList.remove('active');
+                });
+                card.classList.toggle('active');
+            });
+        });
+
+        // Cambio de pestañas (Repaso / Quiz)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Evaluación de preguntas interactiva
+        function checkAnswer(button, isCorrect) {
+            const parentGroup = button.parentElement;
+            const buttons = parentGroup.querySelectorAll('.option-btn');
+
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('correct', 'incorrect');
+            });
+
+            if (isCorrect) {
+                button.classList.add('correct');
+            } else {
+                button.classList.add('incorrect');
+            }
+        }
+    </script>
+</body>
+</html>
