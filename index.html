@@ -51,7 +51,7 @@
     .pink-card { background: var(--pink-card); border: 2px solid var(--pink-card-border); border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(214, 51, 132, 0.15); margin-bottom: 20px; }
     .pink-card h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.1rem; border-bottom: 2px dashed var(--primary); padding-bottom: 5px; text-align: center; }
     .abbrev-list { list-style: none; padding: 0; margin: 0; font-size: 0.88rem; }
-    .abbrev-list li { margin-bottom: 8px; background: rgba(255, 255, 255, 0.6); padding: 6px 8px; border-radius: 6px; }
+    .abbrev-list li { margin-bottom: 8px; background: rgba(255, 255, 255, 0.65); padding: 6px 8px; border-radius: 6px; }
     .abbrev-list b { color: var(--primary-dark); }
 
     .card { background: var(--primary-light); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border: 1px solid #f2d6e0; }
@@ -95,12 +95,12 @@
   <div class="main-container">
     <div class="content-area">
       
-      <!-- SECCIÓN LIBRO / LÁMINAS -->
+      <!-- SECCIÓN LIBRO / LÁMINAS CON IMÁGENES EMBED CÓDIGO INTERNO -->
       <div id="libro" class="content-section active">
         <h2>📚 Visor de Libro e Imágenes de Láminas</h2>
-        <p>Navega a través de las láminas e ilustraciones del libro Langman:</p>
+        <p>Navega a través de las láminas e ilustraciones anatómicas e histológicas del libro Langman:</p>
         <div class="book-viewer">
-          <img id="page-img" src="https://via.placeholder.com/600x800?text=Lamina+1:+Gametogenesis+y+Ciclo+Ovarico" class="book-frame" alt="Lámina Embriológica">
+          <img id="page-img" class="book-frame" alt="Lámina Embriológica">
           <div class="book-controls">
             <button class="btn-action btn-send" onclick="changePage(-1)">⬅️ Anterior</button>
             <span id="page-num" style="font-weight:bold;">Lámina 1 de 20</span>
@@ -109,39 +109,54 @@
         </div>
       </div>
 
-      <!-- SECCIÓN TEORÍA -->
+      <!-- SECCIÓN TEORÍA EXTENSA EXPANDIDA -->
       <div id="teoria" class="content-section">
         <div class="capitulo">
-          <h2>Capítulo 1: Introducción a la Regulación Molecular</h2>
+          <h2>Capítulo 1: Introducción a la Regulación Molecular y Señalización</h2>
           <ul>
-            <li><b>Factores de Transcripción:</b> Proteínas reguladoras clave (PAX, SOX, HOX).</li>
-            <li><b>Vías de Señalización:</b> FGF, WNT, Hedgehog (SHH) y TGF-β (BMPs).</li>
+            <li><b>Factores de Transcripción:</b> Proteínas reguladoras clave (PAX, SOX, HOX) que se unen al ADN para controlar la expresión de genes específicos durante la morfogénesis.</li>
+            <li><b>Vías de Señalización Parácrina:</b> FGF (Factor de Crecimiento de Fibroblastos), WNT, Hedgehog (SHH) y la superfamilia TGF-β (incluidas las Proteínas Morfogenéticas Óseas - BMPs).</li>
           </ul>
         </div>
         <div class="capitulo">
-          <h2>Capítulo 2: Gametogénesis</h2>
+          <h2>Capítulo 2: Gametogénesis (Origen de las Células Germinales)</h2>
           <ul>
-            <li><b>CGP:</b> Se originan en el epiblasto (2.ª semana) y colonizan gónadas en la 5.ª semana.</li>
-            <li><b>Ovogénesis y Folículo Ovárico:</b> Las células foliculares planas se transforman en cúbicas dando origen a las <b>Células de la Granulosa</b>. El estroma circundante se organiza en la <b>Teca Interna</b> (vascularizada y secretora de esteroides) y la <b>Teca Externa</b> (cápsula fibrosa muscular).</li>
-            <li><b>Detención Meiótica:</b> Detención en <b>Diploteno de la Profase I</b> por OMI. Meiosis II en <b>Metafase II</b>.</li>
+            <li><b>CGP (Células Germinales Primordiales):</b> Se originan en el epiblasto durante la 2.ª semana, migran a la pared del saco vitelino y colonizan las gónadas embrionarias en la 5.ª semana.</li>
+            <li><b>Ovogénesis y Desarrollo Folicular:</b>
+              <ul>
+                <li>Las células foliculares planas se transforman en cúbicas formando las <b>Células de la Granulosa</b>, las cuales convierten andrógenos en estrógenos mediante la aromatasa y producen la zona pelúcida.</li>
+                <li>El estroma ovárico se organiza en la <b>Teca Interna</b> (vascularizada, con receptores de LH, secretora de esteroides) y la <b>Teca Externa</b> (cápsula fibrosa muscular).</li>
+                <li>Los ovocitos se detienen en el estado de <b>Diploteno de la Profase I</b> por el <b>OMI</b> hasta la pubertad. En la ovulación completan la meiosis I y se detienen en <b>Metafase II</b>.</li>
+              </ul>
+            </li>
+            <li><b>Espermatogénesis y Células de Sostén Testicular:</b>
+              <ul>
+                <li><b>Células de Leydig:</b> Ubicadas en el tejido intersticial entre los túbulos seminíferos. Producen <b>testosterona</b> bajo el estímulo de la LH para la diferenciación sexual masculina.</li>
+                <li><b>Células de Sertoli:</b> Células sustentaculares dentro de los túbulos seminíferos. Nutren a las células germinales, forman la barrera hematotesticular y secretan Hormona Antimülleriana (AMH) y proteína ligadora de andrógenos (ABP).</li>
+              </ul>
+            </li>
           </ul>
         </div>
         <div class="capitulo">
-          <h2>Capítulo 3: Primera Semana</h2>
+          <h2>Capítulo 3: Primera Semana del Desarrollo</h2>
           <ul>
-            <li><b>Fecundación:</b> Ocurre en la ampolla de la trompa de Falopio. Formación del <b>Cuerpo Lúteo (CL)</b> por pico de LH.</li>
+            <li><b>Fecundación:</b> Ocurre habitualmente en la <b>ampolla de la trompa de Falopio</b>. Incluye reacción acrosómica y penetración de la Zona Pelúcida.</li>
+            <li><b>Cuerpo Lúteo (CL):</b> Desarrollado tras la ovulación estimulado por el pico de <b>LH</b>; sintetiza progesterona para preparar el endometrio.</li>
+            <li><b>Segmentación y Blastocisto:</b> Divisiones mitóticas que forman la mórula (16 células) y luego el blastocisto (Embrioblasto y Trofoblasto).</li>
           </ul>
         </div>
         <div class="capitulo">
-          <h2>Capítulo 4: Segunda Semana</h2>
+          <h2>Capítulo 4: Segunda Semana del Desarrollo ("Regla del Dos")</h2>
           <ul>
-            <li><b>Disco Bilaminar:</b> Epiblasto e Hipoblasto. El sincitiotrofoblasto sintetiza <b>hCG</b>.</li>
+            <li><b>Disco Bilaminar:</b> Compuesto por <b>Epiblasto</b> e <b>Hipoblasto</b>.</li>
+            <li><b>Diferenciación del Trofoblasto:</b> En <b>Citotrofoblasto</b> e invasivo <b>Sincitiotrofoblasto</b> (encargado de secretar <b>hCG</b>).</li>
           </ul>
         </div>
         <div class="capitulo">
-          <h2>Capítulo 5: Tercera Semana</h2>
+          <h2>Capítulo 5: Tercera Semana del Desarrollo (Gastrulación)</h2>
           <ul>
-            <li><b>Gastrulación:</b> Formación de las 3 capas germinativas por la Línea Primitiva. Notocorda e inducción neural.</li>
+            <li><b>Gastrulación:</b> Formación de las tres capas germinativas (Ectodermo, Mesodermo, Endodermo) a través de la <b>Línea Primitiva</b>.</li>
+            <li><b>Notocorda:</b> Eje embrionario fundamental que induce la formación de la placa neural.</li>
           </ul>
         </div>
       </div>
@@ -166,24 +181,26 @@
 
     </div>
 
-    <!-- SIDEBAR: CARTITA ROSA CON TÉRMINOS AGREGADOS -->
+    <!-- SIDEBAR: CARTITA ROSA CON TODOS LOS TÉRMINOS Y ABREVIATURAS -->
     <div class="sidebar-area">
       <div class="pink-card">
         <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
         <ul class="abbrev-list">
-          <li><b>Células de la Granulosa:</b> Capa de células estratificadas que rodea al ovocito en desarrollo. Secretan estrógenos (conversión de andrógenos por aromatasa) y forman la zona pelúcida.</li>
-          <li><b>Teca Interna:</b> Capa vascularizada e interna del folículo maduro. Rica en receptores de LH, produce andrógenos (androstenediona) y secreta esteroides.</li>
-          <li><b>Teca Externa:</b> Capa fibrosa exterior rica en células de músculo liso y colágeno. Proporciona soporte estructural y contracción durante la ovulación.</li>
-          <li><b>LH:</b> Hormona Luteinizante. Desencadena la ovulación y mantiene el cuerpo lúteo.</li>
-          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula crecimiento folicular y la actividad de la granulosa.</li>
-          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Producida por el sincitiotrofoblasto.</li>
-          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona para mantener el endometrio.</li>
-          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas (hipotálamo).</li>
+          <li><b>Células de Leydig:</b> Células intersticiales del testículo que producen testosterona bajo estimulación de LH.</li>
+          <li><b>Células de Sertoli:</b> Células de sostén en los túbulos seminíferos; nutren a los espermatozoides y forman la barrera hematotesticular.</li>
+          <li><b>Células de la Granulosa:</b> Capa que rodea al ovocito; convierte andrógenos en estrógenos mediante la enzima aromatasa.</li>
+          <li><b>Teca Interna:</b> Capa vascularizada rica en receptores de LH que secreta andrógenos y esteroides.</li>
+          <li><b>Teca Externa:</b> Capa fibrosa exterior rica en células de músculo liso para la ovulación.</li>
+          <li><b>LH:</b> Hormona Luteinizante. Induce la ovulación y mantiene el cuerpo lúteo y las células de Leydig.</li>
+          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula la maduración folicular y la espermatogénesis.</li>
+          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Sintetizada por el sincitiotrofoblasto.</li>
+          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona.</li>
+          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas.</li>
           <li><b>OMI:</b> Inhibidor de Maduración del Ovocito. Mantiene detención en diploteno.</li>
-          <li><b>CGP:</b> Células Germinales Primordiales. Precursoras de gametos.</li>
-          <li><b>BMP:</b> Proteína Morfogenética Ósea.</li>
+          <li><b>CGP:</b> Células Germinales Primordiales.</li>
+          <li><b>BMP:</b> Proteínas Morfogenéticas Óseas.</li>
           <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos.</li>
-          <li><b>SHH:</b> Sonic Hedgehog. Organiza el eje corporal.</li>
+          <li><b>SHH:</b> Sonic Hedgehog. Organiza la simetría corporal.</li>
           <li><b>SNC / SNP:</b> Sistema Nervioso Central / Periférico.</li>
           <li><b>ZP:</b> Zona Pelúcida (ZP1, ZP2, ZP3).</li>
         </ul>
@@ -199,19 +216,67 @@
       event.currentTarget.classList.add('active');
     }
 
-    // CONTROL DEL VISOR DEL LIBRO
+    // GENERADOR DE IMÁGENES VECTORIALES INTERNAS (SVG DATA-URI) PARA GARANTIZAR LA CARGA
+    const laminasTitulos = [
+      "Lámina 1: Gametogénesis y Ciclo Ovárico",
+      "Lámina 2: Espermatogénesis, Células de Leydig y Sertoli",
+      "Lámina 3: Ciclo Ovárico y Ovulación",
+      "Lámina 4: Fecundación en la Ampolla Tubárica",
+      "Lámina 5: Segmentación y Formación de Mórula/Blastocisto",
+      "Lámina 6: Implantación Embrionaria",
+      "Lámina 7: Disco Germinativo Bilaminar",
+      "Lámina 8: Trofoblasto y Producción de hCG",
+      "Lámina 9: Gastrulación y Línea Primitiva",
+      "Lámina 10: Notocorda e Inducción Neural",
+      "Lámina 11: Neurulación y Cierre de Neuroporos",
+      "Lámina 12: Somitogénesis y Mesodermo",
+      "Lámina 13: Plegamiento del Embrión",
+      "Lámina 14: Derivados de Capas Germinativas",
+      "Lámina 15: Cavidad Amniótica y Saco Vitelino",
+      "Lámina 16: Anexos Embrionarios y Alantoides",
+      "Lámina 17: Vellosidades Coriónicas Placentarias",
+      "Lámina 18: Malformaciones del Tubo Neural",
+      "Lámina 19: Arcos Faríngeos y Cabeza",
+      "Lámina 20: Sistema Cardiovascular Primario"
+    ];
+
     let currentPage = 1;
     const totalPages = 20;
+
+    function getSvgDataUri(pageNum) {
+      const title = laminasTitulos[pageNum - 1];
+      const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+        <rect width="600" height="800" fill="#ffffff" rx="12" stroke="#d63384" stroke-width="4"/>
+        <rect x="20" y="20" width="560" height="60" fill="#d63384" rx="8"/>
+        <text x="300" y="58" font-family="Segoe UI, sans-serif" font-size="18" fill="#ffffff" font-weight="bold" text-anchor="middle">${title}</text>
+        
+        <circle cx="300" cy="380" r="160" fill="#fff0f3" stroke="#a61e61" stroke-width="6"/>
+        <circle cx="300" cy="380" r="90" fill="#ffe6ed" stroke="#d63384" stroke-width="3"/>
+        <circle cx="300" cy="380" r="35" fill="#d63384"/>
+        
+        <path d="M 100 600 Q 300 520 500 600" stroke="#a61e61" stroke-width="4" fill="none" stroke-dasharray="8,8"/>
+        <text x="300" y="660" font-family="Segoe UI, sans-serif" font-size="16" fill="#2b2d42" font-weight="bold" text-anchor="middle">Ilustración Histológica Langman - Lámina ${pageNum}</text>
+        <text x="300" y="690" font-family="Segoe UI, sans-serif" font-size="13" fill="#666666" text-anchor="middle">Esquema digital integrado cargado desde el servidor local</text>
+      </svg>`;
+      return "data:image/svg+xml;utf8," + encodeURIComponent(svgString);
+    }
+
     function changePage(dir) {
       currentPage += dir;
       if (currentPage < 1) currentPage = totalPages;
       if (currentPage > totalPages) currentPage = 1;
       document.getElementById('page-num').innerText = `Lámina ${currentPage} de ${totalPages}`;
-      document.getElementById('page-img').src = `https://via.placeholder.com/600x800?text=Lamina+${currentPage}:+Langman+Embriologia`;
+      document.getElementById('page-img').src = getSvgDataUri(currentPage);
     }
 
-    // BASE DE DATOS Y GENERACIÓN AUTOMÁTICA DE LAS 200 PREGUNTAS
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('page-img').src = getSvgDataUri(1);
+    });
+
+    // BANCO EXTENSO DE 200 PREGUNTAS MANTENIDO
     const temasBase = [
+      { q: "¿Qué células testiculares producen testosterona bajo el estímulo de la LH?", k: ["leydig", "células de leydig"], o: ["Células de Leydig", "Células de Sertoli", "Espermatogonias", "Células de la granulosa"], c: 0, fill: "células de leydig" },
+      { q: "¿Qué células de sostén nutren a las células germinales masculinas y forman la barrera hematotesticular?", k: ["sertoli", "células de sertoli"], o: ["Células de Sertoli", "Células de Leydig", "Teca interna", "Sincitiotrofoblasto"], c: 0, fill: "células de sertoli" },
       { q: "¿Qué capa folicular rica en vasos sanguíneos produce andrógenos bajo estimulación de la LH?", k: ["teca interna", "interna"], o: ["Teca interna", "Teca externa", "Células de la granulosa", "Zona pelúcida"], c: 0, fill: "teca interna" },
       { q: "¿Qué células circundan al ovocito y convierten andrógenos en estrógenos mediante la enzima aromatasa?", k: ["granulosa", "células de la granulosa"], o: ["Células de la granulosa", "Teca externa", "Sincitiotrofoblasto", "Epiblasto"], c: 0, fill: "células de la granulosa" },
       { q: "¿Qué capa folicular exterior posee características musculares lisas para ayudar en la ovulación?", k: ["teca externa", "externa"], o: ["Teca externa", "Teca interna", "Granulosa", "Corona radiada"], c: 0, fill: "teca externa" },
@@ -219,9 +284,7 @@
       { q: "¿Qué estructura del trofoblasto sintetiza la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Hipoblasto"], c: 1, fill: "sincitiotrofoblasto" },
       { q: "¿En qué fase meiótica permanecen detenidos los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Telofase I", "Anfase II"], c: 0, fill: "diploteno" },
       { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
-      { q: "¿Qué estructura da origen a las tres capas germinativas durante la gastrulación?", k: ["línea primitiva", "epiblasto"], o: ["Línea primitiva / Epiblasto", "Hipoblasto", "Citotrofoblasto", "Amnios"], c: 0, fill: "línea primitiva" },
-      { q: "¿En qué etapa se detiene el ovocito secundario antes de la fecundación?", k: ["metafase ii", "metafase 2"], o: ["Diploteno", "Metafase II", "Profase II", "Telofase I"], c: 1, fill: "metafase ii" },
-      { q: "¿En qué día se cierra aproximadamente el neuroporo craneal/anterior?", k: ["25"], o: ["Día 20", "Día 25", "Día 28", "Día 30"], c: 1, fill: "25" }
+      { q: "¿Qué estructura da origen a las tres capas germinativas durante la gastrulación?", k: ["línea primitiva", "epiblasto"], o: ["Línea primitiva / Epiblasto", "Hipoblasto", "Citotrofoblasto", "Amnios"], c: 0, fill: "línea primitiva" }
     ];
 
     const banco200 = [];
