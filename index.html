@@ -30,15 +30,6 @@
     .capitulo { margin-bottom: 25px; border-bottom: 2px solid var(--primary-light); padding-bottom: 15px; text-align: left; }
     .capitulo h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 8px; font-size: 1.2rem; }
     
-    /* Control e imágenes en vertical */
-    .img-box { text-align: center; margin: 20px 0; overflow: hidden; }
-    .img-book { width: 90%; max-width: 500px; display: block; margin: 0 auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-    /* Giros CSS para asegurar que queden verticales */
-    .rotate-90 { transform: rotate(90deg); margin: 60px auto; }
-    .rotate-270 { transform: rotate(270deg); margin: 60px auto; }
-    .controls-bar { display: flex; justify-content: center; gap: 10px; margin-top: 5px; }
-    .small-btn { padding: 4px 8px; font-size: 0.75rem; border: 1px solid #ccc; background: #f0f0f0; border-radius: 4px; cursor: pointer; }
-
     .card { background: var(--primary-light); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border: 1px solid #f2d6e0; }
     .card h3 { margin-top: 0; color: var(--primary-dark); font-size: 1rem; }
     .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 6px 0; border: 1px solid #ccc; background: white; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
@@ -48,20 +39,19 @@
     .feedback.success { background: #d4edda; color: #155724; display: block; }
     .feedback.error { background: #f8d7da; color: #721c24; display: block; }
 
-    /* Estilos para audio y micrófono */
     .audio-controls { display: flex; gap: 8px; align-items: center; margin: 10px 0; flex-wrap: wrap; }
     .btn-audio { background: #17a2b8; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; }
     .btn-mic { background: #dc3545; color: white; border: none; padding: 10px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem; }
     .btn-mic.listening { animation: pulse 1s infinite; background: #28a745; }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
 
-    /* Pareos y completar */
     .pareo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     select.pareo-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.85rem; }
     input.fill-input { padding: 8px; border-radius: 6px; border: 1px solid #ccc; width: calc(100% - 20px); margin: 5px 0; font-size: 0.9rem; }
 
-    /* Galería */
+    .img-book { width: 90%; max-width: 500px; display: block; margin: 0 auto; border-radius: 8px; border: 1px solid #ddd; }
     .galeria-item { margin-bottom: 30px; text-align: center; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #eee; }
+    .rotate-270 { transform: rotate(270deg); margin: 60px auto; }
   </style>
 </head>
 <body>
@@ -73,147 +63,113 @@
 
   <div class="nav-tabs">
     <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría Extensa</button>
-    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 2. Práctica Oral y Audio</button>
-    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 3. Cuestionario (30+ Preg.)</button>
+    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 2. Práctica Oral por Voz</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 3. Cuestionario Ampliado</button>
     <button class="tab-btn" onclick="showTab('pareos')">🧩 4. Pareos y Relación</button>
     <button class="tab-btn" onclick="showTab('espacios')">✏️ 5. Llenar Espacios</button>
     <button class="tab-btn" onclick="showTab('galeria-completa')">🖼️ 6. Láminas (000-098)</button>
   </div>
 
-  <!-- SECCIÓN 1: TEORÍA DETALLADA CON IMÁGENES ROTADAS EN VERTICAL -->
+  <!-- SECCIÓN 1: TEORÍA DETALLADA SIN IMÁGENES INTERMEDIAS -->
   <div id="teoria" class="content-section active">
     <div class="capitulo">
       <h2>Capítulo 1: Introducción a la Embriología y Gametogénesis</h2>
-      <p>La embriología abarca el desarrollo prenatal desde la fertilización hasta el nacimiento. En la gametogénesis, las células germinales primordiales (CGP) migran del epiblasto al saco vitelino y luego a las gónadas. Ocurren procesos de mitosis y meiosis para formar ovocitos y espermatozoides haploides (23 cromosomas).</p>
-      
-      <div class="img-box">
-        <img src="img_cap-000.jpg" alt="Lámina 000" class="img-book rotate-270" id="img-000">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-000', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-000', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
-
-      <p><strong>Células Germinales Primordiales y Meiosis:</strong> Durante la meiosis I se produce el entrecruzamiento o <em>crossing over</em> en la profase I (diploteno), permitiendo el intercambio de material genético. Errores como la no disyunción causan anomalías numéricas cromosómicas como la Trisomía 21 (Síndrome de Down), Trisomía 18 (Edward) o Síndrome de Klinefelter (47, XXY).</p>
-      
-      <div class="img-box">
-        <img src="img_cap-005.jpg" alt="Lámina 005" class="img-book rotate-270" id="img-005">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-005', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-005', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
+      <p>La embriología abarca el desarrollo prenatal desde la fertilización hasta el nacimiento. Las Células Germinales Primordiales (CGP) se forman en el epiblasto durante la segunda semana, migran a la pared del saco vitelino y posteriormente a las gónadas en desarrollo hacia la quinta semana.</p>
+      <p><strong>Gametogénesis y Meiosis:</strong> Proceso de conversión de células germinales en gametos maduros (ovocitos y espermatozoides). En la meiosis I ocurre el entrecruzamiento (crossing over) durante la profase I (etapa de diploteno). Los ovocitos primarios se detienen en diploteno de la profase I hasta la pubertad por acción del OMI (inhibidor de la maduración del ovocito). La meiosis II completa su división solo durante la fecundación.</p>
+      <p><strong>Anomalías Cromosómicas:</strong> Ocasionadas por no disyunción meiótica. Anomalías numéricas comunes: Trisomía 21 (Síndrome de Down), Trisomía 18 (Síndrome de Edwards), Trisomía 13 (Síndrome de Patau), Síndrome de Klinefelter (47, XXY) y Síndrome de Turner (45, X).</p>
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 2: Primera Semana de Desarrollo (Ovulación a Implantación)</h2>
-      <p>Ocurre la liberación del ovocito secundario. La fecundación se da en la ampolla de la trompa uterina. Consta de 3 fases: 1) Penetración de la corona radiada, 2) Penetración de la zona pelúcida (reacción acrosómica) y 3) Fusión de las membranas plasmáticas del ovocito y espermatozoide.</p>
-      
-      <div class="img-box">
-        <img src="img_cap-015.jpg" alt="Lámina 015" class="img-book rotate-270" id="img-015">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-015', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-015', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
-
-      <p>Tras la fecundación, el cigoto se segmenta formando la mórula (16 células) y luego el blastocisto. El blastocisto posee embrioblasto (masa celular interna) y trofoblasto (masa celular externa). Hacia el día 6 o 7 inicia la implantación en el endometrio uterino.</p>
+      <p><strong>Ciclo Ovárico y Fecundación:</strong> Bajo el estímulo de FSH y LH, los folículos ovaricos se desarrollan. La ovulación es desencadenada por el pico de LH. La fecundación ocurre en la ampolla de la trompa uterina y comprende 3 fases principales:</p>
+      <ol>
+        <li>Penetración de la corona radiada.</li>
+        <li>Penetración de la zona pelúcida (mediada por la reacción acrosómica y liberación de enzimas como la acrosina).</li>
+        <li>Fusión de las membranas celulares del ovocito y del espermatozoide.</li>
+      </ol>
+      <p><strong>Segmentación e Implantación:</strong> El cigoto realiza divisiones mitóticas sucesivas. A las 16 células constituye la mórula. Al ingresar a la cavidad uterina se forma el blastocisto, compuesto por embrioblasto (masa celular interna) y trofoblasto (masa celular externa). Hacia el día 6, el trofoblasto se adhiere al epitelio endometrial iniciando la implantación.</p>
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 3: Segunda Semana de Desarrollo (Disco Germinativo Bilaminar)</h2>
-      <p>El trofoblasto se diferencia en citotrofoblasto y sincitiotrofoblasto (productor de hCG). El embrioblasto forma el disco bilaminar: epiblasto e hipoblasto. Se forman la cavidad amniótica, el saco vitelino primitivo y definitivo, y el mesodermo extraembrionario.</p>
-      
-      <div class="img-box">
-        <img src="img_cap-035.jpg" alt="Lámina 035" class="img-book rotate-270" id="img-035">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-035', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-035', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
+      <p>Regla de los "dos": El trofoblasto se diferencia en <strong>citotrofoblasto</strong> (capa interna mononucleada) y <strong>sincitiotrofoblasto</strong> (capa externa multinucleada que secreta hCG). El embrioblasto forma el disco bilaminar compuesto por <strong>epiblasto</strong> e <strong>hipoblasto</strong>.</p>
+      <p>Se desarrollan dos cavidades: la cavidad amniótica y el saco vitelino (primitivo y luego secundario/definitivo). Aparece el mesodermo extraembrionario y la cavidad coriónica. Hacia el día 13, la circulación útero-placentaria primitiva se establece mediante las lagunas trofoblásticas.</p>
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 4: Tercera Semana de Desarrollo (Disco Trilaminar)</h2>
-      <p>La gastrulación establece las tres capas germinativas: Ectodermo, Mesodermo y Endodermo. Ocurre la invaginación de células epiblásticas en la línea primitiva. Se forma la notocorda, la cual induce la neurulación en el ectodermo suprayacente.</p>
-      
-      <div class="img-box">
-        <img src="img_cap-055.jpg" alt="Lámina 055" class="img-book rotate-270" id="img-055">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-055', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-055', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
+      <p><strong>Gastrulación:</strong> Proceso por el cual se forman las tres capas germinativas (Ectodermo, Mesodermo y Endodermo). Inicia con la formación de la línea primitiva y el nódulo primitivo en la superficie del epiblasto. Las células epiblásticas migran hacia la línea e invaginan desplazando al hipoblasto para formar el endodermo y el mesodermo intraembrionario.</p>
+      <p><strong>Notocorda y Neurulación:</strong> Se forma el cordón notocordal que sirve de eje para el desarrollo del esqueleto axial e induce la neurulación en el ectodermo suprayacente. La placa neural se pliega formando los pliegues neurales y el tubo neural, cuyos neuroporos anterior y posterior se cierran aproximadamente en los días 25 y 28 respectivamente.</p>
     </div>
 
     <div class="capitulo">
-      <h2>Capítulo 5: Período Embrionario (Semanas 3 a 8 y Organogénesis)</h2>
-      <p>Período de organogénesis donde las 3 capas derivan en órganos específicos:</p>
+      <h2>Capítulo 5: Período Embrionario (Organogénesis: Semanas 3 a 8)</h2>
+      <p>Período de organogénesis y máxima susceptibilidad a teratógenos. Las capas germinativas originan los distintos órganos:</p>
       <ul>
-        <li><strong>Ectodermo:</strong> SNC, SNP, epidermis, esmalte dental.</li>
-        <li><strong>Mesodermo:</strong> Músculos, hueso, riñones, corazón, gónadas.</li>
-        <li><strong>Endodermo:</strong> Revestimiento del tubo digestivo y respiratorio, hígado, páncreas.</li>
+        <li><strong>Ectodermo:</strong> Sistema nervioso central y periférico, epitelio sensorial de oídos, nariz y ojos, piel, pelo, uñas y esmalte dental. Las células de la cresta neural forman el craneofacial, melanocitos y ganglios.</li>
+        <li><strong>Mesodermo:</strong> Paraxial (somitas: esclerotoma, dermatoma, miotoma), Intermedio (sistema urogenital), y Lateral (sistema cardiovascular, sangre, cartílago, huesos y músculos).</li>
+        <li><strong>Endodermo:</strong> Revestimiento epitelial del tubo digestivo, aparato respiratorio, vejiga urinaria, así como el parénquima de tiroides, paratiroides, hígado y páncreas.</li>
       </ul>
-      
-      <div class="img-box">
-        <img src="img_cap-075.jpg" alt="Lámina 075" class="img-book rotate-270" id="img-075">
-        <div class="controls-bar">
-          <button class="small-btn" onclick="rotateImg('img-075', 90)">↪️ Rotar 90°</button>
-          <button class="small-btn" onclick="rotateImg('img-075', -90)">↩️ Rotar -90°</button>
-        </div>
-      </div>
     </div>
   </div>
 
-  <!-- SECCIÓN 2: PRÁCTICA ORAL Y AUDIO (BOCINA + MICRÓFONO EVALUADOR) -->
+  <!-- SECCIÓN 2: PRÁCTICA ORAL Y AUDIO -->
   <div id="oral-audio" class="content-section">
-    <h2>🔊 Práctica Oral e Interactivas por Voz</h2>
-    <p>La bocina lee la pregunta. Presiona el micrófono 🎙️ para responder con tu voz. La plataforma evalúa tus palabras clave para verificar si es correcta, sin importar la forma exacta de tu oración.</p>
-
-    <div id="voice-quiz-container">
-      <!-- Se carga dinámicamente -->
-    </div>
+    <h2>🎙️ Práctica Oral e Interactivas por Voz</h2>
+    <p>Haz clic en la bocina para escuchar. Presiona el micrófono 🎙️ y responde al instante. Al pausar la voz, el sistema procesará tu respuesta de inmediato.</p>
+    <div id="voice-quiz-container"></div>
   </div>
 
-  <!-- SECCIÓN 3: CUESTIONARIO EXTENSO DE OPCIÓN MÚLTIPLE -->
+  <!-- SECCIÓN 3: CUESTIONARIO AMPLIADO -->
   <div id="opcion-multiple" class="content-section">
-    <h2>📝 Cuestionario Ampliado de Embriología</h2>
-    <div id="mc-quiz-container">
-      <!-- Se carga dinámicamente -->
-    </div>
+    <h2>📝 Cuestionario Extenso de Opciones Múltiples</h2>
+    <div id="mc-quiz-container"></div>
   </div>
 
   <!-- SECCIÓN 4: PAREOS Y RELACIÓN -->
   <div id="pareos" class="content-section">
-    <h2>🧩 Ejercicios de Pareo y Relación de Conceptos</h2>
+    <h2>🧩 Ejercicios de Pareo y Relación</h2>
     <div class="card">
-      <h3>Relaciona la Capa Germinativa con su Derivado:</h3>
+      <h3>Relaciona la estructura o evento con su descripción correspondiente:</h3>
       <div class="pareo-grid">
-        <div>1. Sistema Nervioso Central</div>
+        <div>1. Secreta gonadotropina coriónica humana (hCG)</div>
         <div>
           <select class="pareo-select" id="p1" onchange="checkPareo()">
             <option value="">--Seleccionar--</option>
-            <option value="ectodermo">Ectodermo</option>
-            <option value="mesodermo">Mesodermo</option>
-            <option value="endodermo">Endodermo</option>
+            <option value="sincitio">Sincitiotrofoblasto</option>
+            <option value="notocorda">Notocorda</option>
+            <option value="epiblasto">Epiblasto</option>
+            <option value="somita">Somita</option>
           </select>
         </div>
-        <div>2. Músculo Cardíaco y Esquelético</div>
+        <div>2. Induce la formación de la placa neural</div>
         <div>
           <select class="pareo-select" id="p2" onchange="checkPareo()">
             <option value="">--Seleccionar--</option>
-            <option value="ectodermo">Ectodermo</option>
-            <option value="mesodermo">Mesodermo</option>
-            <option value="endodermo">Endodermo</option>
+            <option value="sincitio">Sincitiotrofoblasto</option>
+            <option value="notocorda">Notocorda</option>
+            <option value="epiblasto">Epiblasto</option>
+            <option value="somita">Somita</option>
           </select>
         </div>
-        <div>3. Epitelio del Tubo Digestivo</div>
+        <div>3. Da origen a las 3 capas germinativas en la gastrulación</div>
         <div>
           <select class="pareo-select" id="p3" onchange="checkPareo()">
             <option value="">--Seleccionar--</option>
-            <option value="ectodermo">Ectodermo</option>
-            <option value="mesodermo">Mesodermo</option>
-            <option value="endodermo">Endodermo</option>
+            <option value="sincitio">Sincitiotrofoblasto</option>
+            <option value="notocorda">Notocorda</option>
+            <option value="epiblasto">Epiblasto</option>
+            <option value="somita">Somita</option>
+          </select>
+        </div>
+        <div>4. Derivado mesodérmico paraxial que forma músculo y hueso</div>
+        <div>
+          <select class="pareo-select" id="p4" onchange="checkPareo()">
+            <option value="">--Seleccionar--</option>
+            <option value="sincitio">Sincitiotrofoblasto</option>
+            <option value="notocorda">Notocorda</option>
+            <option value="epiblasto">Epiblasto</option>
+            <option value="somita">Somita</option>
           </select>
         </div>
       </div>
@@ -225,23 +181,23 @@
   <div id="espacios" class="content-section">
     <h2>✏️ Ejercicios de Llenar Espacios</h2>
     <div class="card">
-      <p>1. La fecundación se produce habitualmente en la <input type="text" id="f1" class="fill-input" placeholder="Escribe tu respuesta"> de la trompa de Falopio.</p>
-      <p>2. La hormona producida por el sincitiotrofoblasto es la <input type="text" id="f2" class="fill-input" placeholder="Escribe tu respuesta">.</p>
-      <p>3. El proceso mediante el cual se forman las 3 capas germinativas es la <input type="text" id="f3" class="fill-input" placeholder="Escribe tu respuesta">.</p>
+      <p>1. La fecundación ocurre habitualmente en la región de la <input type="text" id="f1" class="fill-input" placeholder="Respuesta">.</p>
+      <p>2. El ovocito primario permanece detenido en la profase I en la etapa de <input type="text" id="f2" class="fill-input" placeholder="Respuesta">.</p>
+      <p>3. El proceso de formación del tubo neural se denomina <input type="text" id="f3" class="fill-input" placeholder="Respuesta">.</p>
+      <p>4. Las células de la <input type="text" id="f4" class="fill-input" placeholder="Respuesta"> migran desde los pliegues neurales y originan ganglios y melanocitos.</p>
+      <p>5. La mórula es una masa celular compacta formada por aproximadamente <input type="text" id="f5" class="fill-input" placeholder="Número de células"> células.</p>
       <button class="tab-btn" onclick="checkFillIn()">Verificar Respuestas</button>
       <div id="fill-feedback" class="feedback"></div>
     </div>
   </div>
 
-  <!-- SECCIÓN 6: GALERÍA COMPLETA DE LÁMINAS EN VERTICAL -->
+  <!-- SECCIÓN 6: GALERÍA DE LÁMINAS -->
   <div id="galeria-completa" class="content-section">
     <h2>🖼️ Láminas e Ilustraciones del Libro (000 - 098)</h2>
-    <p>Todas las imágenes orientadas verticalmente. Usa los botones de rotación si deseas ajustar alguna en específico:</p>
     <div id="galeria-dinamica"></div>
   </div>
 
   <script>
-    // Cambio de pestañas
     function showTab(tabId) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -249,46 +205,18 @@
       event.currentTarget.classList.add('active');
     }
 
-    // Rotación de imágenes
-    let currentRotations = {};
-    function rotateImg(id, deg) {
-      if (!currentRotations[id]) currentRotations[id] = 270; // Orientación inicial vertical
-      currentRotations[id] = (currentRotations[id] + deg) % 360;
-      const img = document.getElementById(id);
-      img.style.transform = `rotate(${currentRotations[id]}deg)`;
-      img.style.margin = (currentRotations[id] % 180 !== 0) ? "60px auto" : "10px auto";
-    }
-
-    // Datos del Banco de Preguntas Verbales / Orales (Micrófono + Bocina)
+    // BANCO DE PREGUNTAS VOZ (CORREGIDO Y AMPLIADO)
     const voiceQuestions = [
-      {
-        q: "¿Dónde ocurre habitualmente la fecundación?",
-        keywords: ["ampolla", "ampollar", "trompa", "falopio"],
-        hint: "Pista: Ocurre en una región dilatada de las trompas uterinas."
-      },
-      {
-        q: "¿Qué estructura produce la hormona gonadotropina coriónica humana o hCG?",
-        keywords: ["sincitiotrofoblasto", "sincitio"],
-        hint: "Pista: Capa externa multinucleada del trofoblasto."
-      },
-      {
-        q: "¿Cómo se llama el proceso de formación de las tres capas germinativas?",
-        keywords: ["gastrulación", "gastrulacion"],
-        hint: "Pista: Inicia en la tercera semana con la línea primitiva."
-      },
-      {
-        q: "¿En qué etapa de la meiosis se detienen los ovocitos primarios hasta la pubertad?",
-        keywords: ["profase", "profase 1", "diploteno"],
-        hint: "Pista: Es la primera fase de la meiosis I."
-      },
-      {
-        q: "¿Qué capa germinativa da origen al sistema nervioso central?",
-        keywords: ["ectodermo", "neuroectodermo"],
-        hint: "Pista: Capa externa del disco trilaminar."
-      }
+      { q: "¿En qué región de la trompa uterina ocurre normalmente la fecundación?", keywords: ["ampolla", "ampollar"], hint: "Pista: Ampolla de la trompa." },
+      { q: "¿Qué estructura embrionaria produce la hormona hCG?", keywords: ["sincitio", "sincitiotrofoblasto"], hint: "Pista: Sincitiotrofoblasto." },
+      { q: "¿Cómo se llama el proceso de formación de las tres capas germinativas?", keywords: ["gastrulación", "gastrulacion"], hint: "Pista: Gastrulación." },
+      { q: "¿En qué fase de la meiosis se detienen los ovocitos primarios hasta la pubertad?", keywords: ["profase", "diploteno"], hint: "Pista: Profase I / Diploteno." },
+      { q: "¿Qué estructura induce al ectodermo para formar la placa neural?", keywords: ["notocorda"], hint: "Pista: Notocorda." },
+      { q: "¿Qué capa germinativa da origen al revestimiento del tubo digestivo?", keywords: ["endodermo"], hint: "Pista: Endodermo." },
+      { q: "¿Cuál es el resultado de la fecundación al combinarse las dotaciones genéticas?", keywords: ["cigoto", "zigoto"], hint: "Pista: Cigoto." },
+      { q: "¿Cómo se le llama al conjunto de 16 células en división en la primera semana?", keywords: ["mórula", "morula"], hint: "Pista: Mórula." }
     ];
 
-    // Cargar Banco de Preguntas Orales
     const vContainer = document.getElementById('voice-quiz-container');
     voiceQuestions.forEach((item, index) => {
       vContainer.innerHTML += `
@@ -304,30 +232,28 @@
       `;
     });
 
-    // Lector de voz (Bocina)
     function speakText(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'es-ES';
-        utterance.rate = 0.9;
+        utterance.rate = 0.95;
         window.speechSynthesis.speak(utterance);
-      } else {
-        alert("Tu navegador no soporta síntesis de voz.");
       }
     }
 
-    // Reconocimiento de voz (Micrófono)
+    // RECONOCIMIENTO DE VOZ RÁPIDO SIN DELAY
     function startListening(index) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
-        alert("El reconocimiento de voz no está soportado en este navegador. Intenta con Chrome o Samsung Internet.");
+        alert("El reconocimiento de voz no está disponible en este navegador.");
         return;
       }
 
       const recognition = new SpeechRecognition();
       recognition.lang = 'es-ES';
       recognition.interimResults = false;
+      recognition.continuous = false; // Detiene la grabación apenas detecte pausa
 
       const micBtn = document.getElementById(`mic-btn-${index}`);
       const resultTxt = document.getElementById(`speech-result-${index}`);
@@ -338,46 +264,54 @@
 
       recognition.start();
 
+      recognition.onspeechend = function() {
+        recognition.stop();
+      };
+
       recognition.onresult = function(event) {
         const transcript = event.results[0][0].transcript.toLowerCase();
         resultTxt.innerText = `Dijiste: "${transcript}"`;
         
-        // Evaluación semántica por palabras clave
         const expected = voiceQuestions[index].keywords;
         const isCorrect = expected.some(kw => transcript.includes(kw));
 
         if (isCorrect) {
           feedback.className = 'feedback success';
-          feedback.innerText = '¡Excelente! Tu respuesta es correcta y conceptualmente acertada.';
-          speakText("¡Excelente! Tu respuesta es correcta.");
+          feedback.innerText = '¡Correcto! Respuesta captada con éxito.';
+          speakText("Correcto");
         } else {
           feedback.className = 'feedback error';
-          feedback.innerText = `Incorrecto o incompleto. ${voiceQuestions[index].hint}`;
-          speakText("Respuesta incorrecta. Revisa la pista.");
+          feedback.innerText = `Incorrecto. ${voiceQuestions[index].hint}`;
+          speakText("Incorrecto");
         }
         micBtn.classList.remove('listening');
         micBtn.innerText = '🎙️ Responder con Voz';
       };
 
       recognition.onerror = function() {
-        resultTxt.innerText = 'No se logró captar el audio. Intenta de nuevo.';
+        resultTxt.innerText = 'No se detectó audio. Intenta de nuevo.';
         micBtn.classList.remove('listening');
         micBtn.innerText = '🎙️ Responder con Voz';
       };
     }
 
-    // Cuestionario Extenso
+    // CUESTIONARIO AMPLIADO DE OPCIONES MÚLTIPLES
     const mcQuestions = [
-      { q: "1. ¿En qué sitio de la trompa de Falopio se realiza habitualmente la fecundación?", options: ["Ampolla", "Istmo", "Infundíbulo", "Útero"], correct: 0 },
-      { q: "2. ¿Cuántos cromosomas posee un gameto humano haploide?", options: ["46 cromosomas", "23 cromosomas", "22 cromosomas", "44 cromosomas"], correct: 1 },
-      { q: "3. La reacción acrosómica se desencadena al unirse el espermatozoide a:", options: ["La teca interna", "La zona pelúcida (ZP3)", "La corona radiada", "El epiblasto"], correct: 1 },
-      { q: "4. La masa celular interna del blastocisto origina:", options: ["La placenta", "El embrioblasto / embrión", "El trofoblasto", "El corion"], correct: 1 },
-      { q: "5. ¿En qué día aproximado tras la fecundación inicia la implantación del blastocisto?", options: ["Día 1", "Día 6 - 7", "Día 14", "Día 21"], correct: 1 },
-      { q: "6. El disco germinativo bilaminar está constituido por:", options: ["Ectodermo y Mesodermo", "Epiblasto e Hipoblasto", "Endodermo y Trofoblasto", "Sincitio y Citotrofoblasto"], correct: 1 },
-      { q: "7. La gastrulación da inicio con la aparición de:", options: ["El tubo neural", "La línea primitiva", "Los somitas", "El corazón tubular"], correct: 1 },
-      { q: "8. ¿Qué estructura actúa como inductor de la neurulación?", options: ["La notocorda", "El hipoblasto", "El alantoides", "El amnios"], correct: 0 },
-      { q: "9. El aparato cardiovascular y los músculos derivan principalmente del:", options: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], correct: 1 },
-      { q: "10. Las células de la cresta neural se consideran a menudo como:", options: ["Cuarta capa germinativa", "Células del hipoblasto", "Derivados endodérmicos", "Tejido placental"], correct: 0 }
+      { q: "1. Las células germinales primordiales (CGP) se originan durante la segunda semana en:", options: ["El epiblasto", "El hipoblasto", "El mesodermo extraembrionario", "El alantoides"], correct: 0 },
+      { q: "2. La detención de los ovocitos en la profase I se mantiene por cuál sustancia:", options: ["Estrógenos", "Inhibidor de la maduración del ovocito (OMI)", "Progesterona", "LH"], correct: 1 },
+      { q: "3. ¿En qué momento se completa la segunda división meiótica del ovocito?", options: ["Durante la ovulación", "En la pubertad", "En el momento de la fecundación", "En la implantación"], correct: 2 },
+      { q: "4. La trisomía 21 o síndrome de Down se debe comúnmente a:", options: ["No disyunción meiótica", "Monosomía primaria", "Duplicación del gen SRY", "Inversión pericéntrica"], correct: 0 },
+      { q: "5. ¿Qué enzima liberada por el acrosoma facilita la penetración de la zona pelúcida?", options: ["Lipasa", "Acrosina y hialuronidasa", "Amilasa", "Polimerasa"], correct: 1 },
+      { q: "6. El blastocisto está compuesto internamente por:", options: ["Solamente citotrofoblasto", "Embrioblasto y trofoblasto", "Notocorda y amnios", "Epiblasto e hipoblasto exclusivamente"], correct: 1 },
+      { q: "7. ¿Qué capa del trofoblasto es multinucleada y penetra el estroma endometrial?", options: ["Citotrofoblasto", "Sincitiotrofoblasto", "Mesodermo somático", "Hipoblasto"], correct: 1 },
+      { q: "8. El disco germinativo bilaminar está formado por:", options: ["Ectodermo y endodermo", "Epiblasto e hipoblasto", "Mesodermo y ectodermo", "Sincitio y citotrofoblasto"], correct: 1 },
+      { q: "9. La gastrulación se inicia con la formación de:", options: ["El tubo neural", "La línea primitiva", "Los somitas", "El corazón"], correct: 1 },
+      { q: "10. La placa neural es inducida por la estructura denominada:", options: ["Notocorda", "Saco vitelino", "Pedículo de fijación", "Alantoides"], correct: 0 },
+      { q: "11. El cierre del neuroporo anterior ocurre aproximadamente en el día:", options: ["Día 20", "Día 25", "Día 28", "Día 32"], correct: 1 },
+      { q: "12. ¿De qué capa germinativa derivan el sistema nervioso central y la epidermis?", options: ["Endodermo", "Mesodermo", "Ectodermo", "Cresta neural sola"], correct: 2 },
+      { q: "13. Los somitas se originan a partir del:", options: ["Mesodermo paraxial", "Mesodermo intermedio", "Mesodermo lateral", "Ectodermo"], correct: 0 },
+      { q: "14. El sistema urogenital (riñones y gónadas) deriva del:", options: ["Mesodermo paraxial", "Mesodermo intermedio", "Endodermo", "Ectodermo"], correct: 1 },
+      { q: "15. El parénquima del hígado y del páncreas deriva de:", options: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], correct: 2 }
     ];
 
     const mcContainer = document.getElementById('mc-quiz-container');
@@ -401,58 +335,59 @@
         fb.innerText = '¡Correcto!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = 'Incorrecto, vuelve a intentarlo.';
+        fb.innerText = 'Incorrecto. Revisa el texto e inténtalo de nuevo.';
       }
     }
 
-    // Pareos
+    // PAREOS
     function checkPareo() {
       const p1 = document.getElementById('p1').value;
       const p2 = document.getElementById('p2').value;
       const p3 = document.getElementById('p3').value;
+      const p4 = document.getElementById('p4').value;
       const fb = document.getElementById('pareo-feedback');
 
-      if (p1 === 'ectodermo' && p2 === 'mesodermo' && p3 === 'endodermo') {
+      if (p1 === 'sincitio' && p2 === 'notocorda' && p3 === 'epiblasto' && p4 === 'somita') {
         fb.className = 'feedback success';
         fb.innerText = '¡Excelente! Todos los pareos son correctos.';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = 'Hay selecciones incorrectas. Revisa tus respuestas.';
+        fb.innerText = 'Hay selecciones incorrectas. Revisa tus opciones.';
       }
     }
 
-    // Llenar espacios
+    // LLENAR ESPACIOS
     function checkFillIn() {
       const f1 = document.getElementById('f1').value.toLowerCase().trim();
       const f2 = document.getElementById('f2').value.toLowerCase().trim();
       const f3 = document.getElementById('f3').value.toLowerCase().trim();
+      const f4 = document.getElementById('f4').value.toLowerCase().trim();
+      const f5 = document.getElementById('f5').value.trim();
       const fb = document.getElementById('fill-feedback');
 
       const c1 = f1.includes('ampolla');
-      const c2 = f2.includes('hcg') || f2.includes('gonadotropina');
-      const c3 = f3.includes('gastrulación') || f3.includes('gastrulacion');
+      const c2 = f2.includes('diploteno');
+      const c3 = f3.includes('neurulación') || f3.includes('neurulacion');
+      const c4 = f4.includes('cresta neural');
+      const c5 = f5.includes('16');
 
-      if (c1 && c2 && c3) {
+      if (c1 && c2 && c3 && c4 && c5) {
         fb.className = 'feedback success';
-        fb.innerText = '¡Respuestas correctas!';
+        fb.innerText = '¡Todas las respuestas son correctas!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = 'Revisa tus respuestas. Recuerda: 1. Ampolla, 2. hCG / Gonadotropina, 3. Gastrulación.';
+        fb.innerText = 'Revisa tus respuestas. Pistas: 1. Ampolla, 2. Diploteno, 3. Neurulación, 4. Cresta neural, 5. 16.';
       }
     }
 
-    // Cargar Láminas en Vertical (Galería Completa 000 a 098)
+    // GALERÍA DE LÁMINAS
     const galeria = document.getElementById('galeria-dinamica');
     for (let i = 0; i <= 98; i++) {
       let num = String(i).padStart(3, '0');
       galeria.innerHTML += `
         <div class="galeria-item">
           <h4>Lámina ${num}</h4>
-          <img src="img_cap-${num}.jpg" alt="Lámina ${num}" class="img-book rotate-270" id="gal-${num}">
-          <div class="controls-bar">
-            <button class="small-btn" onclick="rotateImg('gal-${num}', 90)">↪️ Rotar 90°</button>
-            <button class="small-btn" onclick="rotateImg('gal-${num}', -90)">↩️ Rotar -90°</button>
-          </div>
+          <img src="img_cap-${num}.jpg" alt="Lámina ${num}" class="img-book rotate-270">
         </div>
       `;
     }
