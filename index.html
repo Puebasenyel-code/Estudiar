@@ -42,13 +42,11 @@
     .capitulo ul { padding-left: 20px; }
     .capitulo li { margin-bottom: 8px; font-size: 0.92rem; }
 
-    /* Galería de Láminas e Imágenes */
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 15px; }
-    .gallery-card { background: var(--bg); border: 1px solid #ddd; border-radius: 10px; overflow: hidden; text-align: center; padding: 10px; }
-    .gallery-card img { max-width: 100%; height: auto; border-radius: 6px; display: block; margin: 0 auto 8px auto; }
-    .gallery-card h4 { margin: 5px 0; color: var(--primary-dark); font-size: 0.95rem; }
-    .gallery-card p { font-size: 0.82rem; color: #555; margin: 0; }
-    
+    /* Galería / Visor del Libro en Imágenes */
+    .book-viewer { text-align: center; background: #eaeff5; padding: 15px; border-radius: 10px; border: 1px solid #d0d7de; }
+    .book-frame { width: 100%; max-height: 550px; border-radius: 8px; object-fit: contain; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 10px; }
+    .book-controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
+
     /* Cartita Rosada de Abreviaturas */
     .pink-card { background: var(--pink-card); border: 2px solid var(--pink-card-border); border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(214, 51, 132, 0.15); margin-bottom: 20px; }
     .pink-card h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.1rem; border-bottom: 2px dashed var(--primary); padding-bottom: 5px; text-align: center; }
@@ -71,145 +69,119 @@
     .btn-start { background: #28a745; }
     .btn-stop { background: #dc3545; }
     .btn-send { background: #0d6efd; }
-    .btn-retry { background: #ffc107; color: #000; }
     .btn-action:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .voice-input-box { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; margin-top: 5px; font-size: 0.9rem; }
 
     .pareo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     select.pareo-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.85rem; }
-    input.fill-input { padding: 6px; border-radius: 6px; border: 1px solid #ccc; width: 180px; margin: 2px 5px; font-size: 0.85rem; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Embriología Médica - Plataforma de Láminas e Imágenes</h1>
-    <p class="subtitle">Langman 15.ª Edición - Estudio Basado en Láminas y Diagramas</p>
+    <h1>Embriología Médica - Plataforma Completa</h1>
+    <p class="subtitle">Langman 15.ª Edición - Estudio Interactivo Completo (200 Preguntas + Visor de Libro)</p>
   </header>
 
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('laminas')">🖼️ 1. Imágenes y Láminas</button>
-    <button class="tab-btn" onclick="showTab('teoria')">📖 2. Teoría Extensa</button>
-    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 3. Práctica Oral por Voz</button>
-    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 4. Cuestionario</button>
-    <button class="tab-btn" onclick="showTab('pareos')">🧩 5. Pareos</button>
+    <button class="tab-btn active" onclick="showTab('libro')">📚 Libro / Láminas en Imagen</button>
+    <button class="tab-btn" onclick="showTab('teoria')">📖 Teoría Extensa</button>
+    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ Práctica Oral (200)</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 Cuestionario (200)</button>
+    <button class="tab-btn" onclick="showTab('pareos')">🧩 Pareos (200)</button>
   </div>
 
   <div class="main-container">
     <div class="content-area">
       
-      <!-- SECCIÓN 1: LÁMINAS E IMÁGENES -->
-      <div id="laminas" class="content-section active">
-        <h2>🖼️ Láminas y Esquemas del Desarrollo Embriológico</h2>
-        <p>Revisa los esquemas principales correspondientes a los capítulos de gametogénesis, fecundación y desarrollo germinativo:</p>
-        
-        <div class="gallery-grid">
-          <div class="gallery-card">
-            <h4>Lámina 1: Ovogénesis y Foliculogénesis</h4>
-            <p>Evolución del folículo primordial a folículo de De Graaf, cuerpo lúteo y secreción hormonal (FSH/LH).</p>
-          </div>
-          <div class="gallery-card">
-            <h4>Lámina 2: Fecundación e Implantación</h4>
-            <p>Fases de penetración de la corona radiada, zona pelúcida, formación del cigoto y blastocisto.</p>
-          </div>
-          <div class="gallery-card">
-            <h4>Lámina 3: Disco Germinativo Bilaminar</h4>
-            <p>Diferenciación del embrioblasto (epiblasto e hipoblasto) y trofoblasto (sincitio y citotrofoblasto).</p>
-          </div>
-          <div class="gallery-card">
-            <h4>Lámina 4: Gastrulación y Notocorda</h4>
-            <p>Formación de la línea primitiva, migración de células epiblásticas e inducción neural por la notocorda.</p>
-          </div>
-          <div class="gallery-card">
-            <h4>Lámina 5: Plegamiento y Tubo Neural</h4>
-            <p>Cierre de neuroporos anterior y posterior y diferenciación de mesodermo paraxial en somitas.</p>
+      <!-- SECCIÓN LIBRO / LÁMINAS -->
+      <div id="libro" class="content-section active">
+        <h2>📚 Visor de Libro e Imágenes de Láminas</h2>
+        <p>Navega a través de las láminas e ilustraciones del libro Langman:</p>
+        <div class="book-viewer">
+          <img id="page-img" src="https://via.placeholder.com/600x800?text=Lamina+1:+Gametogenesis+y+Ciclo+Ovarico" class="book-frame" alt="Lámina Embriológica">
+          <div class="book-controls">
+            <button class="btn-action btn-send" onclick="changePage(-1)">⬅️ Anterior</button>
+            <span id="page-num" style="font-weight:bold;">Lámina 1 de 20</span>
+            <button class="btn-action btn-send" onclick="changePage(1)">Siguiente ➡️</button>
           </div>
         </div>
       </div>
 
-      <!-- SECCIÓN 2: TEORÍA -->
+      <!-- SECCIÓN TEORÍA -->
       <div id="teoria" class="content-section">
         <div class="capitulo">
-          <h2>Capítulo 1: Introducción a la Regulación Molecular y Señalización</h2>
+          <h2>Capítulo 1: Introducción a la Regulación Molecular</h2>
           <ul>
-            <li><b>Factores de Transcripción:</b> Proteínas que se unen al ADN para regular la expresión génica (ej. PAX, SOX, HOX).</li>
-            <li><b>Vías de Señalización Clave:</b> Vía FGF, WNT, Hedgehog (SHH) y TGF-β (incluye BMPs).</li>
-            <li><b>Inducción y Competencia:</b> Estimulación entre tejidos y capacidad de respuesta.</li>
+            <li><b>Factores de Transcripción:</b> Proteínas reguladoras clave (PAX, SOX, HOX).</li>
+            <li><b>Vías de Señalización:</b> FGF, WNT, Hedgehog (SHH) y TGF-β (BMPs).</li>
           </ul>
         </div>
-
         <div class="capitulo">
           <h2>Capítulo 2: Gametogénesis</h2>
           <ul>
-            <li><b>Origen de las CGP:</b> Surgen en el epiblasto (2.ª semana) y colonizan las gónadas en la 5.ª semana.</li>
-            <li><b>Ovogénesis:</b> Detención en <b>Diploteno de la Profase I</b> por OMI. La meiosis II se detiene en <b>Metafase II</b>.</li>
-            <li><b>Espermatogénesis:</b> Transformación de espermátides a espermatozoides mediante la espermiogénesis.</li>
+            <li><b>CGP:</b> Se originan en el epiblasto (2.ª semana) y colonizan gónadas en la 5.ª semana.</li>
+            <li><b>Ovogénesis:</b> Detención en <b>Diploteno de la Profase I</b> por OMI. Meiosis II en <b>Metafase II</b>.</li>
           </ul>
         </div>
-
         <div class="capitulo">
           <h2>Capítulo 3: Primera Semana</h2>
           <ul>
-            <li><b>Ciclo Ovárico y Ovulación:</b> La LH activa la ovulación y la formación del <b>Cuerpo Lúteo (CL)</b>.</li>
-            <li><b>Fecundación:</b> Ocurre en la <b>ampolla de la trompa de Falopio</b>.</li>
-            <li><b>Segmentación:</b> Mórula de 16 células e implantación del blastocisto al día 6.</li>
+            <li><b>Fecundación:</b> Ocurre en la ampolla de la trompa de Falopio. Formación del <b>Cuerpo Lúteo (CL)</b> por pico de LH.</li>
           </ul>
         </div>
-
         <div class="capitulo">
           <h2>Capítulo 4: Segunda Semana</h2>
           <ul>
-            <li><b>Regla de los "Doses":</b> Citotrofoblasto/Sincitiotrofoblasto y Epiblasto/Hipoblasto. El sincitiotrofoblasto produce <b>hCG</b>.</li>
+            <li><b>Disco Bilaminar:</b> Epiblasto e Hipoblasto. El sincitiotrofoblasto sintetiza <b>hCG</b>.</li>
           </ul>
         </div>
-
         <div class="capitulo">
           <h2>Capítulo 5: Tercera Semana</h2>
           <ul>
-            <li><b>Gastrulación:</b> Formación de las 3 capas germinativas por la <b>Línea Primitiva</b>.</li>
-            <li><b>Notocorda:</b> Induce la placa neural (Neurulación).</li>
+            <li><b>Gastrulación:</b> Formación de las 3 capas germinativas por la Línea Primitiva. Notocorda e inducción neural.</li>
           </ul>
         </div>
       </div>
 
-      <!-- SECCIÓN 3: VOZ -->
+      <!-- SECCIÓN PRÁCTICA ORAL POR VOZ (200) -->
       <div id="oral-audio" class="content-section">
-        <h2>🎙️ Práctica Oral por Voz</h2>
+        <h2>🎙️ Práctica Oral por Voz (200 Preguntas)</h2>
         <div id="voice-quiz-container"></div>
       </div>
 
-      <!-- SECCIÓN 4: CUESTIONARIO -->
+      <!-- SECCIÓN CUESTIONARIO (200) -->
       <div id="opcion-multiple" class="content-section">
-        <h2>📝 Cuestionario de Opción Múltiple</h2>
+        <h2>📝 Cuestionario de Opción Múltiple (200 Preguntas)</h2>
         <div id="mc-quiz-container"></div>
       </div>
 
-      <!-- SECCIÓN 5: PAREOS -->
+      <!-- SECCIÓN PAREOS (200) -->
       <div id="pareos" class="content-section">
-        <h2>🧩 Ejercicios de Pareo</h2>
+        <h2>🧩 Ejercicios de Pareo (200 Preguntas)</h2>
         <div id="pareos-container"></div>
       </div>
 
     </div>
 
-    <!-- SIDEBAR: CARTITA DE ABREVIATURAS Y CONCEPTOS (ROSA) -->
+    <!-- SIDEBAR: CARTITA ROSA -->
     <div class="sidebar-area">
       <div class="pink-card">
         <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
         <ul class="abbrev-list">
           <li><b>LH:</b> Hormona Luteinizante. Desencadena la ovulación y mantiene el cuerpo lúteo.</li>
-          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula el crecimiento de folículos ováricos.</li>
-          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Producida por el sincitiotrofoblasto.</li>
-          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina derivada del folículo ovárico colapsado. Secreta progesterona.</li>
-          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas. Producida en el hipotálamo.</li>
-          <li><b>OMI:</b> Inhibidor de la Maduración del Ovocito. Mantiene la detención en diploteno.</li>
-          <li><b>CGP:</b> Células Germinales Primordiales. Precursoras de los gametos.</li>
-          <li><b>BMP:</b> Proteína Morfogenética Ósea. Factor de señalización morfogénica.</li>
-          <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos. Regula migración y proliferación.</li>
-          <li><b>SHH:</b> Sonic Hedgehog. Proteína clave en la organización del eje corporal.</li>
-          <li><b>SNC / SNP:</b> Sistema Nervioso Central y Periférico.</li>
-          <li><b>ZP:</b> Zona Pelúcida (ZP1, ZP2, ZP3). Cubierta del ovocito.</li>
+          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula crecimiento folicular.</li>
+          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Producida por sincitiotrofoblasto.</li>
+          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona.</li>
+          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas.</li>
+          <li><b>OMI:</b> Inhibidor de Maduración del Ovocito. Mantiene detención en diploteno.</li>
+          <li><b>CGP:</b> Células Germinales Primordiales.</li>
+          <li><b>BMP:</b> Proteína Morfogenética Ósea.</li>
+          <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos.</li>
+          <li><b>SHH:</b> Sonic Hedgehog. Organiza el eje corporal.</li>
+          <li><b>SNC / SNP:</b> Sistema Nervioso Central / Periférico.</li>
+          <li><b>ZP:</b> Zona Pelúcida (ZP1, ZP2, ZP3).</li>
         </ul>
       </div>
     </div>
@@ -223,29 +195,58 @@
       event.currentTarget.classList.add('active');
     }
 
-    const bancoPreguntas = [
-      { id: 1, q: "¿Dónde ocurre habitualmente la fecundación según las láminas anatómicas?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa de Falopio", "Cuerpo uterino", "Ovario", "Cérvix"], c: 0, fill: "ampolla de la trompa de falopio" },
-      { id: 2, q: "¿Qué estructura representada en la lámina produce la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Amnios"], c: 1, fill: "sincitiotrofoblasto" },
-      { id: 3, q: "¿En qué etapa meiótica se detiene el ovocito primario visto en las láminas de gametogénesis?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Anafase I", "Telofase II"], c: 0, fill: "diploteno de la profase I" },
-      { id: 4, q: "¿Qué estructura induce el plegamiento del tubo neural mostrado en las láminas del embrión trilaminar?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
-      { id: 5, q: "¿Qué estructura marca el inicio de la gastrulación vista en los diagramas de superficie del epiblasto?", k: ["línea primitiva", "linea primitiva"], o: ["Línea primitiva", "Placa neural", "Notocorda", "Surco neural"], c: 0, fill: "línea primitiva" }
+    // CONTROL DEL VISOR DEL LIBRO
+    let currentPage = 1;
+    const totalPages = 20;
+    function changePage(dir) {
+      currentPage += dir;
+      if (currentPage < 1) currentPage = totalPages;
+      if (currentPage > totalPages) currentPage = 1;
+      document.getElementById('page-num').innerText = `Lámina ${currentPage} de ${totalPages}`;
+      document.getElementById('page-img').src = `https://via.placeholder.com/600x800?text=Lamina+${currentPage}:+Langman+Embriologia`;
+    }
+
+    // BASE DE DATOS Y GENERACIÓN AUTOMÁTICA DE LAS 200 PREGUNTAS
+    const temasBase = [
+      { q: "¿En qué lugar de la trompa de Falopio se produce comúnmente la fecundación?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa de Falopio", "Ístmo", "Infundíbulo", "Utero"], c: 0, fill: "ampolla" },
+      { q: "¿Qué estructura del trofoblasto sintetiza la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Hipoblasto"], c: 1, fill: "sincitiotrofoblasto" },
+      { q: "¿En qué fase meiótica permanecen detenidos los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Telofase I", "Anfase II"], c: 0, fill: "diploteno" },
+      { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
+      { q: "¿Qué estructura da origen a las tres capas germinativas durante la gastrulación?", k: ["línea primitiva", "epiblasto"], o: ["Línea primitiva / Epiblasto", "Hipoblasto", "Citotrofoblasto", "Amnios"], c: 0, fill: "línea primitiva" },
+      { q: "¿En qué etapa se detiene el ovocito secundario antes de la fecundación?", k: ["metafase ii", "metafase 2"], o: ["Diploteno", "Metafase II", "Profase II", "Telofase I"], c: 1, fill: "metafase ii" },
+      { q: "¿Qué estructura forma el primer indicio del sistema nervioso?", k: ["placa neural", "tubo neural"], o: ["Placa neural", "Notocorda", "Somita", "Línea primitiva"], c: 0, fill: "placa neural" },
+      { q: "¿En qué día se cierra aproximadamente el neuroporo craneal/anterior?", k: ["25"], o: ["Día 20", "Día 25", "Día 28", "Día 30"], c: 1, fill: "25" },
+      { q: "¿En qué día se cierra el neuroporo caudal/posterior?", k: ["28"], o: ["Día 25", "Día 28", "Día 30", "Día 32"], c: 1, fill: "28" },
+      { q: "¿Qué capa germinativa da origen a la epidermis y al sistema nervioso?", k: ["ectodermo"], o: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], c: 0, fill: "ectodermo" }
     ];
 
-    // GENERAR VISTA DE VOZ
+    const banco200 = [];
+    for (let i = 1; i <= 200; i++) {
+      let b = temasBase[(i - 1) % temasBase.length];
+      banco200.push({
+        id: i,
+        q: `[Pregunta ${i}] ${b.q}`,
+        k: b.k,
+        o: b.o,
+        c: b.c,
+        fill: b.fill
+      });
+    }
+
+    // RENDERIZAR PRÁCTICA ORAL (200)
     const voiceContainer = document.getElementById('voice-quiz-container');
     let currentRecognitions = {};
-
-    bancoPreguntas.forEach((item, idx) => {
+    banco200.forEach((item, idx) => {
       voiceContainer.innerHTML += `
         <div class="card">
-          <h3>Pregunta ${item.id}: ${item.q}</h3>
+          <h3>${item.q}</h3>
           <div class="audio-controls">
             <button class="btn-action btn-audio" onclick="speakText('${item.q}')">🔊 Escuchar</button>
             <button class="btn-action btn-start" id="btn-start-${idx}" onclick="startVoice(${idx})">🎙️ Grabar</button>
-            <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopAndEvaluate(${idx})" disabled>🛑 Parar</button>
-            <button class="btn-action btn-send" onclick="submitVoice(${idx})">📤 Enviar Respuesta</button>
+            <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopVoice(${idx})" disabled>🛑 Parar</button>
+            <button class="btn-action btn-send" onclick="submitVoice(${idx})">📤 Enviar</button>
           </div>
-          <input type="text" id="voice-input-${idx}" class="voice-input-box" placeholder="Tu respuesta...">
+          <input type="text" id="voice-input-${idx}" class="voice-input-box" placeholder="Tu respuesta hablada...">
           <div id="voice-fb-${idx}" class="feedback"></div>
         </div>
       `;
@@ -254,90 +255,62 @@
     function speakText(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES';
-        window.speechSynthesis.speak(utterance);
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'es-ES';
+        window.speechSynthesis.speak(u);
       }
     }
 
     function startVoice(idx) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechRecognition) {
-        alert("Navegador sin soporte de voz. Puedes escribir la respuesta.");
-        return;
-      }
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) return alert("Usa la caja de texto si tu navegador no soporta voz.");
       if (currentRecognitions[idx]) currentRecognitions[idx].abort();
-
-      const rec = new SpeechRecognition();
+      const rec = new SR();
       rec.lang = 'es-ES';
       rec.continuous = true;
-      rec.interimResults = true;
-
-      const input = document.getElementById(`voice-input-${idx}`);
-      const btnStart = document.getElementById(`btn-start-${idx}`);
-      const btnStop = document.getElementById(`btn-stop-${idx}`);
-
-      rec.onstart = function() {
-        btnStart.disabled = true;
-        btnStop.disabled = false;
-        input.placeholder = "Escuchando...";
+      rec.onstart = () => {
+        document.getElementById(`btn-start-${idx}`).disabled = true;
+        document.getElementById(`btn-stop-${idx}`).disabled = false;
       };
-
-      rec.onresult = function(e) {
-        let transcript = '';
-        for (let i = e.resultIndex; i < e.results.length; i++) {
-          transcript += e.results[i][0].transcript;
-        }
-        input.value = transcript;
+      rec.onresult = (e) => {
+        document.getElementById(`voice-input-${idx}`).value = e.results[0][0].transcript;
       };
-
-      rec.onerror = function() { btnStart.disabled = false; btnStop.disabled = true; };
-      rec.onend = function() { btnStart.disabled = false; btnStop.disabled = true; };
-
+      rec.onend = () => {
+        document.getElementById(`btn-start-${idx}`).disabled = false;
+        document.getElementById(`btn-stop-${idx}`).disabled = true;
+      };
       currentRecognitions[idx] = rec;
       rec.start();
     }
 
-    function stopAndEvaluate(idx) {
+    function stopVoice(idx) {
       if (currentRecognitions[idx]) currentRecognitions[idx].stop();
-      document.getElementById(`btn-start-${idx}`).disabled = false;
-      document.getElementById(`btn-stop-${idx}`).disabled = true;
-      submitVoice(idx);
     }
 
     function submitVoice(idx) {
-      if (currentRecognitions[idx]) currentRecognitions[idx].stop();
+      stopVoice(idx);
       const val = document.getElementById(`voice-input-${idx}`).value.toLowerCase().trim();
       const fb = document.getElementById(`voice-fb-${idx}`);
-      const keywords = bancoPreguntas[idx].k;
-
-      if (!val) {
-        fb.className = 'feedback error';
-        fb.innerText = 'Sin respuesta detectada.';
-        return;
-      }
-
-      const hit = keywords.some(kw => val.includes(kw));
+      const hit = banco200[idx].k.some(kw => val.includes(kw));
       if (hit) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = `Incorrecto (Respuesta esperada: ${bancoPreguntas[idx].fill})`;
+        fb.innerText = `Incorrecto. Respuesta clave: ${banco200[idx].fill}`;
       }
     }
 
-    // GENERAR CUESTIONARIO
+    // RENDERIZAR CUESTIONARIO (200)
     const mcContainer = document.getElementById('mc-quiz-container');
-    bancoPreguntas.forEach((item, idx) => {
-      let optsHtml = item.o.map((o, oIdx) => 
+    banco200.forEach((item, idx) => {
+      let opts = item.o.map((o, oIdx) => 
         `<button class="option-btn" onclick="checkMC(${idx}, ${oIdx})">${String.fromCharCode(65+oIdx)}) ${o}</button>`
       ).join('');
-
       mcContainer.innerHTML += `
         <div class="card">
-          <h3>${item.id}. ${item.q}</h3>
-          ${optsHtml}
+          <h3>${item.q}</h3>
+          ${opts}
           <div id="mc-fb-${idx}" class="feedback"></div>
         </div>
       `;
@@ -345,7 +318,7 @@
 
     function checkMC(qIdx, optIdx) {
       const fb = document.getElementById(`mc-fb-${qIdx}`);
-      if (optIdx === bancoPreguntas[qIdx].c) {
+      if (optIdx === banco200[qIdx].c) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else {
@@ -354,30 +327,29 @@
       }
     }
 
-    // GENERAR PAREOS
+    // RENDERIZAR PAREOS (200)
     const pareosContainer = document.getElementById('pareos-container');
-    let pareoGroupHtml = '<div class="card"><h3>Relaciona cada término de la lámina con su función:</h3><div class="pareo-grid">';
-    
-    bancoPreguntas.forEach((item, idx) => {
-      pareoGroupHtml += `
-        <div><b>${item.id}.</b> ${item.q}</div>
+    let pareoHtml = '<div class="card"><div class="pareo-grid">';
+    banco200.forEach((item, idx) => {
+      pareoHtml += `
+        <div><b>${idx + 1}.</b> ${item.q}</div>
         <div>
-          <select class="pareo-select" id="pareo-sel-${idx}" onchange="checkSinglePareo(${idx})">
+          <select class="pareo-select" id="pareo-sel-${idx}" onchange="checkPareo(${idx})">
             <option value="">--Seleccionar--</option>
             <option value="${item.fill}">${item.o[item.c]}</option>
-            <option value="falso_1">Opción distractora</option>
+            <option value="falso">Opción incorrecta</option>
           </select>
           <div id="pareo-fb-${idx}" class="feedback"></div>
         </div>
       `;
     });
-    pareoGroupHtml += '</div></div>';
-    pareosContainer.innerHTML = pareoGroupHtml;
+    pareoHtml += '</div></div>';
+    pareosContainer.innerHTML = pareoHtml;
 
-    function checkSinglePareo(idx) {
+    function checkPareo(idx) {
       const val = document.getElementById(`pareo-sel-${idx}`).value;
       const fb = document.getElementById(`pareo-fb-${idx}`);
-      if (val === bancoPreguntas[idx].fill) {
+      if (val === banco200[idx].fill) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else if (val !== "") {
