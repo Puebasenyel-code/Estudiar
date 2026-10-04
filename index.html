@@ -1,357 +1,158 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resumen Interactivo de Estudio</title>
-    <style>
-        :root {
-            --rosa-principal: #ff6b8b;
-            --rosa-oscuro: #d81b60;
-            --rosa-claro: #fff0f5;
-            --rosa-tarjeta: #ffffff;
-            --borde-rosa: #ffb6c1;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--rosa-claro);
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            background-color: var(--rosa-principal);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        nav button {
-            background-color: white;
-            color: var(--rosa-oscuro);
-            border: 2px solid var(--rosa-principal);
-            padding: 10px 18px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--rosa-principal);
-            color: white;
-        }
-
-        .section {
-            display: none;
-            background: var(--rosa-tarjeta);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--borde-rosa);
-            box-shadow: 0 4px 8px rgba(255, 107, 139, 0.15);
-            margin-bottom: 20px;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        h2 {
-            color: var(--rosa-oscuro);
-            border-bottom: 2px solid var(--borde-rosa);
-            padding-bottom: 8px;
-        }
-
-        .img-container {
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 3px solid var(--borde-rosa);
-        }
-
-        /* Estilos de Juegos y Ejercicios */
-        .question-card, .fill-card, .match-card, .voice-card {
-            background-color: #fffafc;
-            border: 1px solid var(--borde-rosa);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
-
-        .option-btn {
-            display: block;
-            width: 100%;
-            text-align: left;
-            background: white;
-            border: 1px solid var(--borde-rosa);
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .option-btn:hover {
-            background-color: var(--rosa-claro);
-        }
-
-        input[type="text"] {
-            padding: 8px;
-            border: 1px solid var(--borde-rosa);
-            border-radius: 6px;
-            width: 60%;
-        }
-
-        .action-btn {
-            background-color: var(--rosa-principal);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 5px;
-        }
-
-        .action-btn:hover {
-            background-color: var(--rosa-oscuro);
-        }
-
-        .feedback {
-            font-weight: bold;
-            margin-top: 8px;
-        }
-
-        .correct { color: #2e7d32; }
-        .incorrect { color: #c62828; }
-        .hint { color: #ef6c00; font-style: italic; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Estudio de Embriología</title>
+  <style>
+    :root {
+      --primary: #d63384;
+      --primary-light: #fff0f3;
+      --text: #2b2d42;
+      --bg: #f8f9fa;
+    }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; }
+    header { text-align: center; margin-bottom: 20px; }
+    h1 { color: var(--primary); margin-bottom: 5px; }
+    
+    .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 25px; }
+    .tab-btn { padding: 10px 16px; border-radius: 20px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; }
+    
+    .content-section { display: none; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto 20px auto; }
+    .content-section.active { display: block; }
+    
+    .capitulo { margin-bottom: 40px; border-bottom: 2px solid var(--primary-light); padding-bottom: 20px; }
+    .capitulo h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
+    
+    .img-book { width: 100%; max-width: 700px; display: block; margin: 15px auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    
+    .question-card { background: var(--primary-light); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
+    .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 5px 0; border: 1px solid #ccc; background: white; border-radius: 6px; cursor: pointer; }
+    .option-btn:hover { background: #e2e2e2; }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Resumen Interactivo de Estudio</h1>
-    <p>Estudia, practica y evalúa tus conocimientos</p>
-</header>
+  <header>
+    <h1>Embriología Médica - Plataforma de Estudio</h1>
+    <p>Capítulos 1 al 5: Contenido Teórico, Ilustraciones y Evaluación</p>
+  </header>
 
-<nav>
-    <button onclick="showSection('teoria')" class="active">1. Teoría (5 Capítulos)</button>
-    <button onclick="showSection('opcion-multiple')">2. Opción Múltiple</button>
-    <button onclick="showSection('completar')">3. Llenar Espacios</button>
-    <button onclick="showSection('pareos')">4. Pareos (A y B)</button>
-    <button onclick="showSection('voz')">5. Práctica Oral y Audio</button>
-</nav>
+  <!-- Navegación por Secciones -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría e Imágenes</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">2. Opción Múltiple</button>
+    <button class="tab-btn" onclick="showTab('espacios')">3. Llenar Espacios</button>
+    <button class="tab-btn" onclick="showTab('pareos')">4. Pareos</button>
+    <button class="tab-btn" onclick="showTab('galeria-completa')">5. Galería de Imágenes (000-098)</button>
+  </div>
 
-<!-- SECCIÓN 1: TEORÍA COMPLETA -->
-<div id="teoria" class="section active">
-    <h2>Contenido Completo de los 5 Capítulos</h2>
+  <!-- Sección 1: Teoría Completa por Capítulos -->
+  <div id="teoria" class="content-section active">
     
-    <h3>Capítulo 1: Introducción y Fundamentos</h3>
-    <p>Escribe o pega aquí el contenido detallado del capítulo 1 sin omitir ningún detalle importante.</p>
-    <div class="img-container">
-        <img src="imagen_cap1.jpg" alt="Gráfico del Capítulo 1 (Reemplazar con el nombre de tu imagen)">
+    <div class="capitulo">
+      <h2>Capítulo 1: Introducción a la Embriología y Gametogénesis</h2>
+      <p>La embriología médica estudia el desarrollo prenatal del ser humano desde la fecundación hasta el nacimiento. Durante la gametogénesis, las células germinales primordiales experimentan meiosis para reducir su número de cromosomas a la mitad (23 cromosomas, estado haploide).</p>
+      <img src="img_cap-000.jpg" alt="Portada y Conceptos del Capítulo 1" class="img-book" loading="lazy">
+      <img src="img_cap-001.jpg" alt="Gametogénesis y Cromosomas" class="img-book" loading="lazy">
+      <p>La espermatogénesis ocurre en los túbulos seminíferos y la ovogénesis inicia en los ovarios durante el desarrollo fetal, deteniéndose en la profase de la meiosis I hasta la pubertad.</p>
     </div>
 
-    <h3>Capítulo 2: Desarrollo y Conceptos Clave</h3>
-    <p>Escribe aquí todo el texto del capítulo 2.</p>
-    <div class="img-container">
-        <img src="imagen_cap2.jpg" alt="Gráfico del Capítulo 2">
+    <div class="capitulo">
+      <h2>Capítulo 2: Primera Semana de Desarrollo (Ovulación a Implantación)</h2>
+      <p>Tras la ovulación, el ovocito secundario es captado por las trompas de Falopio. La fecundación se produce habitualmente en la ampolla. El cigoto inicia la segmentación formando la mórula y posteriormente el blastocisto.</p>
+      <img src="img_cap-015.jpg" alt="Fecundación y Segmentación" class="img-book" loading="lazy">
+      <img src="img_cap-020.jpg" alt="Estructura del Blastocisto" class="img-book" loading="lazy">
+      <p>Hacia el día 6 o 7, el trofoblasto del blastocisto se adhiere al epitelio endometrial del útero iniciando la implantación.</p>
     </div>
 
-    <h3>Capítulo 3: Profundización del Tema</h3>
-    <p>Texto completo del capítulo 3.</p>
+    <div class="capitulo">
+      <h2>Capítulo 3: Segunda Semana de Desarrollo (Disco Germinativo Bilaminar)</h2>
+      <p>El embrioblasto se diferencia en dos capas: el epiblasto y el hipoblasto, formando el disco embrionario bilaminar. La cavidad amniótica surge dentro del epiblasto mientras el saco vitelino primitivo se forma a partir del hipoblasto.</p>
+      <img src="img_cap-035.jpg" alt="Disco Bilaminar e Implantación Completa" class="img-book" loading="lazy">
+      <img src="img_cap-040.jpg" alt="Desarrollo del Saco Vitelino" class="img-book" loading="lazy">
+    </div>
 
-    <h3>Capítulo 4: Aplicaciones Prácticas</h3>
-    <p>Texto completo del capítulo 4.</p>
+    <div class="capitulo">
+      <h2>Capítulo 4: Tercera Semana de Desarrollo (Gastrulación y Disco Trilaminar)</h2>
+      <p>La gastrulación es el proceso decisivo donde se establecen las tres capas germinativas: Ectodermo, Mesodermo y Endodermo. Comienza con la formación de la línea primitiva en la superficie del epiblasto.</p>
+      <img src="img_cap-055.jpg" alt="Gastrulación y Línea Primitiva" class="img-book" loading="lazy">
+      <img src="img_cap-060.jpg" alt="Formación de la Notocorda" class="img-book" loading="lazy">
+      <p>Se desarrolla la notocorda, la cual induce el engrosamiento del ectodermo suprayacente para formar la placa neural.</p>
+    </div>
 
-    <h3>Capítulo 5: Conclusiones y Resumen Final</h3>
-    <p>Texto completo del capítulo 5.</p>
-</div>
+    <div class="capitulo">
+      <h2>Capítulo 5: Período Embrionario (Semanas 3 a 8 y Organogénesis)</h2>
+      <p>Durante la fase de organogénesis, cada una de las tres capas germinativas origina tejidos y órganos específicos. El plegamiento del embrión (cefalo-caudal y lateral) le otorga su forma cilíndrica característica.</p>
+      <img src="img_cap-075.jpg" alt="Neurulación y Plegamiento Embrionario" class="img-book" loading="lazy">
+      <img src="img_cap-085.jpg" alt="Derivados de las Capas Germinativas" class="img-book" loading="lazy">
+    </div>
 
-<!-- SECCIÓN 2: OPCIÓN MÚLTIPLE -->
-<div id="opcion-multiple" class="section">
-    <h2>Escoge la Respuesta Correcta</h2>
-    
+  </div>
+
+  <!-- Sección 2: Opción Múltiple -->
+  <div id="opcion-multiple" class="content-section">
+    <h2>Cuestionario de Opción Múltiple</h2>
     <div class="question-card">
-        <p><strong>1. ¿Cuál es el concepto principal expuesto en el Capítulo 1?</strong></p>
-        <button class="option-btn" onclick="checkMultiple(this, false)">A) Opción incorrecta de muestra</button>
-        <button class="option-btn" onclick="checkMultiple(this, true)">B) Respuesta correcta del tema</button>
-        <button class="option-btn" onclick="checkMultiple(this, false)">C) Otra opción de distracción</button>
-        <div class="feedback"></div>
+      <p><strong>1. ¿En qué lugar de la trompa uterina ocurre habitualmente la fecundación?</strong></p>
+      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">A) Istmo</button>
+      <button class="option-btn" onclick="alert('¡Correcto!')">B) Ampolla</button>
+      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">C) Infundíbulo</button>
     </div>
-</div>
-
-<!-- SECCIÓN 3: LLENAR ESPACIOS -->
-<div id="completar" class="section">
-    <h2>Llenar los Espacios en Blanco</h2>
-    
-    <div class="fill-card">
-        <p>El concepto fundamental del capítulo 2 se conoce como 
-            <input type="text" id="fill1" placeholder="Tu respuesta...">.
-            <button class="action-btn" onclick="checkFill('fill1', 'palabra_clave', 'fb1')">Verificar</button>
-        </p>
-        <div id="fb1" class="feedback"></div>
+    <div class="question-card">
+      <p><strong>2. ¿Qué estructura da origen a las tres capas germinativas embrionarias durante la gastrulación?</strong></p>
+      <button class="option-btn" onclick="alert('¡Correcto!')">A) Epiblasto</button>
+      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">B) Hipoblasto</button>
+      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">C) Citotrofoblasto</button>
     </div>
-</div>
+  </div>
 
-<!-- SECCIÓN 4: PAREOS (COLUMNA A Y B) -->
-<div id="pareos" class="section">
-    <h2>Relaciona Columna A con Columna B</h2>
-    
-    <div class="match-card">
-        <p><strong>1. Concepto A:</strong></p>
-        <select id="match1">
-            <option value="">-- Selecciona --</option>
-            <option value="incorrecto">Definición incorrecta</option>
-            <option value="correcto">Definición correcta correspondiente</option>
-        </select>
-        <button class="action-btn" onclick="checkMatch('match1', 'correcto', 'fbm1')">Verificar</button>
-        <div id="fbm1" class="feedback"></div>
-    </div>
-</div>
+  <!-- Sección 3: Llenar Espacios -->
+  <div id="espacios" class="content-section">
+    <h2>Práctica: Llenar Espacios</h2>
+    <p>La formación del disco trilaminar ocurre durante la <strong>tercera</strong> semana de desarrollo mediante el proceso llamado <strong>gastrulación</strong>.</p>
+  </div>
 
-<!-- SECCIÓN 5: RECONOCIMIENTO Y SÍNTESIS DE VOZ -->
-<div id="voz" class="section">
-    <h2>Evaluación Oral por Micrófono</h2>
-    <p>Escucha la pregunta, presiona "Hablar" y responde con tu voz.</p>
+  <!-- Sección 4: Pareos -->
+  <div id="pareos" class="content-section">
+    <h2>Práctica: Pareos</h2>
+    <p>Asocia la capa germinativa con su derivado principal:</p>
+    <ul>
+      <li><strong>Ectodermo:</strong> Sistema Nervioso Central y epidermis.</li>
+      <li><strong>Mesodermo:</strong> Músculos, hueso y sistema cardiovascular.</li>
+      <li><strong>Endodermo:</strong> Revestimiento epitelial del tubo digestivo y respiratorio.</li>
+    </ul>
+  </div>
 
-    <div class="voice-card">
-        <p id="voice-question"><strong>Pregunta:</strong> ¿Cuál es el elemento clave del Capítulo 3?</p>
-        <button class="action-btn" onclick="playQuestion()">🔊 Escuchar Pregunta</button>
-        <button class="action-btn" style="background-color: #d81b60;" onclick="startListening('respuesta_esperada')">🎙️ Responder con Micrófono</button>
-        
-        <div id="voice-status" style="margin-top: 10px; font-style: italic;"></div>
-        <div id="voice-feedback" class="feedback"></div>
-    </div>
-</div>
+  <!-- Sección 5: Galería Completa de Imágenes -->
+  <div id="galeria-completa" class="content-section">
+    <h2>Galería de Láminas e Ilustraciones (Todas las páginas)</h2>
+    <div id="galeria-dinamica"></div>
+  </div>
 
-<script>
-    // Navegación entre pestañas
-    function showSection(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        event.target.classList.add('active');
+  <script>
+    // Cambio de pestañas
+    function showTab(tabId) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
     }
 
-    // Validación Opción Múltiple
-    function checkMultiple(btn, isCorrect) {
-        const feedback = btn.parentElement.querySelector('.feedback');
-        if(isCorrect) {
-            feedback.textContent = "¡Correcto! 🎉";
-            feedback.className = "feedback correct";
-        } else {
-            feedback.textContent = "Incorrecto. Intenta de nuevo. ❌";
-            feedback.className = "feedback incorrect";
-        }
+    // Cargar dinámicamente las 99 imágenes en la pestaña de Galería Completa
+    const galeria = document.getElementById('galeria-dinamica');
+    for (let i = 0; i <= 98; i++) {
+      let num = String(i).padStart(3, '0');
+      let img = document.createElement('img');
+      img.src = `img_cap-${num}.jpg`;
+      img.alt = `Lámina ${num}`;
+      img.className = 'img-book';
+      img.loading = "lazy";
+      galeria.appendChild(img);
     }
-
-    // Validación Llenar Espacios
-    function checkFill(inputId, correctWord, feedbackId) {
-        const input = document.getElementById(inputId).value.trim().toLowerCase();
-        const fb = document.getElementById(feedbackId);
-        if(input === correctWord.toLowerCase()) {
-            fb.textContent = "¡Respuesta Correcta! ✨";
-            fb.className = "feedback correct";
-        } else {
-            fb.textContent = "Respuesta incorrecta. Revisa el Capítulo 2.";
-            fb.className = "feedback incorrect";
-        }
-    }
-
-    // Validación Pareos
-    function checkMatch(selectId, correctValue, feedbackId) {
-        const val = document.getElementById(selectId).value;
-        const fb = document.getElementById(feedbackId);
-        if(val === correctValue) {
-            fb.textContent = "¡Emparejamiento Correcto! 👏";
-            fb.className = "feedback correct";
-        } else {
-            fb.textContent = "No coincide. Inténtalo otra vez.";
-            fb.className = "feedback incorrect";
-        }
-    }
-
-    // Motor de Síntesis de Voz (Leer Pregunta)
-    function playQuestion() {
-        const text = document.getElementById('voice-question').innerText;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES';
-        window.speechSynthesis.speak(utterance);
-    }
-
-    // Reconocimiento de Voz por Micrófono + Pistas por Silencio
-    let silenceTimer;
-
-    function startListening(expectedAnswer) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (!SpeechRecognition) {
-            alert("Tu navegador no soporta el reconocimiento de voz. Usa Chrome o Edge.");
-            return;
-        }
-
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'es-ES';
-        
-        const status = document.getElementById('voice-status');
-        const fb = document.getElementById('voice-feedback');
-        
-        status.textContent = "Escuchando... Habla ahora.";
-        fb.textContent = "";
-
-        // Temporizador de pista por silencio (7 segundos)
-        clearTimeout(silenceTimer);
-        silenceTimer = setTimeout(() => {
-            fb.textContent = "💡 PISTA: La respuesta está relacionada con la definición principal del Capítulo 3.";
-            fb.className = "feedback hint";
-            speakText("¿Necesitas ayuda? Recuerda repasar la definición del Capítulo 3.");
-        }, 7000);
-
-        recognition.start();
-
-        recognition.onresult = function(event) {
-            clearTimeout(silenceTimer);
-            const transcript = event.results[0][0].transcript.toLowerCase();
-            status.textContent = `Dijiste: "${transcript}"`;
-
-            if (transcript.includes(expectedAnswer.toLowerCase())) {
-                fb.textContent = "¡Excelente! Tu respuesta hablada es correcta. 🌟";
-                fb.className = "feedback correct";
-                speakText("¡Excelente! Tu respuesta es correcta.");
-            } else {
-                fb.textContent = "Lo que dijiste no parece correcto. Inténtalo de nuevo.";
-                fb.className = "feedback incorrect";
-                speakText("Respuesta incorrecta. Inténtalo de nuevo.");
-            }
-        };
-
-        recognition.onerror = function(event) {
-            clearTimeout(silenceTimer);
-            status.textContent = "Error al escuchar. Asegúrate de dar permisos de micrófono.";
-        };
-    }
-
-    function speakText(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'es-ES';
-        window.speechSynthesis.speak(utterance);
-    }
-</script>
+  </script>
 
 </body>
 </html>
