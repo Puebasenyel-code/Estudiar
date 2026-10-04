@@ -42,9 +42,9 @@
     .capitulo ul { padding-left: 20px; }
     .capitulo li { margin-bottom: 8px; font-size: 0.92rem; }
 
-    /* Galería / Visor del Libro en Imágenes */
+    /* Visor de Láminas */
     .book-viewer { text-align: center; background: #eaeff5; padding: 15px; border-radius: 10px; border: 1px solid #d0d7de; }
-    .book-frame { width: 100%; max-height: 550px; border-radius: 8px; object-fit: contain; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 10px; }
+    .book-frame { width: 100%; max-height: 650px; border-radius: 8px; object-fit: contain; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 10px; }
     .book-controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
 
     /* Cartita Rosada de Abreviaturas */
@@ -75,6 +75,8 @@
 
     .pareo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     select.pareo-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.85rem; }
+    
+    .sperm-diagram { text-align: center; margin: 15px 0; background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #e0e0e0; }
   </style>
 </head>
 <body>
@@ -95,21 +97,23 @@
   <div class="main-container">
     <div class="content-area">
       
-      <!-- SECCIÓN LIBRO / LÁMINAS CON IMÁGENES EMBED CÓDIGO INTERNO -->
+      <!-- VISOR DE LÁMINAS CON DIAGRAMA ANATÓMICO DEL ESPERMATOZOIDE INCLUIDO -->
       <div id="libro" class="content-section active">
-        <h2>📚 Visor de Libro e Imágenes de Láminas</h2>
-        <p>Navega a través de las láminas e ilustraciones anatómicas e histológicas del libro Langman:</p>
+        <h2>📚 Visor de Láminas e Ilustraciones de Embriología</h2>
+        <p>Navega a través de las láminas del libro e ilustraciones anatómicas:</p>
         <div class="book-viewer">
-          <img id="page-img" class="book-frame" alt="Lámina Embriológica">
+          <div id="diagram-container">
+            <img id="page-img" class="book-frame" src="img_cap-001.jpg" alt="Lámina Embriológica" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'200\'><rect width=\'100%\' height=\'100%\' fill=\'%23fff0f3\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23d63384\' text-anchor=\'middle\'>Imagen no encontrada en el repositorio</text></svg>';">
+          </div>
           <div class="book-controls">
             <button class="btn-action btn-send" onclick="changePage(-1)">⬅️ Anterior</button>
-            <span id="page-num" style="font-weight:bold;">Lámina 1 de 20</span>
+            <span id="page-num" style="font-weight:bold;">Imagen img_cap-001.jpg (1/21)</span>
             <button class="btn-action btn-send" onclick="changePage(1)">Siguiente ➡️</button>
           </div>
         </div>
       </div>
 
-      <!-- SECCIÓN TEORÍA EXTENSA EXPANDIDA -->
+      <!-- SECCIÓN TEORÍA EXTENSA -->
       <div id="teoria" class="content-section">
         <div class="capitulo">
           <h2>Capítulo 1: Introducción a la Regulación Molecular y Señalización</h2>
@@ -119,8 +123,66 @@
           </ul>
         </div>
         <div class="capitulo">
-          <h2>Capítulo 2: Gametogénesis (Origen de las Células Germinales)</h2>
+          <h2>Capítulo 2: Gametogénesis (Origen de las Células Germinales y Estructura del Espermatozoide)</h2>
+          
+          <!-- ESQUEMA ANATÓMICO INTEGRADO DEL ESPERMATOZOIDE -->
+          <div class="sperm-diagram">
+            <h3>Estructura Anatómica del Espermatozoide Humano</h3>
+            <svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100%" height="100%" fill="#fcf8fa" rx="10"/>
+              <!-- Cabeza y Acrosoma -->
+              <path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/>
+              <path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/>
+              <ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/>
+              
+              <!-- Cuello -->
+              <rect x="160" y="103" width="15" height="14" fill="#fd7e14"/>
+              
+              <!-- Pieza Intermedia (Mitocondrias) -->
+              <rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/>
+              <line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/>
+              
+              <!-- Cola / Flagelo -->
+              <path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/>
+              
+              <!-- Etiquetas de las Partes -->
+              <!-- Acrosoma -->
+              <line x1="85" y1="90" x2="85" y2="35" stroke="#20c997" stroke-width="2"/>
+              <text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma (Enzimas)</text>
+              
+              <!-- Núcleo -->
+              <line x1="130" y1="110" x2="130" y2="180" stroke="#6f42c1" stroke-width="2"/>
+              <text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo (ADN Haploide 23X/Y)</text>
+              
+              <!-- Cuello -->
+              <line x1="167" y1="103" x2="167" y2="35" stroke="#fd7e14" stroke-width="2"/>
+              <text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello (Centriolo)</text>
+              
+              <!-- Pieza Intermedia -->
+              <line x1="230" y1="122" x2="230" y2="180" stroke="#d39e00" stroke-width="2"/>
+              <text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Pieza Intermedia (Vaina Mitocondrial / ATP)</text>
+              
+              <!-- Cola/Flagelo -->
+              <line x1="480" y1="115" x2="480" y2="35" stroke="#0d6efd" stroke-width="2"/>
+              <text x="480" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0d6efd" text-anchor="middle">Cola / Flagelo (Microtúbulos 9+2)</text>
+            </svg>
+          </div>
+
           <ul>
+            <li><b>Partes del Espermatozoide:</b>
+              <ul>
+                <li><b>Cabeza:</b> Contiene el núcleo denso haploide (23 cromosomas) cubierto por 2/3 por el <b>Acrosoma</b> (vesícula rica en enzimas hialuronidasa y acrosina para atravesar la zona pelúcida).</li>
+                <li><b>Cuello:</b> Región de unión rica en centriolos.</li>
+                <li><b>Pieza Intermedia:</b> Posee la vaina de <b>mitocondrias</b> dispuestas en espiral que generan la energía (ATP) necesaria para la movilidad.</li>
+                <li><b>Cola / Flagelo:</b> Formada por el axonema (patrón de 9+2 microtúbulos) que proporciona el impulso contráctil.</li>
+              </ul>
+            </li>
             <li><b>CGP (Células Germinales Primordiales):</b> Se originan en el epiblasto durante la 2.ª semana, migran a la pared del saco vitelino y colonizan las gónadas embrionarias en la 5.ª semana.</li>
             <li><b>Ovogénesis y Desarrollo Folicular:</b>
               <ul>
@@ -181,11 +243,13 @@
 
     </div>
 
-    <!-- SIDEBAR: CARTITA ROSA CON TODOS LOS TÉRMINOS Y ABREVIATURAS -->
+    <!-- SIDEBAR: CARTITA ROSA -->
     <div class="sidebar-area">
       <div class="pink-card">
         <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
         <ul class="abbrev-list">
+          <li><b>Espermatozoide:</b> Gameto masculino maduro compuesto por cabeza (acrosoma y núcleo), cuello, pieza intermedia (mitocondrias) y cola.</li>
+          <li><b>Acrosoma:</b> Capuchón enzimático (acrosina y hialuronidasa) en la cabeza del espermatozoide.</li>
           <li><b>Células de Leydig:</b> Células intersticiales del testículo que producen testosterona bajo estimulación de LH.</li>
           <li><b>Células de Sertoli:</b> Células de sostén en los túbulos seminíferos; nutren a los espermatozoides y forman la barrera hematotesticular.</li>
           <li><b>Células de la Granulosa:</b> Capa que rodea al ovocito; convierte andrógenos en estrógenos mediante la enzima aromatasa.</li>
@@ -216,75 +280,73 @@
       event.currentTarget.classList.add('active');
     }
 
-    // GENERADOR DE IMÁGENES VECTORIALES INTERNAS (SVG DATA-URI) PARA GARANTIZAR LA CARGA
-    const laminasTitulos = [
-      "Lámina 1: Gametogénesis y Ciclo Ovárico",
-      "Lámina 2: Espermatogénesis, Células de Leydig y Sertoli",
-      "Lámina 3: Ciclo Ovárico y Ovulación",
-      "Lámina 4: Fecundación en la Ampolla Tubárica",
-      "Lámina 5: Segmentación y Formación de Mórula/Blastocisto",
-      "Lámina 6: Implantación Embrionaria",
-      "Lámina 7: Disco Germinativo Bilaminar",
-      "Lámina 8: Trofoblasto y Producción de hCG",
-      "Lámina 9: Gastrulación y Línea Primitiva",
-      "Lámina 10: Notocorda e Inducción Neural",
-      "Lámina 11: Neurulación y Cierre de Neuroporos",
-      "Lámina 12: Somitogénesis y Mesodermo",
-      "Lámina 13: Plegamiento del Embrión",
-      "Lámina 14: Derivados de Capas Germinativas",
-      "Lámina 15: Cavidad Amniótica y Saco Vitelino",
-      "Lámina 16: Anexos Embrionarios y Alantoides",
-      "Lámina 17: Vellosidades Coriónicas Placentarias",
-      "Lámina 18: Malformaciones del Tubo Neural",
-      "Lámina 19: Arcos Faríngeos y Cabeza",
-      "Lámina 20: Sistema Cardiovascular Primario"
-    ];
-
+    // VISOR DE IMÁGENES + LÁMINA ADICIONAL DE ANATOMÍA DEL ESPERMATOZOIDE (21 LÁMINAS EN TOTAL)
     let currentPage = 1;
-    const totalPages = 20;
+    const totalPages = 21;
 
-    function getSvgDataUri(pageNum) {
-      const title = laminasTitulos[pageNum - 1];
-      const svgString = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
-        <rect width="600" height="800" fill="#ffffff" rx="12" stroke="#d63384" stroke-width="4"/>
-        <rect x="20" y="20" width="560" height="60" fill="#d63384" rx="8"/>
-        <text x="300" y="58" font-family="Segoe UI, sans-serif" font-size="18" fill="#ffffff" font-weight="bold" text-anchor="middle">${title}</text>
-        
-        <circle cx="300" cy="380" r="160" fill="#fff0f3" stroke="#a61e61" stroke-width="6"/>
-        <circle cx="300" cy="380" r="90" fill="#ffe6ed" stroke="#d63384" stroke-width="3"/>
-        <circle cx="300" cy="380" r="35" fill="#d63384"/>
-        
-        <path d="M 100 600 Q 300 520 500 600" stroke="#a61e61" stroke-width="4" fill="none" stroke-dasharray="8,8"/>
-        <text x="300" y="660" font-family="Segoe UI, sans-serif" font-size="16" fill="#2b2d42" font-weight="bold" text-anchor="middle">Ilustración Histológica Langman - Lámina ${pageNum}</text>
-        <text x="300" y="690" font-family="Segoe UI, sans-serif" font-size="13" fill="#666666" text-anchor="middle">Esquema digital integrado cargado desde el servidor local</text>
-      </svg>`;
-      return "data:image/svg+xml;utf8," + encodeURIComponent(svgString);
+    function getFormattedFileName(num) {
+      let str = num.toString().padStart(3, '0');
+      return `img_cap-${str}.jpg`;
+    }
+
+    function renderViewerPage(page) {
+      const container = document.getElementById('diagram-container');
+      const pageNumText = document.getElementById('page-num');
+      
+      if (page === 21) {
+        // Lámina especial 21: Espermatozoide
+        pageNumText.innerText = `Lámina 21 de 21: Estructura del Espermatozoide`;
+        container.innerHTML = `
+          <div style="background:#fff; padding:15px; border-radius:8px;">
+            <h3 style="color:#d63384; margin-top:0;">Anatomía Histológica del Espermatozoide Humano</h3>
+            <svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100%" height="100%" fill="#fcf8fa" rx="10"/>
+              <path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/>
+              <path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/>
+              <ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/>
+              <rect x="160" y="103" width="15" height="14" fill="#fd7e14"/>
+              <rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/>
+              <line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/>
+              <path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/>
+              <text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma</text>
+              <text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo Haploide</text>
+              <text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello</text>
+              <text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Pieza Intermedia (Mitocondrias)</text>
+              <text x="480" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0d6efd" text-anchor="middle">Cola / Flagelo</text>
+            </svg>
+          </div>`;
+      } else {
+        const fileName = getFormattedFileName(page);
+        pageNumText.innerText = `Imagen ${fileName} (${page}/${totalPages})`;
+        container.innerHTML = `<img id="page-img" class="book-frame" src="${fileName}" alt="Lámina Embriológica" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23fff0f3\\'/><text x=\\'50%\\' y=\\'50%\\' font-family=\\'sans-serif\\' font-size=\\'14\\' fill=\\'%23d63384\\' text-anchor=\\'middle\\'>Imagen no encontrada en el repositorio</text></svg>';">`;
+      }
     }
 
     function changePage(dir) {
       currentPage += dir;
       if (currentPage < 1) currentPage = totalPages;
       if (currentPage > totalPages) currentPage = 1;
-      document.getElementById('page-num').innerText = `Lámina ${currentPage} de ${totalPages}`;
-      document.getElementById('page-img').src = getSvgDataUri(currentPage);
+      renderViewerPage(currentPage);
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('page-img').src = getSvgDataUri(1);
-    });
-
-    // BANCO EXTENSO DE 200 PREGUNTAS MANTENIDO
+    // BANCO EXTENSO DE 200 PREGUNTAS
     const temasBase = [
+      { q: "¿Qué estructura del espermatozoide contiene las enzimas hialuronidasa y acrosina para penetrar la zona pelúcida?", k: ["acrosoma"], o: ["Acrosoma", "Pieza intermedia", "Cuello", "Axonema"], c: 0, fill: "acrosoma" },
+      { q: "¿En qué parte del espermatozoide se localizan las mitocondrias organizadas en espiral para dar energía?", k: ["pieza intermedia", "intermedia"], o: ["Pieza intermedia", "Cabeza", "Acrosoma", "Cola"], c: 0, fill: "pieza intermedia" },
       { q: "¿Qué células testiculares producen testosterona bajo el estímulo de la LH?", k: ["leydig", "células de leydig"], o: ["Células de Leydig", "Células de Sertoli", "Espermatogonias", "Células de la granulosa"], c: 0, fill: "células de leydig" },
       { q: "¿Qué células de sostén nutren a las células germinales masculinas y forman la barrera hematotesticular?", k: ["sertoli", "células de sertoli"], o: ["Células de Sertoli", "Células de Leydig", "Teca interna", "Sincitiotrofoblasto"], c: 0, fill: "células de sertoli" },
       { q: "¿Qué capa folicular rica en vasos sanguíneos produce andrógenos bajo estimulación de la LH?", k: ["teca interna", "interna"], o: ["Teca interna", "Teca externa", "Células de la granulosa", "Zona pelúcida"], c: 0, fill: "teca interna" },
       { q: "¿Qué células circundan al ovocito y convierten andrógenos en estrógenos mediante la enzima aromatasa?", k: ["granulosa", "células de la granulosa"], o: ["Células de la granulosa", "Teca externa", "Sincitiotrofoblasto", "Epiblasto"], c: 0, fill: "células de la granulosa" },
-      { q: "¿Qué capa folicular exterior posee características musculares lisas para ayudar en la ovulación?", k: ["teca externa", "externa"], o: ["Teca externa", "Teca interna", "Granulosa", "Corona radiada"], c: 0, fill: "teca externa" },
       { q: "¿En qué lugar de la trompa de Falopio se produce comúnmente la fecundación?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa de Falopio", "Ístmo", "Infundíbulo", "Utero"], c: 0, fill: "ampolla" },
       { q: "¿Qué estructura del trofoblasto sintetiza la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Hipoblasto"], c: 1, fill: "sincitiotrofoblasto" },
       { q: "¿En qué fase meiótica permanecen detenidos los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Telofase I", "Anfase II"], c: 0, fill: "diploteno" },
-      { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
-      { q: "¿Qué estructura da origen a las tres capas germinativas durante la gastrulación?", k: ["línea primitiva", "epiblasto"], o: ["Línea primitiva / Epiblasto", "Hipoblasto", "Citotrofoblasto", "Amnios"], c: 0, fill: "línea primitiva" }
+      { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" }
     ];
 
     const banco200 = [];
