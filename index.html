@@ -42,7 +42,6 @@
     .capitulo ul { padding-left: 20px; }
     .capitulo li { margin-bottom: 8px; font-size: 0.92rem; }
 
-    /* Visor con mayor tamaño y soporte completo */
     .book-viewer { text-align: center; background: #eaeff5; padding: 15px; border-radius: 10px; border: 1px solid #d0d7de; }
     .image-wrapper { min-height: 500px; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 10px; }
     .book-frame { max-width: 100%; max-height: 750px; width: auto; height: auto; border-radius: 8px; object-fit: contain; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -51,7 +50,6 @@
 
     .book-controls { display: flex; justify-content: center; align-items: center; gap: 10px; }
 
-    /* Cartita Rosada de Abreviaturas */
     .pink-card { background: var(--pink-card); border: 2px solid var(--pink-card-border); border-radius: 12px; padding: 15px; box-shadow: 0 4px 10px rgba(214, 51, 132, 0.15); margin-bottom: 20px; }
     .pink-card h2 { color: var(--primary-dark); margin-top: 0; font-size: 1.1rem; border-bottom: 2px dashed var(--primary); padding-bottom: 5px; text-align: center; }
     .abbrev-list { list-style: none; padding: 0; margin: 0; font-size: 0.88rem; }
@@ -87,7 +85,7 @@
 
   <header>
     <h1>Embriología Médica - Plataforma Completa</h1>
-    <p class="subtitle">Langman 15.ª Edición - Estudio Interactivo Completo (200 Preguntas + Visor con Todas las Imágenes)</p>
+    <p class="subtitle">Langman 15.ª Edición - Estudio Interactivo Completo (200 Preguntas + Visor Completo)</p>
   </header>
 
   <div class="nav-tabs">
@@ -101,21 +99,19 @@
   <div class="main-container">
     <div class="content-area">
       
-      <!-- VISOR DE LÁMINAS COMPLETO CON TODAS LAS 20 IMÁGENES MAS ESPERMATOZOIDE -->
       <div id="libro" class="content-section active">
         <h2>📚 Visor de Láminas e Ilustraciones de Embriología</h2>
-        <p>Navega a través de todas las láminas del libro e ilustraciones anatómicas:</p>
+        <p>Navega a través de todas las láminas descargadas del libro:</p>
         <div class="book-viewer">
           <div id="diagram-container" class="image-wrapper"></div>
           <div class="book-controls">
             <button class="btn-action btn-send" onclick="changePage(-1)">⬅️ Anterior</button>
-            <span id="page-num" style="font-weight:bold;">Lámina 1 de 21</span>
+            <span id="page-num" style="font-weight:bold;">Cargando catálogo...</span>
             <button class="btn-action btn-send" onclick="changePage(1)">Siguiente ➡️</button>
           </div>
         </div>
       </div>
 
-      <!-- SECCIÓN TEORÍA EXTENSA -->
       <div id="teoria" class="content-section">
         <div class="capitulo">
           <h2>Capítulo 1: Introducción a la Regulación Molecular y Señalización</h2>
@@ -127,7 +123,6 @@
         <div class="capitulo">
           <h2>Capítulo 2: Gametogénesis (Origen de las Células Germinales y Estructura del Espermatozoide)</h2>
           
-          <!-- ESQUEMA ANATÓMICO INTEGRADO DEL ESPERMATOZOIDE -->
           <div class="sperm-diagram">
             <h3>Estructura Anatómica del Espermatozoide Humano</h3>
             <svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
@@ -202,19 +197,16 @@
         </div>
       </div>
 
-      <!-- SECCIÓN PRÁCTICA ORAL POR VOZ (200) -->
       <div id="oral-audio" class="content-section">
         <h2>🎙️ Práctica Oral por Voz (200 Preguntas)</h2>
         <div id="voice-quiz-container"></div>
       </div>
 
-      <!-- SECCIÓN CUESTIONARIO (200) -->
       <div id="opcion-multiple" class="content-section">
         <h2>📝 Cuestionario de Opción Múltiple (200 Preguntas)</h2>
         <div id="mc-quiz-container"></div>
       </div>
 
-      <!-- SECCIÓN PAREOS (200) -->
       <div id="pareos" class="content-section">
         <h2>🧩 Ejercicios de Pareo (200 Preguntas)</h2>
         <div id="pareos-container"></div>
@@ -222,7 +214,6 @@
 
     </div>
 
-    <!-- SIDEBAR: CARTITA ROSA -->
     <div class="sidebar-area">
       <div class="pink-card">
         <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
@@ -259,30 +250,23 @@
       event.currentTarget.classList.add('active');
     }
 
-    // LISTA COMPLETA CON TODAS LAS 20 IMÁGENES MAS EL DIAGRAMA DE ANATOMÍA
-    const allSlides = [
-      { type: 'img', src: 'img_cap-001.jpg', title: 'Lámina 1: img_cap-001.jpg' },
-      { type: 'img', src: 'img_cap-002.jpg', title: 'Lámina 2: img_cap-002.jpg' },
-      { type: 'img', src: 'img_cap-003.jpg', title: 'Lámina 3: img_cap-003.jpg' },
-      { type: 'img', src: 'img_cap-004.jpg', title: 'Lámina 4: img_cap-004.jpg' },
-      { type: 'img', src: 'img_cap-005.jpg', title: 'Lámina 5: img_cap-005.jpg' },
-      { type: 'img', src: 'img_cap-006.jpg', title: 'Lámina 6: img_cap-006.jpg' },
-      { type: 'img', src: 'img_cap-007.jpg', title: 'Lámina 7: img_cap-007.jpg' },
-      { type: 'img', src: 'img_cap-008.jpg', title: 'Lámina 8: img_cap-008.jpg' },
-      { type: 'img', src: 'img_cap-009.jpg', title: 'Lámina 9: img_cap-009.jpg' },
-      { type: 'img', src: 'img_cap-010.jpg', title: 'Lámina 10: img_cap-010.jpg' },
-      { type: 'img', src: 'img_cap-011.jpg', title: 'Lámina 11: img_cap-011.jpg' },
-      { type: 'img', src: 'img_cap-012.jpg', title: 'Lámina 12: img_cap-012.jpg' },
-      { type: 'img', src: 'img_cap-013.jpg', title: 'Lámina 13: img_cap-013.jpg' },
-      { type: 'img', src: 'img_cap-014.jpg', title: 'Lámina 14: img_cap-014.jpg' },
-      { type: 'img', src: 'img_cap-015.jpg', title: 'Lámina 15: img_cap-015.jpg' },
-      { type: 'img', src: 'img_cap-016.jpg', title: 'Lámina 16: img_cap-016.jpg' },
-      { type: 'img', src: 'img_cap-017.jpg', title: 'Lámina 17: img_cap-017.jpg' },
-      { type: 'img', src: 'img_cap-018.jpg', title: 'Lámina 18: img_cap-018.jpg' },
-      { type: 'img', src: 'img_cap-019.jpg', title: 'Lámina 19: img_cap-019.jpg' },
-      { type: 'img', src: 'img_cap-020.jpg', title: 'Lámina 20: img_cap-020.jpg' },
-      { type: 'svg', title: 'Lámina 21: Estructura Completa del Espermatozoide', html: `<div style="background:#fff; padding:15px; border-radius:8px; width:100%;"><h3 style="color:#d63384; margin-top:0;">Anatomía Histológica del Espermatozoide Humano</h3><svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#fcf8fa" rx="10"/><path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/><path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/><ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/><rect x="160" y="103" width="15" height="14" fill="#fd7e14"/><rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/><line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/><path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/><text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma</text><text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo Haploide</text><text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello</text><text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Pieza Intermedia (Mitocondrias)</text><text x="480" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0d6efd" text-anchor="middle">Cola / Flagelo</text></svg></div>` }
-    ];
+    const allSlides = [];
+    const maxPossibleImages = 80;
+
+    for (let i = 1; i <= maxPossibleImages; i++) {
+      let str = i.toString().padStart(3, '0');
+      allSlides.push({
+        type: 'img',
+        src: `img_cap-${str}.jpg`,
+        title: `Lámina ${i}: img_cap-${str}.jpg`
+      });
+    }
+
+    allSlides.push({
+      type: 'svg',
+      title: 'Lámina Especial: Anatomía Anatómica del Espermatozoide',
+      html: `<div style="background:#fff; padding:15px; border-radius:8px; width:100%;"><h3 style="color:#d63384; margin-top:0;">Anatomía Histológica del Espermatozoide Humano</h3><svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#fcf8fa" rx="10"/><path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/><path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/><ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/><rect x="160" y="103" width="15" height="14" fill="#fd7e14"/><rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/><line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/><path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/><text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma</text><text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo Haploide</text><text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello</text><text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Pieza Intermedia (Mitocondrias)</text><text x="480" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0d6efd" text-anchor="middle">Cola / Flagelo</text></svg></div>`
+    });
 
     let currentIndex = 0;
 
@@ -294,7 +278,7 @@
       pageNumText.innerText = `${item.title} (${index + 1}/${allSlides.length})`;
 
       if (item.type === 'img') {
-        container.innerHTML = `<img id="page-img" class="book-frame rotate-vertical" src="${item.src}" alt="${item.title}" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23f8f9fa\\'/><text x=\\'50%\\' y=\\'50%\\' font-family=\\'sans-serif\\' font-size=\\'13\\' fill=\\'%23d63384\\' text-anchor=\\'middle\\'>Página vacía en origen</text></svg>';">`;
+        container.innerHTML = `<img id="page-img" class="book-frame rotate-vertical" src="${item.src}" alt="${item.title}" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23f8f9fa\\'/><text x=\\'50%\\' y=\\'50%\\' font-family=\\'sans-serif\\' font-size=\\'13\\' fill=\\'%23d63384\\' text-anchor=\\'middle\\'>Página vacía en origen o ausente</text></svg>';">`;
       } else {
         container.innerHTML = item.html;
       }
@@ -311,7 +295,6 @@
       renderPage(0);
     });
 
-    // BANCO EXTENSO DE 200 PREGUNTAS
     const temasBase = [
       { q: "¿Qué estructura del espermatozoide contiene las enzimas hialuronidasa y acrosina para penetrar la zona pelúcida?", k: ["acrosoma"], o: ["Acrosoma", "Pieza intermedia", "Cuello", "Axonema"], c: 0, fill: "acrosoma" },
       { q: "¿En qué parte del espermatozoide se localizan las mitocondrias organizadas en espiral para dar energía?", k: ["pieza intermedia", "intermedia"], o: ["Pieza intermedia", "Cabeza", "Acrosoma", "Cola"], c: 0, fill: "pieza intermedia" },
@@ -338,7 +321,6 @@
       });
     }
 
-    // RENDERIZAR PRÁCTICA ORAL (200)
     const voiceContainer = document.getElementById('voice-quiz-container');
     let currentRecognitions = {};
     banco200.forEach((item, idx) => {
@@ -347,7 +329,7 @@
           <h3>${item.q}</h3>
           <div class="audio-controls">
             <button class="btn-action btn-audio" onclick="speakText('${item.q}')">🔊 Escuchar</button>
-            <button class="btn-action btn-start" id="btn-start-${idx}" onclick="startVoice(${idx})">🎙️ Grabar</button>
+            <button class="btn-action btn-start" id="btn-start-${idx}" onclick="startVoice(${idx})">🎙️️ Grabar</button>
             <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopVoice(${idx})" disabled>🛑 Parar</button>
             <button class="btn-action btn-send" onclick="submitVoice(${idx})">📤 Enviar</button>
           </div>
@@ -406,7 +388,6 @@
       }
     }
 
-    // RENDERIZAR CUESTIONARIO (200)
     const mcContainer = document.getElementById('mc-quiz-container');
     banco200.forEach((item, idx) => {
       let opts = item.o.map((o, oIdx) => 
@@ -432,7 +413,6 @@
       }
     }
 
-    // RENDERIZAR PAREOS (200)
     const pareosContainer = document.getElementById('pareos-container');
     let pareoHtml = '<div class="card"><div class="pareo-grid">';
     banco200.forEach((item, idx) => {
