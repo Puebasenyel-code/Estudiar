@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plataforma de Estudio de Embriología</title>
+  <title>Embriología Médica - Guía Completa de Estudio</title>
   <style>
     :root {
       --primary: #d63384;
@@ -19,120 +19,137 @@
     .tab-btn { padding: 10px 16px; border-radius: 20px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: bold; cursor: pointer; transition: 0.3s; }
     .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; }
     
-    .content-section { display: none; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto 20px auto; }
+    .content-section { display: none; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto 20px auto; line-height: 1.6; }
     .content-section.active { display: block; }
     
-    .capitulo { margin-bottom: 40px; border-bottom: 2px solid var(--primary-light); padding-bottom: 20px; }
+    .capitulo { margin-bottom: 30px; border-bottom: 2px solid var(--primary-light); padding-bottom: 20px; text-align: left; }
     .capitulo h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
     
-    .img-book { width: 100%; max-width: 700px; display: block; margin: 15px auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    
+    /* Control de imágenes */
+    .img-book { width: 100%; max-width: 650px; display: block; margin: 15px auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .rotate-90 { transform: rotate(90deg); margin: 50px auto; } /* Clase por si necesitas rotar imágenes horizontales */
+
     .question-card { background: var(--primary-light); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
     .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 5px 0; border: 1px solid #ccc; background: white; border-radius: 6px; cursor: pointer; }
     .option-btn:hover { background: #e2e2e2; }
+    .feedback { font-weight: bold; margin-top: 5px; display: none; }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Embriología Médica - Plataforma de Estudio</h1>
-    <p>Capítulos 1 al 5: Contenido Teórico, Ilustraciones y Evaluación</p>
+    <p>Teoría Extensa, Banco de Preguntas y Láminas del Libro</p>
   </header>
 
-  <!-- Navegación por Secciones -->
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría e Imágenes</button>
-    <button class="tab-btn" onclick="showTab('opcion-multiple')">2. Opción Múltiple</button>
-    <button class="tab-btn" onclick="showTab('espacios')">3. Llenar Espacios</button>
-    <button class="tab-btn" onclick="showTab('pareos')">4. Pareos</button>
-    <button class="tab-btn" onclick="showTab('galeria-completa')">5. Galería de Imágenes (000-098)</button>
+    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría Detallada (Cap. 1 a 5)</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">2. Cuestionario Extenso</button>
+    <button class="tab-btn" onclick="showTab('galeria-completa')">3. Libro Completo (Láminas 000-098)</button>
   </div>
 
-  <!-- Sección 1: Teoría Completa por Capítulos -->
+  <!-- SECCIÓN 1: TEORÍA DETALLADA -->
   <div id="teoria" class="content-section active">
     
     <div class="capitulo">
       <h2>Capítulo 1: Introducción a la Embriología y Gametogénesis</h2>
-      <p>La embriología médica estudia el desarrollo prenatal del ser humano desde la fecundación hasta el nacimiento. Durante la gametogénesis, las células germinales primordiales experimentan meiosis para reducir su número de cromosomas a la mitad (23 cromosomas, estado haploide).</p>
+      <p>La embriología abarca el estudio de los cambios estructurales y funcionales que ocurren desde la fertilización hasta el nacimiento. Durante la gametogénesis, las células germinales primordiales (CGP) migran desde el epiblasto hacia la pared del saco vitelino y luego hacia las gónadas en desarrollo. Este proceso incluye la gametogénesis femenina (ovogénesis) y masculina (espermatogénesis), mediante las cuales se reduce la dotación cromosómica de diploide (46, 2n) a haploide (23, 1n) a través de la meiosis.</p>
       <img src="img_cap-000.jpg" alt="Portada y Conceptos del Capítulo 1" class="img-book" loading="lazy">
-      <img src="img_cap-001.jpg" alt="Gametogénesis y Cromosomas" class="img-book" loading="lazy">
-      <p>La espermatogénesis ocurre en los túbulos seminíferos y la ovogénesis inicia en los ovarios durante el desarrollo fetal, deteniéndose en la profase de la meiosis I hasta la pubertad.</p>
+      <p>Durante la meiosis I ocurre el entrecruzamiento o *crossing over*, garantizando la variabilidad genética. Alteraciones en la disyunción cromosómica pueden originar aneuploidías como la trisomía 21 (Síndrome de Down) o el síndrome de Turner (45, X).</p>
+      <img src="img_cap-005.jpg" alt="Meiosis y Disyunción" class="img-book" loading="lazy">
     </div>
 
     <div class="capitulo">
-      <h2>Capítulo 2: Primera Semana de Desarrollo (Ovulación a Implantación)</h2>
-      <p>Tras la ovulación, el ovocito secundario es captado por las trompas de Falopio. La fecundación se produce habitualmente en la ampolla. El cigoto inicia la segmentación formando la mórula y posteriormente el blastocisto.</p>
+      <h2>Capítulo 2: Primera Semana de Desarrollo (De la Fecundación a la Implantación)</h2>
+      <p>Tras la liberación del ovocito secundario detenido en metafase II, la fecundación ocurre habitualmente en la región ampolar de la trompa uterina. Las fases de la fecundación incluyen: 1) Penetración de la corona radiada, 2) Penetración de la zona pelúcida, y 3) Fusión de las membranas celulares del ovocito y del espermatozoide.</p>
       <img src="img_cap-015.jpg" alt="Fecundación y Segmentación" class="img-book" loading="lazy">
-      <img src="img_cap-020.jpg" alt="Estructura del Blastocisto" class="img-book" loading="lazy">
-      <p>Hacia el día 6 o 7, el trofoblasto del blastocisto se adhiere al epitelio endometrial del útero iniciando la implantación.</p>
+      <p>El cigoto inicia una serie de divisiones mitóticas (segmentación). A las 72 horas se forma la mórula (16 células). Tras la formación del blastocele, la estructura pasa a llamarse blastocisto, compuesto por el embrioblasto (masa celular interna) y el trofoblasto (masa celular externa). Aproximadamente en el día 6, el trofoblasto comienza la implantación en el endometrio.</p>
+      <img src="img_cap-025.jpg" alt="Implantación del Blastocisto" class="img-book" loading="lazy">
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 3: Segunda Semana de Desarrollo (Disco Germinativo Bilaminar)</h2>
-      <p>El embrioblasto se diferencia en dos capas: el epiblasto y el hipoblasto, formando el disco embrionario bilaminar. La cavidad amniótica surge dentro del epiblasto mientras el saco vitelino primitivo se forma a partir del hipoblasto.</p>
-      <img src="img_cap-035.jpg" alt="Disco Bilaminar e Implantación Completa" class="img-book" loading="lazy">
-      <img src="img_cap-040.jpg" alt="Desarrollo del Saco Vitelino" class="img-book" loading="lazy">
+      <p>En el día 8, el trofoblasto se diferencia en dos capas: el citotrofoblasto y el sincitiotrofoblasto. Simultáneamente, el embrioblasto se diferencia en el disco bilaminar formado por el epiblasto y el hipoblasto. El sincitiotrofoblasto erosiona los capilares maternos estableciendo la circulación útero-placentaria primitiva.</p>
+      <img src="img_cap-035.jpg" alt="Disco Bilaminar" class="img-book" loading="lazy">
+      <p>Aparecen la cavidad amniótica, el saco vitelino primario y secundario, y el mesodermo extraembrionario, el cual se ahueca para formar la cavidad coriónica. El pedículo de fijación conectará el embrión con la placenta en desarrollo.</p>
+      <img src="img_cap-045.jpg" alt="Circulación Útero-Placentaria" class="img-book" loading="lazy">
     </div>
 
     <div class="capitulo">
-      <h2>Capítulo 4: Tercera Semana de Desarrollo (Gastrulación y Disco Trilaminar)</h2>
-      <p>La gastrulación es el proceso decisivo donde se establecen las tres capas germinativas: Ectodermo, Mesodermo y Endodermo. Comienza con la formación de la línea primitiva en la superficie del epiblasto.</p>
-      <img src="img_cap-055.jpg" alt="Gastrulación y Línea Primitiva" class="img-book" loading="lazy">
-      <img src="img_cap-060.jpg" alt="Formación de la Notocorda" class="img-book" loading="lazy">
-      <p>Se desarrolla la notocorda, la cual induce el engrosamiento del ectodermo suprayacente para formar la placa neural.</p>
+      <h2>Capítulo 4: Tercera Semana de Desarrollo (Disco Germinativo Trilaminar)</h2>
+      <p>El acontecimiento crucial de la tercera semana es la gastrulación, proceso mediante el cual se forman las tres capas germinativas primarias: Ectodermo, Mesodermo y Endodermo. Inicia con la aparición de la línea primitiva en la región dorsal del epiblasto.</p>
+      <img src="img_cap-055.jpg" alt="Gastrulación" class="img-book" loading="lazy">
+      <p>Las células del epiblasto invaginan desplazando al hipoblasto para formar el endodermo embrionario, mientras que otras se sitúan en el medio formando el mesodermo. Las células remanentes en la superficie forman el ectodermo. Se forma también la notocorda, la cual ejerce la inducción neural necesaria para iniciar la neurulación.</p>
+      <img src="img_cap-065.jpg" alt="Formación de la Notocorda" class="img-book" loading="lazy">
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 5: Período Embrionario (Semanas 3 a 8 y Organogénesis)</h2>
-      <p>Durante la fase de organogénesis, cada una de las tres capas germinativas origina tejidos y órganos específicos. El plegamiento del embrión (cefalo-caudal y lateral) le otorga su forma cilíndrica característica.</p>
-      <img src="img_cap-075.jpg" alt="Neurulación y Plegamiento Embrionario" class="img-book" loading="lazy">
-      <img src="img_cap-085.jpg" alt="Derivados de las Capas Germinativas" class="img-book" loading="lazy">
+      <p>Durante la organogénesis, las tres capas germinativas dan origen a tejidos y órganos específicos:
+      <ul>
+        <li><strong>Ectodermo:</strong> Sistema nervioso central y periférico, epidermis, cabello y uñas.</li>
+        <li><strong>Mesodermo:</strong> Músculos, cartílago, hueso, sistema vascular, riñones y gónadas.</li>
+        <li><strong>Endodermo:</strong> Revestimiento epitelial del tubo digestivo, aparato respiratorio y vejiga urinaria.</li>
+      </ul>
+      El plegamiento cefalocaudal y lateral transforma el disco plano en un embrión de forma cilíndrica.</p>
+      <img src="img_cap-075.jpg" alt="Neurulación y Plegamiento" class="img-book" loading="lazy">
     </div>
 
   </div>
 
-  <!-- Sección 2: Opción Múltiple -->
+  <!-- SECCIÓN 2: BANCO DE PREGUNTAS EXTENSO -->
   <div id="opcion-multiple" class="content-section">
-    <h2>Cuestionario de Opción Múltiple</h2>
+    <h2>Banco de Preguntas de Evaluación</h2>
+    
     <div class="question-card">
-      <p><strong>1. ¿En qué lugar de la trompa uterina ocurre habitualmente la fecundación?</strong></p>
-      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">A) Istmo</button>
-      <button class="option-btn" onclick="alert('¡Correcto!')">B) Ampolla</button>
-      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">C) Infundíbulo</button>
+      <p><strong>1. ¿Qué proceso meiótico es responsable de la variabilidad genética entre gametos?</strong></p>
+      <button class="option-btn" onclick="checkAnswer(this, false)">A) Citocinesis</button>
+      <button class="option-btn" onclick="checkAnswer(this, true)">B) Entre cruzamiento (Crossing over) en Profase I</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">C) Separación de cromátidas en Anafase II</button>
+      <span class="feedback"></span>
     </div>
+
     <div class="question-card">
-      <p><strong>2. ¿Qué estructura da origen a las tres capas germinativas embrionarias durante la gastrulación?</strong></p>
-      <button class="option-btn" onclick="alert('¡Correcto!')">A) Epiblasto</button>
-      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">B) Hipoblasto</button>
-      <button class="option-btn" onclick="alert('Incorrecto. Intenta de nuevo.')">C) Citotrofoblasto</button>
+      <p><strong>2. ¿En qué fase de la meiosis se detienen los ovocitos primarios desde el desarrollo fetal hasta la pubertad?</strong></p>
+      <button class="option-btn" onclick="checkAnswer(this, true)">A) Profase I (Diploteno)</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">B) Metafase II</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">C) Telofase I</button>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question-card">
+      <p><strong>3. ¿Qué estructura secreta la hormona Gonadotropina Coriónica Humana (hCG) para mantener el cuerpo lúteo?</strong></p>
+      <button class="option-btn" onclick="checkAnswer(this, false)">A) Citotrofoblasto</button>
+      <button class="option-btn" onclick="checkAnswer(this, true)">B) Sincitiotrofoblasto</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">C) Hipoblasto</button>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question-card">
+      <p><strong>4. ¿Cuál es el orden correcto de formación del embrión en la primera semana?</strong></p>
+      <button class="option-btn" onclick="checkAnswer(this, true)">A) Cigoto -> Mórula -> Blastocisto</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">B) Blastocisto -> Mórula -> Cigoto</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">C) Mórula -> Cigoto -> Blastocisto</button>
+      <span class="feedback"></span>
+    </div>
+
+    <div class="question-card">
+      <p><strong>5. El sistema nervioso central se origina a partir de:</strong></p>
+      <button class="option-btn" onclick="checkAnswer(this, true)">A) Ectodermo (Neuroectodermo)</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">B) Mesodermo paraxial</button>
+      <button class="option-btn" onclick="checkAnswer(this, false)">C) Endodermo</button>
+      <span class="feedback"></span>
     </div>
   </div>
 
-  <!-- Sección 3: Llenar Espacios -->
-  <div id="espacios" class="content-section">
-    <h2>Práctica: Llenar Espacios</h2>
-    <p>La formación del disco trilaminar ocurre durante la <strong>tercera</strong> semana de desarrollo mediante el proceso llamado <strong>gastrulación</strong>.</p>
-  </div>
-
-  <!-- Sección 4: Pareos -->
-  <div id="pareos" class="content-section">
-    <h2>Práctica: Pareos</h2>
-    <p>Asocia la capa germinativa con su derivado principal:</p>
-    <ul>
-      <li><strong>Ectodermo:</strong> Sistema Nervioso Central y epidermis.</li>
-      <li><strong>Mesodermo:</strong> Músculos, hueso y sistema cardiovascular.</li>
-      <li><strong>Endodermo:</strong> Revestimiento epitelial del tubo digestivo y respiratorio.</li>
-    </ul>
-  </div>
-
-  <!-- Sección 5: Galería Completa de Imágenes -->
+  <!-- SECCIÓN 3: GALERÍA DE LÁMINAS -->
   <div id="galeria-completa" class="content-section">
-    <h2>Galería de Láminas e Ilustraciones (Todas las páginas)</h2>
+    <h2>Láminas e Ilustraciones del Libro (000 - 098)</h2>
+    <p>Todas las imágenes ordenadas cronológicamente:</p>
     <div id="galeria-dinamica"></div>
   </div>
 
   <script>
-    // Cambio de pestañas
     function showTab(tabId) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -141,7 +158,20 @@
       event.currentTarget.classList.add('active');
     }
 
-    // Cargar dinámicamente las 99 imágenes en la pestaña de Galería Completa
+    function checkAnswer(btn, isCorrect) {
+      const parent = btn.parentElement;
+      const feedback = parent.querySelector('.feedback');
+      feedback.style.display = 'block';
+      if(isCorrect) {
+        feedback.style.color = 'green';
+        feedback.innerText = '¡Correcto!';
+      } else {
+        feedback.style.color = 'red';
+        feedback.innerText = 'Incorrecto. Intenta de nuevo.';
+      }
+    }
+
+    // Cargar las 99 láminas
     const galeria = document.getElementById('galeria-dinamica');
     for (let i = 0; i <= 98; i++) {
       let num = String(i).padStart(3, '0');
