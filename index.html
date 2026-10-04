@@ -122,7 +122,8 @@
           <h2>Capítulo 2: Gametogénesis</h2>
           <ul>
             <li><b>CGP:</b> Se originan en el epiblasto (2.ª semana) y colonizan gónadas en la 5.ª semana.</li>
-            <li><b>Ovogénesis:</b> Detención en <b>Diploteno de la Profase I</b> por OMI. Meiosis II en <b>Metafase II</b>.</li>
+            <li><b>Ovogénesis y Folículo Ovárico:</b> Las células foliculares planas se transforman en cúbicas dando origen a las <b>Células de la Granulosa</b>. El estroma circundante se organiza en la <b>Teca Interna</b> (vascularizada y secretora de esteroides) y la <b>Teca Externa</b> (cápsula fibrosa muscular).</li>
+            <li><b>Detención Meiótica:</b> Detención en <b>Diploteno de la Profase I</b> por OMI. Meiosis II en <b>Metafase II</b>.</li>
           </ul>
         </div>
         <div class="capitulo">
@@ -165,18 +166,21 @@
 
     </div>
 
-    <!-- SIDEBAR: CARTITA ROSA -->
+    <!-- SIDEBAR: CARTITA ROSA CON TÉRMINOS AGREGADOS -->
     <div class="sidebar-area">
       <div class="pink-card">
         <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
         <ul class="abbrev-list">
+          <li><b>Células de la Granulosa:</b> Capa de células estratificadas que rodea al ovocito en desarrollo. Secretan estrógenos (conversión de andrógenos por aromatasa) y forman la zona pelúcida.</li>
+          <li><b>Teca Interna:</b> Capa vascularizada e interna del folículo maduro. Rica en receptores de LH, produce andrógenos (androstenediona) y secreta esteroides.</li>
+          <li><b>Teca Externa:</b> Capa fibrosa exterior rica en células de músculo liso y colágeno. Proporciona soporte estructural y contracción durante la ovulación.</li>
           <li><b>LH:</b> Hormona Luteinizante. Desencadena la ovulación y mantiene el cuerpo lúteo.</li>
-          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula crecimiento folicular.</li>
-          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Producida por sincitiotrofoblasto.</li>
-          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona.</li>
-          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas.</li>
+          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula crecimiento folicular y la actividad de la granulosa.</li>
+          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Producida por el sincitiotrofoblasto.</li>
+          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona para mantener el endometrio.</li>
+          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas (hipotálamo).</li>
           <li><b>OMI:</b> Inhibidor de Maduración del Ovocito. Mantiene detención en diploteno.</li>
-          <li><b>CGP:</b> Células Germinales Primordiales.</li>
+          <li><b>CGP:</b> Células Germinales Primordiales. Precursoras de gametos.</li>
           <li><b>BMP:</b> Proteína Morfogenética Ósea.</li>
           <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos.</li>
           <li><b>SHH:</b> Sonic Hedgehog. Organiza el eje corporal.</li>
@@ -208,16 +212,16 @@
 
     // BASE DE DATOS Y GENERACIÓN AUTOMÁTICA DE LAS 200 PREGUNTAS
     const temasBase = [
+      { q: "¿Qué capa folicular rica en vasos sanguíneos produce andrógenos bajo estimulación de la LH?", k: ["teca interna", "interna"], o: ["Teca interna", "Teca externa", "Células de la granulosa", "Zona pelúcida"], c: 0, fill: "teca interna" },
+      { q: "¿Qué células circundan al ovocito y convierten andrógenos en estrógenos mediante la enzima aromatasa?", k: ["granulosa", "células de la granulosa"], o: ["Células de la granulosa", "Teca externa", "Sincitiotrofoblasto", "Epiblasto"], c: 0, fill: "células de la granulosa" },
+      { q: "¿Qué capa folicular exterior posee características musculares lisas para ayudar en la ovulación?", k: ["teca externa", "externa"], o: ["Teca externa", "Teca interna", "Granulosa", "Corona radiada"], c: 0, fill: "teca externa" },
       { q: "¿En qué lugar de la trompa de Falopio se produce comúnmente la fecundación?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa de Falopio", "Ístmo", "Infundíbulo", "Utero"], c: 0, fill: "ampolla" },
       { q: "¿Qué estructura del trofoblasto sintetiza la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Hipoblasto"], c: 1, fill: "sincitiotrofoblasto" },
       { q: "¿En qué fase meiótica permanecen detenidos los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Telofase I", "Anfase II"], c: 0, fill: "diploteno" },
       { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
       { q: "¿Qué estructura da origen a las tres capas germinativas durante la gastrulación?", k: ["línea primitiva", "epiblasto"], o: ["Línea primitiva / Epiblasto", "Hipoblasto", "Citotrofoblasto", "Amnios"], c: 0, fill: "línea primitiva" },
       { q: "¿En qué etapa se detiene el ovocito secundario antes de la fecundación?", k: ["metafase ii", "metafase 2"], o: ["Diploteno", "Metafase II", "Profase II", "Telofase I"], c: 1, fill: "metafase ii" },
-      { q: "¿Qué estructura forma el primer indicio del sistema nervioso?", k: ["placa neural", "tubo neural"], o: ["Placa neural", "Notocorda", "Somita", "Línea primitiva"], c: 0, fill: "placa neural" },
-      { q: "¿En qué día se cierra aproximadamente el neuroporo craneal/anterior?", k: ["25"], o: ["Día 20", "Día 25", "Día 28", "Día 30"], c: 1, fill: "25" },
-      { q: "¿En qué día se cierra el neuroporo caudal/posterior?", k: ["28"], o: ["Día 25", "Día 28", "Día 30", "Día 32"], c: 1, fill: "28" },
-      { q: "¿Qué capa germinativa da origen a la epidermis y al sistema nervioso?", k: ["ectodermo"], o: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], c: 0, fill: "ectodermo" }
+      { q: "¿En qué día se cierra aproximadamente el neuroporo craneal/anterior?", k: ["25"], o: ["Día 20", "Día 25", "Día 28", "Día 30"], c: 1, fill: "25" }
     ];
 
     const banco200 = [];
