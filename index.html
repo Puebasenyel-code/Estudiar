@@ -3,186 +3,459 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embriología Médica - Guía Completa de Estudio</title>
+  <title>Embriología Médica - Plataforma Completa de Estudio</title>
   <style>
     :root {
       --primary: #d63384;
+      --primary-dark: #a61e61;
       --primary-light: #fff0f3;
       --text: #2b2d42;
       --bg: #f8f9fa;
+      --success: #28a745;
+      --error: #dc3545;
     }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; }
-    header { text-align: center; margin-bottom: 20px; }
-    h1 { color: var(--primary); margin-bottom: 5px; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; line-height: 1.5; }
+    header { text-align: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    h1 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.5rem; }
+    p.subtitle { margin: 0; color: #666; font-size: 0.9rem; }
     
-    .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 25px; }
-    .tab-btn { padding: 10px 16px; border-radius: 20px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 15px; }
+    .tab-btn { padding: 8px 12px; border-radius: 20px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: bold; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
     .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; }
     
-    .content-section { display: none; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto 20px auto; line-height: 1.6; }
+    .content-section { display: none; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto 20px auto; }
     .content-section.active { display: block; }
     
-    .capitulo { margin-bottom: 30px; border-bottom: 2px solid var(--primary-light); padding-bottom: 20px; text-align: left; }
-    .capitulo h2 { color: var(--primary); border-left: 5px solid var(--primary); padding-left: 10px; }
+    .capitulo { margin-bottom: 25px; border-bottom: 2px solid var(--primary-light); padding-bottom: 15px; text-align: left; }
+    .capitulo h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 8px; font-size: 1.2rem; }
     
-    /* Control de imágenes */
-    .img-book { width: 100%; max-width: 650px; display: block; margin: 15px auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .rotate-90 { transform: rotate(90deg); margin: 50px auto; } /* Clase por si necesitas rotar imágenes horizontales */
+    /* Control e imágenes en vertical */
+    .img-box { text-align: center; margin: 20px 0; overflow: hidden; }
+    .img-book { width: 90%; max-width: 500px; display: block; margin: 0 auto; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    /* Giros CSS para asegurar que queden verticales */
+    .rotate-90 { transform: rotate(90deg); margin: 60px auto; }
+    .rotate-270 { transform: rotate(270deg); margin: 60px auto; }
+    .controls-bar { display: flex; justify-content: center; gap: 10px; margin-top: 5px; }
+    .small-btn { padding: 4px 8px; font-size: 0.75rem; border: 1px solid #ccc; background: #f0f0f0; border-radius: 4px; cursor: pointer; }
 
-    .question-card { background: var(--primary-light); padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: left; }
-    .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 5px 0; border: 1px solid #ccc; background: white; border-radius: 6px; cursor: pointer; }
-    .option-btn:hover { background: #e2e2e2; }
-    .feedback { font-weight: bold; margin-top: 5px; display: none; }
+    .card { background: var(--primary-light); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border: 1px solid #f2d6e0; }
+    .card h3 { margin-top: 0; color: var(--primary-dark); font-size: 1rem; }
+    .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 6px 0; border: 1px solid #ccc; background: white; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
+    .option-btn:hover { background: #f0f0f0; }
+    
+    .feedback { font-weight: bold; margin-top: 8px; padding: 8px; border-radius: 6px; display: none; font-size: 0.9rem; }
+    .feedback.success { background: #d4edda; color: #155724; display: block; }
+    .feedback.error { background: #f8d7da; color: #721c24; display: block; }
+
+    /* Estilos para audio y micrófono */
+    .audio-controls { display: flex; gap: 8px; align-items: center; margin: 10px 0; flex-wrap: wrap; }
+    .btn-audio { background: #17a2b8; color: white; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; }
+    .btn-mic { background: #dc3545; color: white; border: none; padding: 10px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem; }
+    .btn-mic.listening { animation: pulse 1s infinite; background: #28a745; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+    /* Pareos y completar */
+    .pareo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    select.pareo-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.85rem; }
+    input.fill-input { padding: 8px; border-radius: 6px; border: 1px solid #ccc; width: calc(100% - 20px); margin: 5px 0; font-size: 0.9rem; }
+
+    /* Galería */
+    .galeria-item { margin-bottom: 30px; text-align: center; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #eee; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Embriología Médica - Plataforma de Estudio</h1>
-    <p>Teoría Extensa, Banco de Preguntas y Láminas del Libro</p>
+    <h1>Embriología Médica - Plataforma Interactiva</h1>
+    <p class="subtitle">Langman 14.ª Edición - Capítulos 1 al 5 Completo</p>
   </header>
 
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría Detallada (Cap. 1 a 5)</button>
-    <button class="tab-btn" onclick="showTab('opcion-multiple')">2. Cuestionario Extenso</button>
-    <button class="tab-btn" onclick="showTab('galeria-completa')">3. Libro Completo (Láminas 000-098)</button>
+    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría Extensa</button>
+    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 2. Práctica Oral y Audio</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 3. Cuestionario (30+ Preg.)</button>
+    <button class="tab-btn" onclick="showTab('pareos')">🧩 4. Pareos y Relación</button>
+    <button class="tab-btn" onclick="showTab('espacios')">✏️ 5. Llenar Espacios</button>
+    <button class="tab-btn" onclick="showTab('galeria-completa')">🖼️ 6. Láminas (000-098)</button>
   </div>
 
-  <!-- SECCIÓN 1: TEORÍA DETALLADA -->
+  <!-- SECCIÓN 1: TEORÍA DETALLADA CON IMÁGENES ROTADAS EN VERTICAL -->
   <div id="teoria" class="content-section active">
-    
     <div class="capitulo">
       <h2>Capítulo 1: Introducción a la Embriología y Gametogénesis</h2>
-      <p>La embriología abarca el estudio de los cambios estructurales y funcionales que ocurren desde la fertilización hasta el nacimiento. Durante la gametogénesis, las células germinales primordiales (CGP) migran desde el epiblasto hacia la pared del saco vitelino y luego hacia las gónadas en desarrollo. Este proceso incluye la gametogénesis femenina (ovogénesis) y masculina (espermatogénesis), mediante las cuales se reduce la dotación cromosómica de diploide (46, 2n) a haploide (23, 1n) a través de la meiosis.</p>
-      <img src="img_cap-000.jpg" alt="Portada y Conceptos del Capítulo 1" class="img-book" loading="lazy">
-      <p>Durante la meiosis I ocurre el entrecruzamiento o *crossing over*, garantizando la variabilidad genética. Alteraciones en la disyunción cromosómica pueden originar aneuploidías como la trisomía 21 (Síndrome de Down) o el síndrome de Turner (45, X).</p>
-      <img src="img_cap-005.jpg" alt="Meiosis y Disyunción" class="img-book" loading="lazy">
+      <p>La embriología abarca el desarrollo prenatal desde la fertilización hasta el nacimiento. En la gametogénesis, las células germinales primordiales (CGP) migran del epiblasto al saco vitelino y luego a las gónadas. Ocurren procesos de mitosis y meiosis para formar ovocitos y espermatozoides haploides (23 cromosomas).</p>
+      
+      <div class="img-box">
+        <img src="img_cap-000.jpg" alt="Lámina 000" class="img-book rotate-270" id="img-000">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-000', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-000', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
+
+      <p><strong>Células Germinales Primordiales y Meiosis:</strong> Durante la meiosis I se produce el entrecruzamiento o <em>crossing over</em> en la profase I (diploteno), permitiendo el intercambio de material genético. Errores como la no disyunción causan anomalías numéricas cromosómicas como la Trisomía 21 (Síndrome de Down), Trisomía 18 (Edward) o Síndrome de Klinefelter (47, XXY).</p>
+      
+      <div class="img-box">
+        <img src="img_cap-005.jpg" alt="Lámina 005" class="img-book rotate-270" id="img-005">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-005', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-005', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
     </div>
 
     <div class="capitulo">
-      <h2>Capítulo 2: Primera Semana de Desarrollo (De la Fecundación a la Implantación)</h2>
-      <p>Tras la liberación del ovocito secundario detenido en metafase II, la fecundación ocurre habitualmente en la región ampolar de la trompa uterina. Las fases de la fecundación incluyen: 1) Penetración de la corona radiada, 2) Penetración de la zona pelúcida, y 3) Fusión de las membranas celulares del ovocito y del espermatozoide.</p>
-      <img src="img_cap-015.jpg" alt="Fecundación y Segmentación" class="img-book" loading="lazy">
-      <p>El cigoto inicia una serie de divisiones mitóticas (segmentación). A las 72 horas se forma la mórula (16 células). Tras la formación del blastocele, la estructura pasa a llamarse blastocisto, compuesto por el embrioblasto (masa celular interna) y el trofoblasto (masa celular externa). Aproximadamente en el día 6, el trofoblasto comienza la implantación en el endometrio.</p>
-      <img src="img_cap-025.jpg" alt="Implantación del Blastocisto" class="img-book" loading="lazy">
+      <h2>Capítulo 2: Primera Semana de Desarrollo (Ovulación a Implantación)</h2>
+      <p>Ocurre la liberación del ovocito secundario. La fecundación se da en la ampolla de la trompa uterina. Consta de 3 fases: 1) Penetración de la corona radiada, 2) Penetración de la zona pelúcida (reacción acrosómica) y 3) Fusión de las membranas plasmáticas del ovocito y espermatozoide.</p>
+      
+      <div class="img-box">
+        <img src="img_cap-015.jpg" alt="Lámina 015" class="img-book rotate-270" id="img-015">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-015', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-015', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
+
+      <p>Tras la fecundación, el cigoto se segmenta formando la mórula (16 células) y luego el blastocisto. El blastocisto posee embrioblasto (masa celular interna) y trofoblasto (masa celular externa). Hacia el día 6 o 7 inicia la implantación en el endometrio uterino.</p>
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 3: Segunda Semana de Desarrollo (Disco Germinativo Bilaminar)</h2>
-      <p>En el día 8, el trofoblasto se diferencia en dos capas: el citotrofoblasto y el sincitiotrofoblasto. Simultáneamente, el embrioblasto se diferencia en el disco bilaminar formado por el epiblasto y el hipoblasto. El sincitiotrofoblasto erosiona los capilares maternos estableciendo la circulación útero-placentaria primitiva.</p>
-      <img src="img_cap-035.jpg" alt="Disco Bilaminar" class="img-book" loading="lazy">
-      <p>Aparecen la cavidad amniótica, el saco vitelino primario y secundario, y el mesodermo extraembrionario, el cual se ahueca para formar la cavidad coriónica. El pedículo de fijación conectará el embrión con la placenta en desarrollo.</p>
-      <img src="img_cap-045.jpg" alt="Circulación Útero-Placentaria" class="img-book" loading="lazy">
+      <p>El trofoblasto se diferencia en citotrofoblasto y sincitiotrofoblasto (productor de hCG). El embrioblasto forma el disco bilaminar: epiblasto e hipoblasto. Se forman la cavidad amniótica, el saco vitelino primitivo y definitivo, y el mesodermo extraembrionario.</p>
+      
+      <div class="img-box">
+        <img src="img_cap-035.jpg" alt="Lámina 035" class="img-book rotate-270" id="img-035">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-035', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-035', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
     </div>
 
     <div class="capitulo">
-      <h2>Capítulo 4: Tercera Semana de Desarrollo (Disco Germinativo Trilaminar)</h2>
-      <p>El acontecimiento crucial de la tercera semana es la gastrulación, proceso mediante el cual se forman las tres capas germinativas primarias: Ectodermo, Mesodermo y Endodermo. Inicia con la aparición de la línea primitiva en la región dorsal del epiblasto.</p>
-      <img src="img_cap-055.jpg" alt="Gastrulación" class="img-book" loading="lazy">
-      <p>Las células del epiblasto invaginan desplazando al hipoblasto para formar el endodermo embrionario, mientras que otras se sitúan en el medio formando el mesodermo. Las células remanentes en la superficie forman el ectodermo. Se forma también la notocorda, la cual ejerce la inducción neural necesaria para iniciar la neurulación.</p>
-      <img src="img_cap-065.jpg" alt="Formación de la Notocorda" class="img-book" loading="lazy">
+      <h2>Capítulo 4: Tercera Semana de Desarrollo (Disco Trilaminar)</h2>
+      <p>La gastrulación establece las tres capas germinativas: Ectodermo, Mesodermo y Endodermo. Ocurre la invaginación de células epiblásticas en la línea primitiva. Se forma la notocorda, la cual induce la neurulación en el ectodermo suprayacente.</p>
+      
+      <div class="img-box">
+        <img src="img_cap-055.jpg" alt="Lámina 055" class="img-book rotate-270" id="img-055">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-055', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-055', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
     </div>
 
     <div class="capitulo">
       <h2>Capítulo 5: Período Embrionario (Semanas 3 a 8 y Organogénesis)</h2>
-      <p>Durante la organogénesis, las tres capas germinativas dan origen a tejidos y órganos específicos:
+      <p>Período de organogénesis donde las 3 capas derivan en órganos específicos:</p>
       <ul>
-        <li><strong>Ectodermo:</strong> Sistema nervioso central y periférico, epidermis, cabello y uñas.</li>
-        <li><strong>Mesodermo:</strong> Músculos, cartílago, hueso, sistema vascular, riñones y gónadas.</li>
-        <li><strong>Endodermo:</strong> Revestimiento epitelial del tubo digestivo, aparato respiratorio y vejiga urinaria.</li>
+        <li><strong>Ectodermo:</strong> SNC, SNP, epidermis, esmalte dental.</li>
+        <li><strong>Mesodermo:</strong> Músculos, hueso, riñones, corazón, gónadas.</li>
+        <li><strong>Endodermo:</strong> Revestimiento del tubo digestivo y respiratorio, hígado, páncreas.</li>
       </ul>
-      El plegamiento cefalocaudal y lateral transforma el disco plano en un embrión de forma cilíndrica.</p>
-      <img src="img_cap-075.jpg" alt="Neurulación y Plegamiento" class="img-book" loading="lazy">
+      
+      <div class="img-box">
+        <img src="img_cap-075.jpg" alt="Lámina 075" class="img-book rotate-270" id="img-075">
+        <div class="controls-bar">
+          <button class="small-btn" onclick="rotateImg('img-075', 90)">↪️ Rotar 90°</button>
+          <button class="small-btn" onclick="rotateImg('img-075', -90)">↩️ Rotar -90°</button>
+        </div>
+      </div>
     </div>
-
   </div>
 
-  <!-- SECCIÓN 2: BANCO DE PREGUNTAS EXTENSO -->
+  <!-- SECCIÓN 2: PRÁCTICA ORAL Y AUDIO (BOCINA + MICRÓFONO EVALUADOR) -->
+  <div id="oral-audio" class="content-section">
+    <h2>🔊 Práctica Oral e Interactivas por Voz</h2>
+    <p>La bocina lee la pregunta. Presiona el micrófono 🎙️ para responder con tu voz. La plataforma evalúa tus palabras clave para verificar si es correcta, sin importar la forma exacta de tu oración.</p>
+
+    <div id="voice-quiz-container">
+      <!-- Se carga dinámicamente -->
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3: CUESTIONARIO EXTENSO DE OPCIÓN MÚLTIPLE -->
   <div id="opcion-multiple" class="content-section">
-    <h2>Banco de Preguntas de Evaluación</h2>
-    
-    <div class="question-card">
-      <p><strong>1. ¿Qué proceso meiótico es responsable de la variabilidad genética entre gametos?</strong></p>
-      <button class="option-btn" onclick="checkAnswer(this, false)">A) Citocinesis</button>
-      <button class="option-btn" onclick="checkAnswer(this, true)">B) Entre cruzamiento (Crossing over) en Profase I</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">C) Separación de cromátidas en Anafase II</button>
-      <span class="feedback"></span>
-    </div>
-
-    <div class="question-card">
-      <p><strong>2. ¿En qué fase de la meiosis se detienen los ovocitos primarios desde el desarrollo fetal hasta la pubertad?</strong></p>
-      <button class="option-btn" onclick="checkAnswer(this, true)">A) Profase I (Diploteno)</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">B) Metafase II</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">C) Telofase I</button>
-      <span class="feedback"></span>
-    </div>
-
-    <div class="question-card">
-      <p><strong>3. ¿Qué estructura secreta la hormona Gonadotropina Coriónica Humana (hCG) para mantener el cuerpo lúteo?</strong></p>
-      <button class="option-btn" onclick="checkAnswer(this, false)">A) Citotrofoblasto</button>
-      <button class="option-btn" onclick="checkAnswer(this, true)">B) Sincitiotrofoblasto</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">C) Hipoblasto</button>
-      <span class="feedback"></span>
-    </div>
-
-    <div class="question-card">
-      <p><strong>4. ¿Cuál es el orden correcto de formación del embrión en la primera semana?</strong></p>
-      <button class="option-btn" onclick="checkAnswer(this, true)">A) Cigoto -> Mórula -> Blastocisto</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">B) Blastocisto -> Mórula -> Cigoto</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">C) Mórula -> Cigoto -> Blastocisto</button>
-      <span class="feedback"></span>
-    </div>
-
-    <div class="question-card">
-      <p><strong>5. El sistema nervioso central se origina a partir de:</strong></p>
-      <button class="option-btn" onclick="checkAnswer(this, true)">A) Ectodermo (Neuroectodermo)</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">B) Mesodermo paraxial</button>
-      <button class="option-btn" onclick="checkAnswer(this, false)">C) Endodermo</button>
-      <span class="feedback"></span>
+    <h2>📝 Cuestionario Ampliado de Embriología</h2>
+    <div id="mc-quiz-container">
+      <!-- Se carga dinámicamente -->
     </div>
   </div>
 
-  <!-- SECCIÓN 3: GALERÍA DE LÁMINAS -->
+  <!-- SECCIÓN 4: PAREOS Y RELACIÓN -->
+  <div id="pareos" class="content-section">
+    <h2>🧩 Ejercicios de Pareo y Relación de Conceptos</h2>
+    <div class="card">
+      <h3>Relaciona la Capa Germinativa con su Derivado:</h3>
+      <div class="pareo-grid">
+        <div>1. Sistema Nervioso Central</div>
+        <div>
+          <select class="pareo-select" id="p1" onchange="checkPareo()">
+            <option value="">--Seleccionar--</option>
+            <option value="ectodermo">Ectodermo</option>
+            <option value="mesodermo">Mesodermo</option>
+            <option value="endodermo">Endodermo</option>
+          </select>
+        </div>
+        <div>2. Músculo Cardíaco y Esquelético</div>
+        <div>
+          <select class="pareo-select" id="p2" onchange="checkPareo()">
+            <option value="">--Seleccionar--</option>
+            <option value="ectodermo">Ectodermo</option>
+            <option value="mesodermo">Mesodermo</option>
+            <option value="endodermo">Endodermo</option>
+          </select>
+        </div>
+        <div>3. Epitelio del Tubo Digestivo</div>
+        <div>
+          <select class="pareo-select" id="p3" onchange="checkPareo()">
+            <option value="">--Seleccionar--</option>
+            <option value="ectodermo">Ectodermo</option>
+            <option value="mesodermo">Mesodermo</option>
+            <option value="endodermo">Endodermo</option>
+          </select>
+        </div>
+      </div>
+      <div id="pareo-feedback" class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5: LLENAR ESPACIOS -->
+  <div id="espacios" class="content-section">
+    <h2>✏️ Ejercicios de Llenar Espacios</h2>
+    <div class="card">
+      <p>1. La fecundación se produce habitualmente en la <input type="text" id="f1" class="fill-input" placeholder="Escribe tu respuesta"> de la trompa de Falopio.</p>
+      <p>2. La hormona producida por el sincitiotrofoblasto es la <input type="text" id="f2" class="fill-input" placeholder="Escribe tu respuesta">.</p>
+      <p>3. El proceso mediante el cual se forman las 3 capas germinativas es la <input type="text" id="f3" class="fill-input" placeholder="Escribe tu respuesta">.</p>
+      <button class="tab-btn" onclick="checkFillIn()">Verificar Respuestas</button>
+      <div id="fill-feedback" class="feedback"></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 6: GALERÍA COMPLETA DE LÁMINAS EN VERTICAL -->
   <div id="galeria-completa" class="content-section">
-    <h2>Láminas e Ilustraciones del Libro (000 - 098)</h2>
-    <p>Todas las imágenes ordenadas cronológicamente:</p>
+    <h2>🖼️ Láminas e Ilustraciones del Libro (000 - 098)</h2>
+    <p>Todas las imágenes orientadas verticalmente. Usa los botones de rotación si deseas ajustar alguna en específico:</p>
     <div id="galeria-dinamica"></div>
   </div>
 
   <script>
+    // Cambio de pestañas
     function showTab(tabId) {
       document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      
       document.getElementById(tabId).classList.add('active');
       event.currentTarget.classList.add('active');
     }
 
-    function checkAnswer(btn, isCorrect) {
-      const parent = btn.parentElement;
-      const feedback = parent.querySelector('.feedback');
-      feedback.style.display = 'block';
-      if(isCorrect) {
-        feedback.style.color = 'green';
-        feedback.innerText = '¡Correcto!';
+    // Rotación de imágenes
+    let currentRotations = {};
+    function rotateImg(id, deg) {
+      if (!currentRotations[id]) currentRotations[id] = 270; // Orientación inicial vertical
+      currentRotations[id] = (currentRotations[id] + deg) % 360;
+      const img = document.getElementById(id);
+      img.style.transform = `rotate(${currentRotations[id]}deg)`;
+      img.style.margin = (currentRotations[id] % 180 !== 0) ? "60px auto" : "10px auto";
+    }
+
+    // Datos del Banco de Preguntas Verbales / Orales (Micrófono + Bocina)
+    const voiceQuestions = [
+      {
+        q: "¿Dónde ocurre habitualmente la fecundación?",
+        keywords: ["ampolla", "ampollar", "trompa", "falopio"],
+        hint: "Pista: Ocurre en una región dilatada de las trompas uterinas."
+      },
+      {
+        q: "¿Qué estructura produce la hormona gonadotropina coriónica humana o hCG?",
+        keywords: ["sincitiotrofoblasto", "sincitio"],
+        hint: "Pista: Capa externa multinucleada del trofoblasto."
+      },
+      {
+        q: "¿Cómo se llama el proceso de formación de las tres capas germinativas?",
+        keywords: ["gastrulación", "gastrulacion"],
+        hint: "Pista: Inicia en la tercera semana con la línea primitiva."
+      },
+      {
+        q: "¿En qué etapa de la meiosis se detienen los ovocitos primarios hasta la pubertad?",
+        keywords: ["profase", "profase 1", "diploteno"],
+        hint: "Pista: Es la primera fase de la meiosis I."
+      },
+      {
+        q: "¿Qué capa germinativa da origen al sistema nervioso central?",
+        keywords: ["ectodermo", "neuroectodermo"],
+        hint: "Pista: Capa externa del disco trilaminar."
+      }
+    ];
+
+    // Cargar Banco de Preguntas Orales
+    const vContainer = document.getElementById('voice-quiz-container');
+    voiceQuestions.forEach((item, index) => {
+      vContainer.innerHTML += `
+        <div class="card">
+          <h3>Pregunta ${index + 1}: ${item.q}</h3>
+          <div class="audio-controls">
+            <button class="btn-audio" onclick="speakText('${item.q}')">🔊 Escuchar Pregunta</button>
+            <button class="btn-mic" id="mic-btn-${index}" onclick="startListening(${index})">🎙️ Responder con Voz</button>
+          </div>
+          <p id="speech-result-${index}" style="font-style:italic; color:#555; margin: 5px 0;">Tu respuesta aparecerá aquí...</p>
+          <div id="voice-feedback-${index}" class="feedback"></div>
+        </div>
+      `;
+    });
+
+    // Lector de voz (Bocina)
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
       } else {
-        feedback.style.color = 'red';
-        feedback.innerText = 'Incorrecto. Intenta de nuevo.';
+        alert("Tu navegador no soporta síntesis de voz.");
       }
     }
 
-    // Cargar las 99 láminas
+    // Reconocimiento de voz (Micrófono)
+    function startListening(index) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        alert("El reconocimiento de voz no está soportado en este navegador. Intenta con Chrome o Samsung Internet.");
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'es-ES';
+      recognition.interimResults = false;
+
+      const micBtn = document.getElementById(`mic-btn-${index}`);
+      const resultTxt = document.getElementById(`speech-result-${index}`);
+      const feedback = document.getElementById(`voice-feedback-${index}`);
+
+      micBtn.classList.add('listening');
+      micBtn.innerText = '🎙️ Escuchando...';
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript.toLowerCase();
+        resultTxt.innerText = `Dijiste: "${transcript}"`;
+        
+        // Evaluación semántica por palabras clave
+        const expected = voiceQuestions[index].keywords;
+        const isCorrect = expected.some(kw => transcript.includes(kw));
+
+        if (isCorrect) {
+          feedback.className = 'feedback success';
+          feedback.innerText = '¡Excelente! Tu respuesta es correcta y conceptualmente acertada.';
+          speakText("¡Excelente! Tu respuesta es correcta.");
+        } else {
+          feedback.className = 'feedback error';
+          feedback.innerText = `Incorrecto o incompleto. ${voiceQuestions[index].hint}`;
+          speakText("Respuesta incorrecta. Revisa la pista.");
+        }
+        micBtn.classList.remove('listening');
+        micBtn.innerText = '🎙️ Responder con Voz';
+      };
+
+      recognition.onerror = function() {
+        resultTxt.innerText = 'No se logró captar el audio. Intenta de nuevo.';
+        micBtn.classList.remove('listening');
+        micBtn.innerText = '🎙️ Responder con Voz';
+      };
+    }
+
+    // Cuestionario Extenso
+    const mcQuestions = [
+      { q: "1. ¿En qué sitio de la trompa de Falopio se realiza habitualmente la fecundación?", options: ["Ampolla", "Istmo", "Infundíbulo", "Útero"], correct: 0 },
+      { q: "2. ¿Cuántos cromosomas posee un gameto humano haploide?", options: ["46 cromosomas", "23 cromosomas", "22 cromosomas", "44 cromosomas"], correct: 1 },
+      { q: "3. La reacción acrosómica se desencadena al unirse el espermatozoide a:", options: ["La teca interna", "La zona pelúcida (ZP3)", "La corona radiada", "El epiblasto"], correct: 1 },
+      { q: "4. La masa celular interna del blastocisto origina:", options: ["La placenta", "El embrioblasto / embrión", "El trofoblasto", "El corion"], correct: 1 },
+      { q: "5. ¿En qué día aproximado tras la fecundación inicia la implantación del blastocisto?", options: ["Día 1", "Día 6 - 7", "Día 14", "Día 21"], correct: 1 },
+      { q: "6. El disco germinativo bilaminar está constituido por:", options: ["Ectodermo y Mesodermo", "Epiblasto e Hipoblasto", "Endodermo y Trofoblasto", "Sincitio y Citotrofoblasto"], correct: 1 },
+      { q: "7. La gastrulación da inicio con la aparición de:", options: ["El tubo neural", "La línea primitiva", "Los somitas", "El corazón tubular"], correct: 1 },
+      { q: "8. ¿Qué estructura actúa como inductor de la neurulación?", options: ["La notocorda", "El hipoblasto", "El alantoides", "El amnios"], correct: 0 },
+      { q: "9. El aparato cardiovascular y los músculos derivan principalmente del:", options: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], correct: 1 },
+      { q: "10. Las células de la cresta neural se consideran a menudo como:", options: ["Cuarta capa germinativa", "Células del hipoblasto", "Derivados endodérmicos", "Tejido placental"], correct: 0 }
+    ];
+
+    const mcContainer = document.getElementById('mc-quiz-container');
+    mcQuestions.forEach((q, idx) => {
+      let opts = q.options.map((opt, oIdx) => 
+        `<button class="option-btn" onclick="checkMC(${idx}, ${oIdx})">${String.fromCharCode(65+oIdx)}) ${opt}</button>`
+      ).join('');
+      mcContainer.innerHTML += `
+        <div class="card">
+          <h3>${q.q}</h3>
+          ${opts}
+          <div id="mc-fb-${idx}" class="feedback"></div>
+        </div>
+      `;
+    });
+
+    function checkMC(qIdx, optIdx) {
+      const fb = document.getElementById(`mc-fb-${qIdx}`);
+      if (optIdx === mcQuestions[qIdx].correct) {
+        fb.className = 'feedback success';
+        fb.innerText = '¡Correcto!';
+      } else {
+        fb.className = 'feedback error';
+        fb.innerText = 'Incorrecto, vuelve a intentarlo.';
+      }
+    }
+
+    // Pareos
+    function checkPareo() {
+      const p1 = document.getElementById('p1').value;
+      const p2 = document.getElementById('p2').value;
+      const p3 = document.getElementById('p3').value;
+      const fb = document.getElementById('pareo-feedback');
+
+      if (p1 === 'ectodermo' && p2 === 'mesodermo' && p3 === 'endodermo') {
+        fb.className = 'feedback success';
+        fb.innerText = '¡Excelente! Todos los pareos son correctos.';
+      } else {
+        fb.className = 'feedback error';
+        fb.innerText = 'Hay selecciones incorrectas. Revisa tus respuestas.';
+      }
+    }
+
+    // Llenar espacios
+    function checkFillIn() {
+      const f1 = document.getElementById('f1').value.toLowerCase().trim();
+      const f2 = document.getElementById('f2').value.toLowerCase().trim();
+      const f3 = document.getElementById('f3').value.toLowerCase().trim();
+      const fb = document.getElementById('fill-feedback');
+
+      const c1 = f1.includes('ampolla');
+      const c2 = f2.includes('hcg') || f2.includes('gonadotropina');
+      const c3 = f3.includes('gastrulación') || f3.includes('gastrulacion');
+
+      if (c1 && c2 && c3) {
+        fb.className = 'feedback success';
+        fb.innerText = '¡Respuestas correctas!';
+      } else {
+        fb.className = 'feedback error';
+        fb.innerText = 'Revisa tus respuestas. Recuerda: 1. Ampolla, 2. hCG / Gonadotropina, 3. Gastrulación.';
+      }
+    }
+
+    // Cargar Láminas en Vertical (Galería Completa 000 a 098)
     const galeria = document.getElementById('galeria-dinamica');
     for (let i = 0; i <= 98; i++) {
       let num = String(i).padStart(3, '0');
-      let img = document.createElement('img');
-      img.src = `img_cap-${num}.jpg`;
-      img.alt = `Lámina ${num}`;
-      img.className = 'img-book';
-      img.loading = "lazy";
-      galeria.appendChild(img);
+      galeria.innerHTML += `
+        <div class="galeria-item">
+          <h4>Lámina ${num}</h4>
+          <img src="img_cap-${num}.jpg" alt="Lámina ${num}" class="img-book rotate-270" id="gal-${num}">
+          <div class="controls-bar">
+            <button class="small-btn" onclick="rotateImg('gal-${num}', 90)">↪️ Rotar 90°</button>
+            <button class="small-btn" onclick="rotateImg('gal-${num}', -90)">↩️ Rotar -90°</button>
+          </div>
+        </div>
+      `;
     }
   </script>
-
 </body>
 </html>
