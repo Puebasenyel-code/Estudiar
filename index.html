@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embriología Médica - Plataforma Extensa</title>
+  <title>Embriología Médica - Langman</title>
   <style>
     :root {
       --primary: #d63384;
@@ -13,12 +13,11 @@
       --bg: #f8f9fa;
       --success: #28a745;
       --error: #dc3545;
-      --warning: #ffc107;
     }
     * { box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; line-height: 1.5; }
     header { text-align: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    h1 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.4rem; }
+    h1 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.3rem; }
     p.subtitle { margin: 0; color: #666; font-size: 0.85rem; }
     
     .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 15px; }
@@ -30,15 +29,17 @@
     
     .capitulo { margin-bottom: 25px; border-bottom: 2px solid var(--primary-light); padding-bottom: 15px; text-align: left; }
     .capitulo h2 { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 8px; font-size: 1.1rem; }
+    .capitulo ul { padding-left: 20px; }
+    .capitulo li { margin-bottom: 8px; font-size: 0.95rem; }
     
     .card { background: var(--primary-light); padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: left; border: 1px solid #f2d6e0; }
     .card h3 { margin-top: 0; color: var(--primary-dark); font-size: 0.95rem; }
     .option-btn { display: block; width: 100%; text-align: left; padding: 10px; margin: 6px 0; border: 1px solid #ccc; background: white; border-radius: 8px; cursor: pointer; font-size: 0.9rem; }
     .option-btn:hover { background: #f0f0f0; }
     
-    .feedback { font-weight: bold; margin-top: 8px; padding: 8px; border-radius: 6px; display: none; font-size: 0.85rem; }
-    .feedback.success { background: #d4edda; color: #155724; display: block; }
-    .feedback.error { background: #f8d7da; color: #721c24; display: block; }
+    .feedback { font-weight: bold; margin-top: 8px; padding: 10px; border-radius: 6px; display: none; font-size: 0.9rem; }
+    .feedback.success { background: #d4edda; color: #155724; display: block; border: 1px solid #c3e6cb; }
+    .feedback.error { background: #f8d7da; color: #721c24; display: block; border: 1px solid #f5c6cb; }
 
     .audio-controls { display: flex; gap: 6px; align-items: center; margin: 10px 0; flex-wrap: wrap; }
     .btn-action { border: none; padding: 8px 12px; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 0.8rem; color: white; display: inline-flex; align-items: center; gap: 4px; }
@@ -47,7 +48,6 @@
     .btn-stop { background: #dc3545; }
     .btn-send { background: #0d6efd; }
     .btn-retry { background: #ffc107; color: #000; }
-    
     .btn-action:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .voice-input-box { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; margin-top: 5px; font-size: 0.9rem; }
@@ -64,71 +64,98 @@
 <body>
 
   <header>
-    <h1>Embriología Médica - Plataforma de Repaso Intensivo</h1>
-    <p class="subtitle">Langman 14.ª Edición - Capítulos 1 al 5 (Banco Masivo de Preguntas)</p>
+    <h1>Embriología Médica - Repaso Completo</h1>
+    <p class="subtitle">Langman 14.ª Edición - Capítulos 1 al 5</p>
   </header>
 
   <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría</button>
-    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 2. Preguntas de Voz (70)</button>
-    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 3. Cuestionario (70)</button>
-    <button class="tab-btn" onclick="showTab('pareos')">🧩 4. Pareos (70)</button>
-    <button class="tab-btn" onclick="showTab('espacios')">✏️ 5. Llenar Espacios (70)</button>
+    <button class="tab-btn active" onclick="showTab('teoria')">1. Teoría Extensa</button>
+    <button class="tab-btn" onclick="showTab('oral-audio')">🎙️ 2. Preguntas de Voz</button>
+    <button class="tab-btn" onclick="showTab('opcion-multiple')">📝 3. Cuestionario</button>
+    <button class="tab-btn" onclick="showTab('pareos')">🧩 4. Pareos</button>
+    <button class="tab-btn" onclick="showTab('espacios')">✏️ 5. Llenar Espacios</button>
     <button class="tab-btn" onclick="showTab('galeria-completa')">🖼️ 6. Láminas (000-098)</button>
   </div>
 
   <!-- SECCIÓN 1: TEORÍA DETALLADA -->
   <div id="teoria" class="content-section active">
     <div class="capitulo">
-      <h2>Capítulo 1: Gametogénesis</h2>
-      <p>Las Células Germinales Primordiales (CGP) migran del epiblasto al saco vitelino y luego a las gónadas. Ocurre meiosis I y II. La meiosis I en mujeres se detiene en profase I (diploteno) hasta la pubertad por acción del OMI.</p>
+      <h2>Capítulo 1: Gametogénesis (Transformación de Células Germinales)</h2>
+      <ul>
+        <li><b>Origen de CGP:</b> Las Células Germinales Primordiales se originan en el epiblasto durante la 2.ª semana, migran a la pared del saco vitelino y en la 5.ª semana llegan a las gónadas en desarrollo.</li>
+        <li><b>Ovogénesis:</b> Las ovogonias proliferan por mitosis. Los ovocitos primarios inician la Meiosis I y se detienen en la etapa de <b>diploteno de la profase I</b> debido al Inhibidor de la Maduración del Ovocito (OMI). Reanudan la meiosis en la pubertad bajo el estímulo de la LH.</li>
+        <li><b>Detención en Meiosis II:</b> La Meiosis II se completa únicamente si ocurre la fecundación. Si no, se detiene en <b>metafase II</b>.</li>
+        <li><b>Espermatogénesis:</b> Inicia en la pubertad en los túbulos seminíferos. Las espermatogonias tipo A pasan a tipo B, luego a espermatocitos primarios (meiosis I), secundarios (meiosis II) y espermátides. La espermiogénesis transforma espermátides en espermatozoides (formación del acrosoma, condensación del núcleo, cuello y cola).</li>
+      </ul>
     </div>
+
     <div class="capitulo">
-      <h2>Capítulo 2: Primera Semana</h2>
-      <p>Ovulación impulsada por LH. Fecundación en la ampolla. Fases: penetración de corona radiada, zona pelúcida y fusión. Formación de mórula (16 células) y blastocisto.</p>
+      <h2>Capítulo 2: Primera Semana de Desarrollo (De la Ovulación a la Implantación)</h2>
+      <ul>
+        <li><b>Ovulación:</b> Estimulada por el pico de Hormona Luteinizante (LH). El folículo de Graaf se rompe liberando el ovocito secundario con la zona pelúcida y la corona radiada.</li>
+        <li><b>Fecundación:</b> Ocurre en la <b>ampolla de la trompa de Falopio</b> (o trompas de Falopio). Pasos: 1) Penetración de la corona radiada, 2) Penetración de la zona pelúcida (reacción de zona), 3) Fusión de membranas plasmáticas.</li>
+        <li><b>Segmentación:</b> Divisiones mitóticas del cigoto. Formación de la <b>Mórula</b> (16 células) alrededor del día 3-4.</li>
+        <li><b>Blastocisto:</b> Ingresa cavidad uterina. Compuesto por Embrioblasto (masa celular interna -> embrión) y Trofoblasto (masa celular externa -> placenta). La implantación se inicia hacia el día 6.</li>
+      </ul>
     </div>
+
     <div class="capitulo">
-      <h2>Capítulo 3: Segunda Semana</h2>
-      <p>Disco bilaminar (epiblasto e hipoblasto). Trofoblasto se divide en citotrofoblasto y sincitiotrofoblasto (secreta hCG). Desarrollo del saco vitelino y amnios.</p>
+      <h2>Capítulo 3: Segunda Semana de Desarrollo (Disco Germinativo Bilaminar)</h2>
+      <ul>
+        <li><b>Regla de los "Doses":</b> Se forman 2 capas trofoblásticas (Citotrofoblasto y Sincitiotrofoblasto), 2 capas del embrioblasto (Epiblasto e Hipoblasto), 2 cavidades (Amniótica y Saco Vitelino).</li>
+        <li><b>Sincitiotrofoblasto:</b> Capa multinucleada erosionante que produce la hormona <b>hCG</b> (Gonadotropina Coriónica Humana), base de las pruebas de embarazo.</li>
+        <li><b>Reacción Decidual:</b> Las células estromales del endometrio se llenan de glucógeno y lípidos para nutrir al embrión.</li>
+      </ul>
     </div>
+
     <div class="capitulo">
-      <h2>Capítulo 4: Tercera Semana</h2>
-      <p>Gastrulación por la línea primitiva (Ectodermo, Mesodermo, Endodermo). Formación de la notocorda e inducción de la placa neural (neurulación).</p>
+      <h2>Capítulo 4: Tercera Semana de Desarrollo (Disco Germinativo Trilaminar)</h2>
+      <ul>
+        <li><b>Gastrulación:</b> Proceso clave donde se forman las 3 capas germinativas (Ectodermo, Mesodermo y Endodermo) a través de la <b>línea primitiva</b>.</li>
+        <li><b>Notocorda:</b> Estructura axial fundamental que induce la formación de la placa neural y el tubo neural (Neurulación).</li>
+        <li><b>Evolución del Mesodermo:</b> Se divide en Mesodermo Paraxial (somitas), Mesodermo Intermedio (sistema urogenital) y Mesodermo Lateral (paredes corporales y cavidades).</li>
+      </ul>
     </div>
+
     <div class="capitulo">
-      <h2>Capítulo 5: Organogénesis</h2>
-      <p>Semanas 3 a 8. Formación de somitas (mesodermo paraxial), sistema urogenital (mesodermo intermedio) y tubo digestivo (endodermo).</p>
+      <h2>Capítulo 5: Período Embrionario (Semanas 3 a 8 - Organogénesis)</h2>
+      <ul>
+        <li><b>Ectodermo:</b> Origina el SNC, SNP, epidermis, pelo, uñas y esmalte dental. La cresta neural origina ganglios, melanocitos y tabique troncocónico.</li>
+        <li><b>Cierre de Neuroporos:</b> El neuroporo anterior o craneal se cierra aproximadamente el <b>día 25</b>; el posterior o caudal se cierra el <b>día 28</b>.</li>
+        <li><b>Mesodermo:</b> Somitas originan esclerotoma (vértebras/costillas), dermatoma (dermis) y miotoma (músculos). Mesodermo intermedio origina riñones y gónadas.</li>
+        <li><b>Endodermo:</b> Origina el revestimiento epitelial del tubo digestivo, aparato respiratorio, vejiga, hígado y páncreas.</li>
+      </ul>
     </div>
   </div>
 
   <!-- SECCIÓN 2: VOZ -->
   <div id="oral-audio" class="content-section">
-    <h2>🎙️ Práctica Oral por Voz (70 Preguntas)</h2>
-    <p>Puedes presionar <b>Grabar</b>, hablar, y luego presionar <b>Parar</b>. Si deseas corregir, presiona <b>Volver a Grabar</b> o escribe directamente en el campo de texto antes de presionar <b>Enviar Respuesta</b>.</p>
+    <h2>🎙️ Práctica Oral por Voz</h2>
+    <p>Presiona <b>Grabar</b>, habla tu respuesta y luego presiona <b>Enviar Respuesta</b> o <b>Parar</b> para verificar tu resultado.</p>
     <div id="voice-quiz-container"></div>
   </div>
 
   <!-- SECCIÓN 3: CUESTIONARIO -->
   <div id="opcion-multiple" class="content-section">
-    <h2>📝 Cuestionario de Opción Múltiple (70 Preguntas)</h2>
+    <h2>📝 Cuestionario de Opción Múltiple</h2>
     <div id="mc-quiz-container"></div>
   </div>
 
   <!-- SECCIÓN 4: PAREOS -->
   <div id="pareos" class="content-section">
-    <h2>🧩 Ejercicios de Pareo (70 Términos)</h2>
+    <h2>🧩 Ejercicios de Pareo</h2>
     <div id="pareos-container"></div>
   </div>
 
   <!-- SECCIÓN 5: LLENAR ESPACIOS -->
   <div id="espacios" class="content-section">
-    <h2>✏️ Ejercicios de Llenar Espacios (70 Preguntas)</h2>
+    <h2>✏️ Ejercicios de Llenar Espacios</h2>
     <div id="fill-container"></div>
   </div>
 
   <!-- SECCIÓN 6: GALERÍA -->
   <div id="galeria-completa" class="content-section">
-    <h2>🖼️️ Láminas del Libro (000 - 098)</h2>
+    <h2>🖼️ Láminas del Libro (000 - 098)</h2>
     <div id="galeria-dinamica"></div>
   </div>
 
@@ -140,60 +167,46 @@
       event.currentTarget.classList.add('active');
     }
 
-    // BASE DE DATOS EXTENSA
-    const conceptosBase = [
-      { q: "¿Dónde ocurre la fecundación?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa", "Útero", "Ovario", "Cérvix"], c: 0, fill: "ampolla" },
-      { q: "¿Qué estructura produce la hCG?", k: ["sincitiotrofoblasto", "sincitio"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Amnios"], c: 1, fill: "sincitiotrofoblasto" },
-      { q: "¿Proceso de formación de las 3 capas germinativas?", k: ["gastrulación", "gastrulacion"], o: ["Neurulación", "Gastrulación", "Segmentación", "Implantación"], c: 1, fill: "gastrulación" },
-      { q: "¿Etapa de detención meiótica del ovocito primario?", k: ["diploteno", "profase"], o: ["Diploteno", "Metafase II", "Anafase", "Telofase"], c: 0, fill: "diploteno" },
-      { q: "¿Estructura que induce la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
-      { q: "¿Capa germinativa del tubo digestivo?", k: ["endodermo"], o: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], c: 2, fill: "endodermo" },
-      { q: "¿Resultado celular de la unión de gametos?", k: ["cigoto", "zigoto"], o: ["Mórula", "Blastocisto", "Cigoto", "Gástrula"], c: 2, fill: "cigoto" },
-      { q: "¿Estructura de 16 células en la 1.ª semana?", k: ["mórula", "morula"], o: ["Blastocisto", "Mórula", "Cigoto", "Blástula"], c: 1, fill: "mórula" },
-      { q: "¿De dónde migran las células germinales primordiales?", k: ["epiblasto"], o: ["Epiblasto", "Hipoblasto", "Endodermo", "Sincitio"], c: 0, fill: "epiblasto" },
-      { q: "¿Cierre del neuroporo anterior ocurre el día?", k: ["25", "veinticinco"], o: ["Día 20", "Día 25", "Día 28", "Día 32"], c: 1, fill: "25" },
-      { q: "¿Cierre del neuroporo posterior ocurre el día?", k: ["28", "veintiocho"], o: ["Día 25", "Día 28", "Día 30", "Día 35"], c: 1, fill: "28" },
-      { q: "¿Capa del trofoblasto mononucleada interna?", k: ["citotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Mesodermo"], c: 0, fill: "citotrofoblasto" },
-      { q: "¿Capa embrionaria que da origen a la epidermis?", k: ["ectodermo"], o: ["Endodermo", "Ectodermo", "Mesodermo", "Cresta neural"], c: 1, fill: "ectodermo" },
-      { q: "¿Origen mesodérmico de los somitas?", k: ["paraxial"], o: ["Mesodermo paraxial", "Mesodermo intermedio", "Mesodermo lateral", "Axial"], c: 0, fill: "paraxial" },
-      { q: "¿Origen del sistema urogenital?", k: ["intermedio"], o: ["Mesodermo paraxial", "Mesodermo intermedio", "Endodermo", "Ectodermo"], c: 1, fill: "intermedio" }
+    // BANCO DE PREGUNTAS ÚNICAS Y EXTENSAS (SIN REPETICIONES P1, P2)
+    const bancoPreguntas = [
+      { id: 1, q: "¿Dónde ocurre habitualmente la fecundación?", k: ["ampolla", "trompa", "trompas", "trompa de falopio", "trompas de falopio"], o: ["Ampolla de la trompa de Falopio", "Cuerpo uterino", "Ovario", "Cérvix"], c: 0, fill: "trompa de falopio" },
+      { id: 2, q: "¿Qué estructura embrionaria produce la hormona hCG?", k: ["sincitiotrofoblasto", "sincitio"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Amnios"], c: 1, fill: "sincitiotrofoblasto" },
+      { id: 3, q: "¿Cómo se llama el proceso de formación de las tres capas germinativas?", k: ["gastrulación", "gastrulacion"], o: ["Neurulación", "Gastrulación", "Segmentación", "Implantación"], c: 1, fill: "gastrulación" },
+      { id: 4, q: "¿En qué fase de la meiosis se detienen los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Anafase I", "Telofase II"], c: 0, fill: "diploteno" },
+      { id: 5, q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" },
+      { id: 6, q: "¿Qué capa germinativa da origen al revestimiento del tubo digestivo?", k: ["endodermo"], o: ["Ectodermo", "Mesodermo", "Endodermo", "Cresta neural"], c: 2, fill: "endodermo" },
+      { id: 7, q: "¿Cómo se denomina la masa de 16 células formada al día 3-4 post-fecundación?", k: ["mórula", "morula"], o: ["Blastocisto", "Mórula", "Cigoto", "Gástrula"], c: 1, fill: "mórula" },
+      { id: 8, q: "¿De qué capa embrionaria proceden las Células Germinales Primordiales?", k: ["epiblasto"], o: ["Epiblasto", "Hipoblasto", "Endodermo", "Sincitio"], c: 0, fill: "epiblasto" },
+      { id: 9, q: "¿En qué día de desarrollo se cierra aproximadamente el neuroporo anterior?", k: ["25", "veinticinco"], o: ["Día 20", "Día 25", "Día 28", "Día 32"], c: 1, fill: "25" },
+      { id: 10, q: "¿En qué día se cierra aproximadamente el neuroporo posterior?", k: ["28", "veintiocho"], o: ["Día 25", "Día 28", "Día 30", "Día 35"], c: 1, fill: "28" },
+      { id: 11, q: "¿Qué capa celular interna del trofoblasto presenta actividad mitótica?", k: ["citotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Mesodermo"], c: 0, fill: "citotrofoblasto" },
+      { id: 12, q: "¿Qué estructura da origen al sistema nervioso central y periférico?", k: ["ectodermo"], o: ["Endodermo", "Ectodermo", "Mesodermo", "Endocardio"], c: 1, fill: "ectodermo" },
+      { id: 13, q: "¿Qué subdivisión del mesodermo origina los somitas?", k: ["paraxial", "mesodermo paraxial"], o: ["Mesodermo paraxial", "Mesodermo intermedio", "Mesodermo lateral", "Mesodermo axial"], c: 0, fill: "paraxial" },
+      { id: 14, q: "¿Qué subdivisión mesodérmica origina el sistema urogenital?", k: ["intermedio", "mesodermo intermedio"], o: ["Mesodermo paraxial", "Mesodermo intermedio", "Endodermo", "Ectodermo"], c: 1, fill: "intermedio" },
+      { id: 15, q: "¿En qué etapa se detiene la meiosis II del ovocito hasta la fecundación?", k: ["metafase", "metafase ii", "metafase 2"], o: ["Diploteno", "Metafase II", "Profase II", "Telofase I"], c: 1, fill: "metafase ii" },
+      { id: 16, q: "¿Qué estructura marca el inicio de la gastrulación en el epiblasto?", k: ["línea primitiva", "linea primitiva"], o: ["Línea primitiva", "Placa neural", "Notocorda", "Surco neural"], c: 0, fill: "línea primitiva" },
+      { id: 17, q: "¿Cómo se denomina la transformación de espermátides a espermatozoides?", k: ["espermiogénesis", "espermiogenesis"], o: ["Espermatogénesis", "Espermiogénesis", "Mitosis", "Meiosis"], c: 1, fill: "espermiogénesis" },
+      { id: 18, q: "¿Qué cavidad se forma en el interior del epiblasto durante la segunda semana?", k: ["amniótica", "cavidad amniotica", "amnios"], o: ["Saco vitelino", "Cavidad amniótica", "Celoma intraembrionario", "Blastocele"], c: 1, fill: "cavidad amniótica" },
+      { id: 19, q: "¿Qué hormona desencadena de forma directa la ovulación?", k: ["lh", "hormona luteinizante"], o: ["FSH", "LH", "Estrógeno", "Progesterona"], c: 1, fill: "lh" },
+      { id: 20, q: "¿Qué células originan las células musculares, óseas y dérmicas a partir del somita?", k: ["miotoma", "esclerotoma", "dermatoma", "somitas"], o: ["Esclerotoma, miotoma y dermatoma", "Citotrofoblasto", "Epiblasto", "Hipoblasto"], c: 0, fill: "esclerotoma" }
     ];
 
-    // GENERADOR DE 70 PREGUNTAS COMPLETAS
-    function generarBanco(total) {
-      let banco = [];
-      for (let i = 0; i < total; i++) {
-        let base = conceptosBase[i % conceptosBase.length];
-        banco.push({
-          id: i + 1,
-          q: `${base.q} (P${i+1})`,
-          k: base.k,
-          o: base.o,
-          c: base.c,
-          fill: base.fill
-        });
-      }
-      return banco;
-    }
-
-    const banco70 = generarBanco(70);
-
-    // ------------------- SECCIÓN VOZ (SOPORTE MEJORADO) -------------------
+    // ------------------- SECCIÓN VOZ (MÁXIMA PRECISIÓN Y EVALUACIÓN DIRECTA) -------------------
     const voiceContainer = document.getElementById('voice-quiz-container');
     let currentRecognitions = {};
 
-    banco70.forEach((item, idx) => {
+    bancoPreguntas.forEach((item, idx) => {
       voiceContainer.innerHTML += `
         <div class="card">
           <h3>Pregunta ${item.id}: ${item.q}</h3>
           <div class="audio-controls">
             <button class="btn-action btn-audio" onclick="speakText('${item.q}')">🔊 Escuchar</button>
             <button class="btn-action btn-start" id="btn-start-${idx}" onclick="startVoice(${idx})">🎙️ Grabar</button>
-            <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopVoice(${idx})" disabled>🛑 Parar</button>
+            <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopAndEvaluate(${idx})" disabled>🛑 Parar</button>
             <button class="btn-action btn-retry" id="btn-retry-${idx}" onclick="retryVoice(${idx})">🔄 Volver a Grabar</button>
             <button class="btn-action btn-send" onclick="submitVoice(${idx})">📤 Enviar Respuesta</button>
           </div>
-          <input type="text" id="voice-input-${idx}" class="voice-input-box" placeholder="Tu respuesta hablada o escrita aparecerá aquí...">
+          <input type="text" id="voice-input-${idx}" class="voice-input-box" placeholder="Habla o escribe tu respuesta aquí...">
           <div id="voice-fb-${idx}" class="feedback"></div>
         </div>
       `;
@@ -211,7 +224,7 @@
     function startVoice(idx) {
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (!SpeechRecognition) {
-        alert("El navegador no soporta reconocimiento de voz. Puedes escribir tu respuesta manualmente.");
+        alert("Tu navegador no soporta entrada de voz. Puedes escribir tu respuesta manualmente.");
         return;
       }
 
@@ -243,7 +256,7 @@
       };
 
       rec.onerror = function() {
-        input.placeholder = "Error al escuchar. Intenta de nuevo o escribe manualmente.";
+        input.placeholder = "Escribe tu respuesta manualmente aquí.";
         btnStart.disabled = false;
         btnStop.disabled = true;
       };
@@ -257,47 +270,56 @@
       rec.start();
     }
 
-    function stopVoice(idx) {
+    function stopAndEvaluate(idx) {
       if (currentRecognitions[idx]) {
         currentRecognitions[idx].stop();
-        document.getElementById(`btn-start-${idx}`).disabled = false;
-        document.getElementById(`btn-stop-${idx}`).disabled = true;
       }
+      document.getElementById(`btn-start-${idx}`).disabled = false;
+      document.getElementById(`btn-stop-${idx}`).disabled = true;
+      submitVoice(idx);
     }
 
     function retryVoice(idx) {
-      stopVoice(idx);
+      if (currentRecognitions[idx]) {
+        currentRecognitions[idx].abort();
+      }
       document.getElementById(`voice-input-${idx}`).value = '';
-      document.getElementById(`voice-fb-${idx}`).className = 'feedback';
-      document.getElementById(`voice-fb-${idx}`).style.display = 'none';
+      const fb = document.getElementById(`voice-fb-${idx}`);
+      fb.className = 'feedback';
+      fb.style.display = 'none';
       startVoice(idx);
     }
 
     function submitVoice(idx) {
-      stopVoice(idx);
+      if (currentRecognitions[idx]) {
+        currentRecognitions[idx].stop();
+      }
+      document.getElementById(`btn-start-${idx}`).disabled = false;
+      document.getElementById(`btn-stop-${idx}`).disabled = true;
+
       const val = document.getElementById(`voice-input-${idx}`).value.toLowerCase().trim();
       const fb = document.getElementById(`voice-fb-${idx}`);
-      const keywords = banco70[idx].k;
+      const keywords = bancoPreguntas[idx].k;
 
       if (!val) {
         fb.className = 'feedback error';
-        fb.innerText = 'Por favor habla o escribe una respuesta antes de enviar.';
+        fb.innerText = 'No se detectó audio ni texto. Escribe o habla tu respuesta.';
         return;
       }
 
       const hit = keywords.some(kw => val.includes(kw));
       if (hit) {
         fb.className = 'feedback success';
-        fb.innerText = '¡Respuesta Correcta!';
+        fb.innerText = '¡Correcto!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = `Incorrecto. Palabras clave esperadas: ${keywords.join(', ')}`;
+        fb.innerText = `Incorrecto (${bancoPreguntas[idx].fill})`;
       }
     }
 
-    // ------------------- SECCIÓN CUESTIONARIO (70) -------------------
+    // ------------------- SECCIÓN CUESTIONARIO -------------------
     const mcContainer = document.getElementById('mc-quiz-container');
-    banco70.forEach((item, idx) => {
+    bancoPreguntas.forEach((item, idx) => {
       let optsHtml = item.o.map((o, oIdx) => 
         `<button class="option-btn" onclick="checkMC(${idx}, ${oIdx})">${String.fromCharCode(65+oIdx)}) ${o}</button>`
       ).join('');
@@ -313,28 +335,28 @@
 
     function checkMC(qIdx, optIdx) {
       const fb = document.getElementById(`mc-fb-${qIdx}`);
-      if (optIdx === banco70[qIdx].c) {
+      if (optIdx === bancoPreguntas[qIdx].c) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = 'Incorrecto. Vuelve a intentarlo.';
+        fb.innerText = 'Incorrecto. Intenta de nuevo.';
       }
     }
 
-    // ------------------- SECCIÓN PAREOS (70) -------------------
+    // ------------------- SECCIÓN PAREOS -------------------
     const pareosContainer = document.getElementById('pareos-container');
-    let pareoGroupHtml = '<div class="card"><h3>Relaciona los conceptos de Embriología:</h3><div class="pareo-grid">';
+    let pareoGroupHtml = '<div class="card"><h3>Relaciona cada pregunta con su concepto correspondiente:</h3><div class="pareo-grid">';
     
-    banco70.forEach((item, idx) => {
+    bancoPreguntas.forEach((item, idx) => {
       pareoGroupHtml += `
         <div><b>${item.id}.</b> ${item.q}</div>
         <div>
           <select class="pareo-select" id="pareo-sel-${idx}" onchange="checkSinglePareo(${idx})">
             <option value="">--Seleccionar--</option>
             <option value="${item.fill}">${item.o[item.c]}</option>
-            <option value="incorrecto_1">Opción Incorrecta A</option>
-            <option value="incorrecto_2">Opción Incorrecta B</option>
+            <option value="falso_1">Opción no relacionada A</option>
+            <option value="falso_2">Opción no relacionada B</option>
           </select>
           <div id="pareo-fb-${idx}" class="feedback"></div>
         </div>
@@ -346,7 +368,7 @@
     function checkSinglePareo(idx) {
       const val = document.getElementById(`pareo-sel-${idx}`).value;
       const fb = document.getElementById(`pareo-fb-${idx}`);
-      if (val === banco70[idx].fill) {
+      if (val === bancoPreguntas[idx].fill) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else if (val !== "") {
@@ -355,10 +377,10 @@
       }
     }
 
-    // ------------------- SECCIÓN LLENAR ESPACIOS (70) -------------------
+    // ------------------- SECCIÓN LLENAR ESPACIOS -------------------
     const fillContainer = document.getElementById('fill-container');
     let fillHtml = '<div class="card">';
-    banco70.forEach((item, idx) => {
+    bancoPreguntas.forEach((item, idx) => {
       fillHtml += `
         <p><b>${item.id}.</b> ${item.q.replace(/\?/g, '')}: 
           <input type="text" id="fill-in-${idx}" class="fill-input" placeholder="Escribe aquí">
@@ -373,18 +395,19 @@
     function checkSingleFill(idx) {
       const val = document.getElementById(`fill-in-${idx}`).value.toLowerCase().trim();
       const fb = document.getElementById(`fill-fb-${idx}`);
-      const target = banco70[idx].fill;
+      const keywords = bancoPreguntas[idx].k;
 
-      if (val.includes(target)) {
+      const hit = keywords.some(kw => val.includes(kw));
+      if (hit) {
         fb.className = 'feedback success';
         fb.innerText = '¡Correcto!';
       } else {
         fb.className = 'feedback error';
-        fb.innerText = `Incorrecto (${target})`;
+        fb.innerText = `Incorrecto (${bancoPreguntas[idx].fill})`;
       }
     }
 
-    // ------------------- GALERÍA -------------------
+    // ------------------- GALERÍA DINO -------------------
     const galeria = document.getElementById('galeria-dinamica');
     for (let i = 0; i <= 98; i++) {
       let num = String(i).padStart(3, '0');
