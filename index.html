@@ -212,7 +212,60 @@
         <div id="pareos-container"></div>
       </div>
 
-git config --global --add safe.directory '*'
-git add index.html
-git commit -m "Actualizacion de codigo en GitHub para Apuntes Yanssy"
-git push origin HEAD:principal --force
+    </div>
+
+    <div class="sidebar-area">
+      <div class="pink-card">
+        <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
+        <ul class="abbrev-list">
+          <li><b>Espermatozoide:</b> Gameto masculino maduro compuesto por cabeza (acrosoma y núcleo), cuello, pieza intermedia (mitocondrias) y cola.</li>
+          <li><b>Acrosoma:</b> Capuchón enzimático (acrosina y hialuronidasa) en la cabeza del espermatozoide.</li>
+          <li><b>Células de Leydig:</b> Células intersticiales del testículo que producen testosterona bajo estimulación de LH.</li>
+          <li><b>Células de Sertoli:</b> Células de sostén en los túbulos seminíferos; nutren a los espermatozoides y forman la barrera hematotesticular.</li>
+          <li><b>Células de la Granulosa:</b> Capa que rodea al ovocito; convierte andrógenos en estrógenos mediante la enzima aromatasa.</li>
+          <li><b>Teca Interna:</b> Capa vascularizada rica en receptores de LH que secreta andrógenos y esteroides.</li>
+          <li><b>Teca Externa:</b> Capa fibrosa exterior rica en células de músculo liso para la ovulación.</li>
+          <li><b>LH:</b> Hormona Luteinizante. Induce la ovulación y mantiene el cuerpo lúteo y las células de Leydig.</li>
+          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula la maduración folicular y la espermatogénesis.</li>
+          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Sintetizada por el sincitiotrofoblasto.</li>
+          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona.</li>
+          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas.</li>
+          <li><b>OMI:</b> Inhibidor de Maduración del Ovocito. Mantiene detención en diploteno.</li>
+          <li><b>CGP:</b> Células Germinales Primordiales.</li>
+          <li><b>BMP:</b> Proteínas Morfogenéticas Óseas.</li>
+          <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos.</li>
+          <li><b>SHH:</b> Sonic Hedgehog. Organiza la simetría corporal.</li>
+          <li><b>SNC / SNP:</b> Sistema Nervioso Central / Periférico.</li>
+          <li><b>ZP:</b> Zona Pelúcida (ZP1, ZP2, ZP3).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    const excludedPages = [4, 5, 6, 9, 12, 13, 14, 15, 16, 17, 19, 23];
+    const allSlides = [];
+    const maxPages = 81;
+
+    for (let i = 1; i <= maxPages; i++) {
+      if (!excludedPages.includes(i)) {
+        let str = i.toString().padStart(3, '0');
+        allSlides.push({
+          type: 'img',
+          src: `img_cap-${str}.jpg`,
+          title: `Lámina ${i}: img_cap-${str}.jpg`
+        });
+      }
+    }
+
+    allSlides.push({
+      type: 'svg',
+      title: 'Lámina Especial: Anatomía Anatómica del Espermatozoide',
+      html: `<div style="background:#fff; padding:15px; border-radius:8px; width:100%;"><h3 style="color:#d63384; margin-top:0;">Anatomía Histológica del Espermatozoide Humano</h3><svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#fcf8fa" rx="10"/><path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/><path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/><ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/><rect x="160" y="103" width="15" height="14" fill="#fd7e14"/><rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/><line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/><path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/><text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma</text><text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo Haploide</text><text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello</text><text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309"
