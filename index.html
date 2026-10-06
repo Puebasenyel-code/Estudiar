@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Embriología Médica - Langman</title>
+  <title>Apuntes Yanssy - Embriología Médica</title>
   <style>
     :root {
       --primary: #d63384;
@@ -18,9 +18,9 @@
     }
     * { box-sizing: border-box; }
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 10px; line-height: 1.5; }
-    header { text-align: center; margin-bottom: 15px; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    h1 { color: var(--primary); margin: 0 0 5px 0; font-size: 1.3rem; }
-    p.subtitle { margin: 0; color: #666; font-size: 0.85rem; }
+    header { text-align: center; margin-bottom: 15px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    h1.main-title { color: var(--primary); margin: 0 0 5px 0; font-size: 2.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    p.subtitle { margin: 0; color: #666; font-size: 0.95rem; font-weight: 600; }
     
     .nav-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 15px; }
     .tab-btn { padding: 8px 12px; border-radius: 20px; border: 2px solid var(--primary); background: white; color: var(--primary); font-weight: bold; font-size: 0.85rem; cursor: pointer; transition: 0.2s; }
@@ -75,8 +75,8 @@
 
     .voice-input-box { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; margin-top: 5px; font-size: 0.9rem; }
 
-    .pareo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    select.pareo-select { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-size: 0.85rem; }
+    .pareo-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 10px; }
+    select.pareo-select { width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--primary); font-size: 0.9rem; background: #fff; color: var(--text); }
     
     .sperm-diagram { text-align: center; margin: 15px 0; background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #e0e0e0; }
   </style>
@@ -84,8 +84,8 @@
 <body>
 
   <header>
-    <h1>Embriología Médica - Plataforma Completa</h1>
-    <p class="subtitle">Langman 15.ª Edición - Estudio Interactivo Completo (200 Preguntas + Visor Completo)</p>
+    <h1 class="main-title">Apuntes Yanssy</h1>
+    <p class="subtitle">Embriología Médica - Langman 15.ª Edición (Estudio Interactivo Completo)</p>
   </header>
 
   <div class="nav-tabs">
@@ -101,7 +101,7 @@
       
       <div id="libro" class="content-section active">
         <h2>📚 Visor de Láminas e Ilustraciones de Embriología</h2>
-        <p>Navega a través de todas las láminas descargadas del libro:</p>
+        <p>Navega a través de las láminas seleccionadas del libro:</p>
         <div class="book-viewer">
           <div id="diagram-container" class="image-wrapper"></div>
           <div class="book-controls">
@@ -212,236 +212,7 @@
         <div id="pareos-container"></div>
       </div>
 
-    </div>
-
-    <div class="sidebar-area">
-      <div class="pink-card">
-        <h2>🌸 Cartita de Abreviaturas y Términos 🌸</h2>
-        <ul class="abbrev-list">
-          <li><b>Espermatozoide:</b> Gameto masculino maduro compuesto por cabeza (acrosoma y núcleo), cuello, pieza intermedia (mitocondrias) y cola.</li>
-          <li><b>Acrosoma:</b> Capuchón enzimático (acrosina y hialuronidasa) en la cabeza del espermatozoide.</li>
-          <li><b>Células de Leydig:</b> Células intersticiales del testículo que producen testosterona bajo estimulación de LH.</li>
-          <li><b>Células de Sertoli:</b> Células de sostén en los túbulos seminíferos; nutren a los espermatozoides y forman la barrera hematotesticular.</li>
-          <li><b>Células de la Granulosa:</b> Capa que rodea al ovocito; convierte andrógenos en estrógenos mediante la enzima aromatasa.</li>
-          <li><b>Teca Interna:</b> Capa vascularizada rica en receptores de LH que secreta andrógenos y esteroides.</li>
-          <li><b>Teca Externa:</b> Capa fibrosa exterior rica en células de músculo liso para la ovulación.</li>
-          <li><b>LH:</b> Hormona Luteinizante. Induce la ovulación y mantiene el cuerpo lúteo y las células de Leydig.</li>
-          <li><b>FSH:</b> Hormona Folículo Estimulante. Estimula la maduración folicular y la espermatogénesis.</li>
-          <li><b>hCG:</b> Gonadotropina Coriónica Humana. Sintetizada por el sincitiotrofoblasto.</li>
-          <li><b>CL (Cuerpo Lúteo):</b> Estructura endocrina que secreta progesterona.</li>
-          <li><b>GnRH:</b> Hormona Liberadora de Gonadotropinas.</li>
-          <li><b>OMI:</b> Inhibidor de Maduración del Ovocito. Mantiene detención en diploteno.</li>
-          <li><b>CGP:</b> Células Germinales Primordiales.</li>
-          <li><b>BMP:</b> Proteínas Morfogenéticas Óseas.</li>
-          <li><b>FGF:</b> Factor de Crecimiento de Fibroblastos.</li>
-          <li><b>SHH:</b> Sonic Hedgehog. Organiza la simetría corporal.</li>
-          <li><b>SNC / SNP:</b> Sistema Nervioso Central / Periférico.</li>
-          <li><b>ZP:</b> Zona Pelúcida (ZP1, ZP2, ZP3).</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.currentTarget.classList.add('active');
-    }
-
-    const allSlides = [];
-    const maxPossibleImages = 80;
-
-    for (let i = 1; i <= maxPossibleImages; i++) {
-      let str = i.toString().padStart(3, '0');
-      allSlides.push({
-        type: 'img',
-        src: `img_cap-${str}.jpg`,
-        title: `Lámina ${i}: img_cap-${str}.jpg`
-      });
-    }
-
-    allSlides.push({
-      type: 'svg',
-      title: 'Lámina Especial: Anatomía Anatómica del Espermatozoide',
-      html: `<div style="background:#fff; padding:15px; border-radius:8px; width:100%;"><h3 style="color:#d63384; margin-top:0;">Anatomía Histológica del Espermatozoide Humano</h3><svg viewBox="0 0 700 220" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#fcf8fa" rx="10"/><path d="M 60 110 C 60 70, 140 70, 160 110 C 140 150, 60 150, 60 110 Z" fill="#d63384" stroke="#a61e61" stroke-width="3"/><path d="M 60 110 C 60 75, 105 75, 115 110 C 105 145, 60 145, 60 110 Z" fill="#20c997" opacity="0.85"/><ellipse cx="130" cy="110" rx="18" ry="14" fill="#6f42c1"/><rect x="160" y="103" width="15" height="14" fill="#fd7e14"/><rect x="175" y="98" width="110" height="24" rx="4" fill="#ffc107" stroke="#d39e00" stroke-width="2"/><line x1="185" y1="98" x2="185" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="200" y1="98" x2="200" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="215" y1="98" x2="215" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="230" y1="98" x2="230" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="245" y1="98" x2="245" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="260" y1="98" x2="260" y2="122" stroke="#e0a800" stroke-width="3"/><line x1="275" y1="98" x2="275" y2="122" stroke="#e0a800" stroke-width="3"/><path d="M 285 110 Q 400 80, 500 120 T 670 100" fill="none" stroke="#0d6efd" stroke-width="5" stroke-linecap="round"/><text x="85" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#097969" text-anchor="middle">Acrosoma</text><text x="130" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#6f42c1" text-anchor="middle">Núcleo Haploide</text><text x="167" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#d97706" text-anchor="middle">Cuello</text><text x="230" y="195" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Pieza Intermedia (Mitocondrias)</text><text x="480" y="25" font-family="Segoe UI, sans-serif" font-size="12" font-weight="bold" fill="#0d6efd" text-anchor="middle">Cola / Flagelo</text></svg></div>`
-    });
-
-    let currentIndex = 0;
-
-    function renderPage(index) {
-      const container = document.getElementById('diagram-container');
-      const pageNumText = document.getElementById('page-num');
-      const item = allSlides[index];
-
-      pageNumText.innerText = `${item.title} (${index + 1}/${allSlides.length})`;
-
-      if (item.type === 'img') {
-        container.innerHTML = `<img id="page-img" class="book-frame rotate-vertical" src="${item.src}" alt="${item.title}" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'300\\' height=\\'200\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23f8f9fa\\'/><text x=\\'50%\\' y=\\'50%\\' font-family=\\'sans-serif\\' font-size=\\'13\\' fill=\\'%23d63384\\' text-anchor=\\'middle\\'>Página vacía en origen o ausente</text></svg>';">`;
-      } else {
-        container.innerHTML = item.html;
-      }
-    }
-
-    function changePage(dir) {
-      currentIndex += dir;
-      if (currentIndex < 0) currentIndex = allSlides.length - 1;
-      if (currentIndex >= allSlides.length) currentIndex = 0;
-      renderPage(currentIndex);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      renderPage(0);
-    });
-
-    const temasBase = [
-      { q: "¿Qué estructura del espermatozoide contiene las enzimas hialuronidasa y acrosina para penetrar la zona pelúcida?", k: ["acrosoma"], o: ["Acrosoma", "Pieza intermedia", "Cuello", "Axonema"], c: 0, fill: "acrosoma" },
-      { q: "¿En qué parte del espermatozoide se localizan las mitocondrias organizadas en espiral para dar energía?", k: ["pieza intermedia", "intermedia"], o: ["Pieza intermedia", "Cabeza", "Acrosoma", "Cola"], c: 0, fill: "pieza intermedia" },
-      { q: "¿Qué células testiculares producen testosterona bajo el estímulo de la LH?", k: ["leydig", "células de leydig"], o: ["Células de Leydig", "Células de Sertoli", "Espermatogonias", "Células de la granulosa"], c: 0, fill: "células de leydig" },
-      { q: "¿Qué células de sostén nutren a las células germinales masculinas y forman la barrera hematotesticular?", k: ["sertoli", "células de sertoli"], o: ["Células de Sertoli", "Células de Leydig", "Teca interna", "Sincitiotrofoblasto"], c: 0, fill: "células de sertoli" },
-      { q: "¿Qué capa folicular rica en vasos sanguíneos produce andrógenos bajo estimulación de la LH?", k: ["teca interna", "interna"], o: ["Teca interna", "Teca externa", "Células de la granulosa", "Zona pelúcida"], c: 0, fill: "teca interna" },
-      { q: "¿Qué células circundan al ovocito y convierten andrógenos en estrógenos mediante la enzima aromatasa?", k: ["granulosa", "células de la granulosa"], o: ["Células de la granulosa", "Teca externa", "Sincitiotrofoblasto", "Epiblasto"], c: 0, fill: "células de la granulosa" },
-      { q: "¿En qué lugar de la trompa de Falopio se produce comúnmente la fecundación?", k: ["ampolla", "trompa"], o: ["Ampolla de la trompa de Falopio", "Ístmo", "Infundíbulo", "Utero"], c: 0, fill: "ampolla" },
-      { q: "¿Qué estructura del trofoblasto sintetiza la hormona hCG?", k: ["sincitiotrofoblasto"], o: ["Citotrofoblasto", "Sincitiotrofoblasto", "Epiblasto", "Hipoblasto"], c: 1, fill: "sincitiotrofoblasto" },
-      { q: "¿En qué fase meiótica permanecen detenidos los ovocitos primarios hasta la pubertad?", k: ["diploteno", "profase"], o: ["Diploteno de la profase I", "Metafase II", "Telofase I", "Anfase II"], c: 0, fill: "diploteno" },
-      { q: "¿Qué estructura mesodérmica induce la formación de la placa neural?", k: ["notocorda"], o: ["Notocorda", "Saco vitelino", "Alantoides", "Línea primitiva"], c: 0, fill: "notocorda" }
-    ];
-
-    const banco200 = [];
-    for (let i = 1; i <= 200; i++) {
-      let b = temasBase[(i - 1) % temasBase.length];
-      banco200.push({
-        id: i,
-        q: `[Pregunta ${i}] ${b.q}`,
-        k: b.k,
-        o: b.o,
-        c: b.c,
-        fill: b.fill
-      });
-    }
-
-    const voiceContainer = document.getElementById('voice-quiz-container');
-    let currentRecognitions = {};
-    banco200.forEach((item, idx) => {
-      voiceContainer.innerHTML += `
-        <div class="card">
-          <h3>${item.q}</h3>
-          <div class="audio-controls">
-            <button class="btn-action btn-audio" onclick="speakText('${item.q}')">🔊 Escuchar</button>
-            <button class="btn-action btn-start" id="btn-start-${idx}" onclick="startVoice(${idx})">🎙️️ Grabar</button>
-            <button class="btn-action btn-stop" id="btn-stop-${idx}" onclick="stopVoice(${idx})" disabled>🛑 Parar</button>
-            <button class="btn-action btn-send" onclick="submitVoice(${idx})">📤 Enviar</button>
-          </div>
-          <input type="text" id="voice-input-${idx}" class="voice-input-box" placeholder="Tu respuesta hablada...">
-          <div id="voice-fb-${idx}" class="feedback"></div>
-        </div>
-      `;
-    });
-
-    function speakText(text) {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = 'es-ES';
-        window.speechSynthesis.speak(u);
-      }
-    }
-
-    function startVoice(idx) {
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SR) return alert("Usa la caja de texto si tu navegador no soporta voz.");
-      if (currentRecognitions[idx]) currentRecognitions[idx].abort();
-      const rec = new SR();
-      rec.lang = 'es-ES';
-      rec.continuous = true;
-      rec.onstart = () => {
-        document.getElementById(`btn-start-${idx}`).disabled = true;
-        document.getElementById(`btn-stop-${idx}`).disabled = false;
-      };
-      rec.onresult = (e) => {
-        document.getElementById(`voice-input-${idx}`).value = e.results[0][0].transcript;
-      };
-      rec.onend = () => {
-        document.getElementById(`btn-start-${idx}`).disabled = false;
-        document.getElementById(`btn-stop-${idx}`).disabled = true;
-      };
-      currentRecognitions[idx] = rec;
-      rec.start();
-    }
-
-    function stopVoice(idx) {
-      if (currentRecognitions[idx]) currentRecognitions[idx].stop();
-    }
-
-    function submitVoice(idx) {
-      stopVoice(idx);
-      const val = document.getElementById(`voice-input-${idx}`).value.toLowerCase().trim();
-      const fb = document.getElementById(`voice-fb-${idx}`);
-      const hit = banco200[idx].k.some(kw => val.includes(kw));
-      if (hit) {
-        fb.className = 'feedback success';
-        fb.innerText = '¡Correcto!';
-      } else {
-        fb.className = 'feedback error';
-        fb.innerText = `Incorrecto. Respuesta clave: ${banco200[idx].fill}`;
-      }
-    }
-
-    const mcContainer = document.getElementById('mc-quiz-container');
-    banco200.forEach((item, idx) => {
-      let opts = item.o.map((o, oIdx) => 
-        `<button class="option-btn" onclick="checkMC(${idx}, ${oIdx})">${String.fromCharCode(65+oIdx)}) ${o}</button>`
-      ).join('');
-      mcContainer.innerHTML += `
-        <div class="card">
-          <h3>${item.q}</h3>
-          ${opts}
-          <div id="mc-fb-${idx}" class="feedback"></div>
-        </div>
-      `;
-    });
-
-    function checkMC(qIdx, optIdx) {
-      const fb = document.getElementById(`mc-fb-${qIdx}`);
-      if (optIdx === banco200[qIdx].c) {
-        fb.className = 'feedback success';
-        fb.innerText = '¡Correcto!';
-      } else {
-        fb.className = 'feedback error';
-        fb.innerText = 'Incorrecto. Intenta de nuevo.';
-      }
-    }
-
-    const pareosContainer = document.getElementById('pareos-container');
-    let pareoHtml = '<div class="card"><div class="pareo-grid">';
-    banco200.forEach((item, idx) => {
-      pareoHtml += `
-        <div><b>${idx + 1}.</b> ${item.q}</div>
-        <div>
-          <select class="pareo-select" id="pareo-sel-${idx}" onchange="checkPareo(${idx})">
-            <option value="">--Seleccionar--</option>
-            <option value="${item.fill}">${item.o[item.c]}</option>
-            <option value="falso">Opción incorrecta</option>
-          </select>
-          <div id="pareo-fb-${idx}" class="feedback"></div>
-        </div>
-      `;
-    });
-    pareoHtml += '</div></div>';
-    pareosContainer.innerHTML = pareoHtml;
-
-    function checkPareo(idx) {
-      const val = document.getElementById(`pareo-sel-${idx}`).value;
-      const fb = document.getElementById(`pareo-fb-${idx}`);
-      if (val === banco200[idx].fill) {
-        fb.className = 'feedback success';
-        fb.innerText = '¡Correcto!';
-      } else if (val !== "") {
-        fb.className = 'feedback error';
-        fb.innerText = 'Incorrecto.';
-      }
-    }
-  </script>
-</body>
-</html>
+git config --global --add safe.directory '*'
+git add index.html
+git commit -m "Actualizacion de codigo en GitHub para Apuntes Yanssy"
+git push origin HEAD:principal --force
